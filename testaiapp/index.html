@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProductFlow — Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="nav-logo">⬡</span>
+      <span class="nav-name">ProductFlow</span>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="nav-link active">Dashboard</a>
+      <a href="#" class="nav-link">Roadmap</a>
+      <a href="#" class="nav-link">Reports</a>
+      <a href="#" class="nav-link">Settings</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-icon" title="Notifications">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="badge">3</span>
+      </button>
+      <div class="avatar">AS</div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+      <div>
+        <h1 class="page-title">Sprint Overview</h1>
+        <p class="page-subtitle">Q3 2026 · Sprint 14 &nbsp;·&nbsp; Jun 1 – Jun 14</p>
+      </div>
+      <button class="btn-primary" id="openModal">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add New Task
+      </button>
+    </header>
+
+    <!-- METRIC CARDS -->
+    <section class="metrics">
+      <div class="card metric-card">
+        <div class="metric-icon metric-icon--blue">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="metric-body">
+          <span class="metric-label">Total Tasks</span>
+          <span class="metric-value" id="totalTasks">8</span>
+          <span class="metric-delta positive">+2 this sprint</span>
+        </div>
+      </div>
+
+      <div class="card metric-card">
+        <div class="metric-icon metric-icon--violet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="metric-body">
+          <span class="metric-label">Velocity</span>
+          <span class="metric-value">34 <small>pts</small></span>
+          <span class="metric-delta positive">↑ 12% vs last sprint</span>
+        </div>
+      </div>
+
+      <div class="card metric-card">
+        <div class="metric-icon metric-icon--red">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="metric-body">
+          <span class="metric-label">Active Blockers</span>
+          <span class="metric-value" id="activeBlockers">2</span>
+          <span class="metric-delta negative">Needs attention</span>
+        </div>
+      </div>
+
+      <div class="card metric-card">
+        <div class="metric-icon metric-icon--green">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="metric-body">
+          <span class="metric-label">Days Remaining</span>
+          <span class="metric-value">3</span>
+          <span class="metric-delta neutral">Sprint ends Jun 14</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TASK TABLE -->
+    <section class="card table-card">
+      <div class="table-header">
+        <h2 class="table-title">Task Board</h2>
+        <div class="table-filters">
+          <select class="filter-select" id="filterStatus">
+            <option value="">All Statuses</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Todo">Todo</option>
+            <option value="Done">Done</option>
+            <option value="Blocked">Blocked</option>
+          </select>
+          <select class="filter-select" id="filterPriority">
+            <option value="">All Priorities</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="task-table" id="taskTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Task Name</th>
+              <th>Priority</th>
+              <th>Assignee</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="taskBody">
+            <!-- seeded via JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Add New Task</h2>
+        <button class="btn-icon modal-close" id="closeModal" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <form class="modal-form" id="taskForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="taskName">Task Name <span class="required">*</span></label>
+          <input class="form-input" type="text" id="taskName" placeholder="e.g. Redesign onboarding flow" autocomplete="off" />
+          <span class="form-error" id="taskNameError">Task name is required.</span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="taskPriority">Priority <span class="required">*</span></label>
+            <select class="form-input" id="taskPriority">
+              <option value="">Select priority</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+            <span class="form-error" id="taskPriorityError">Priority is required.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="taskAssignee">Assignee <span class="required">*</span></label>
+            <input class="form-input" type="text" id="taskAssignee" placeholder="e.g. Alex Smith" autocomplete="off" />
+            <span class="form-error" id="taskAssigneeError">Assignee is required.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="taskStatus">Status</label>
+          <select class="form-input" id="taskStatus">
+            <option value="Todo">Todo</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Blocked">Blocked</option>
+            <option value="Done">Done</option>
+          </select>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="cancelModal">Cancel</button>
+          <button type="submit" class="btn-primary">Add Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
