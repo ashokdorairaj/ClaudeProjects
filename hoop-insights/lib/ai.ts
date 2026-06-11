@@ -2,6 +2,7 @@ import { anthropic } from '@ai-sdk/anthropic';
 import { openai } from '@ai-sdk/openai';
 import { generateText, embed } from 'ai';
 import type { ExtractedFrame } from './ffmpeg';
+import type { PlayMatch } from './pinecone';
 
 export interface PlayAnnotation {
   timestamp: number;
@@ -55,6 +56,58 @@ Return a JSON object with this exact shape:
 
   const parsed = JSON.parse(text) as Omit<AnalysisResult, 'teamTag'>;
   return { teamTag, ...parsed };
+}
+
+export interface PlayFeedback {
+  play: string;
+  detail: string;
+}
+
+export interface DrillRecommendation {
+  drill: string;
+  reason: string;
+}
+
+export interface GameAnalysisResult {
+  playsExecutedWell: PlayFeedback[];
+  missedOpportunities: PlayFeedback[];
+  recommendedDrillsToPractice: DrillRecommendation[];
+}
+
+const GAME_ANALYSIS_PROMPT = `You are an expert basketball coach and analyst.
+You will be given a game tag, the number of frames analysed, and a list of plays detected via a vector knowledge base.
+Based on this context, return a JSON object — no markdown, no explanation — with exactly this shape:
+{
+  "playsExecutedWell": [{ "play": "string", "detail": "string" }],
+  "missedOpportunities": [{ "play": "string", "detail": "string" }],
+  "recommendedDrillsToPractice": [{ "drill": "string", "reason": "string" }]
+}
+Aim for 2-3 items per array. Be specific and actionable.`;
+
+export async function generateGameAnalysis(
+  teamTag: string,
+  framesAnalysed: number,
+  matches: PlayMatch[],
+): Promise<GameAnalysisResult> {
+  const context = JSON.stringify({ teamTag, framesAnalysed, matchedPlays: matches }, null, 2);
+
+  const { text } = await generateText({
+    model: anthropic('claude-3-5-sonnet-20241022'),
+    system: GAME_ANALYSIS_PROMPT,
+    messages: [{ role: 'user', content: context }],
+  });
+
+  const parsed = JSON.parse(text) as GameAnalysisResult;
+
+  if (
+    !Array.isArray(parsed.playsExecutedWell) ||
+    !Array.isArray(parsed.missedOpportunities) ||
+    !Array.isArray(parsed.recommendedDrillsToPractice)
+  ) {
+    throw new Error('Model returned unexpected shape — missing required arrays.');
+  }
+
+  return parsed;
 }
 
 export async function embedText(text: string): Promise<number[]> {
