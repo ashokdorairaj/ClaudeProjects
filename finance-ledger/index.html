@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finance Ledger</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            surface:  '#13131f',
+            surface2: '#1a1a2e',
+            surface3: '#22223a',
+            border:   '#2a2a44',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #0d0d14; }
+    .fade-in { animation: fadeIn 0.25s ease forwards; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-200 font-sans">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-10 border-b border-border bg-[#0d0d14]/80 backdrop-blur-md">
+    <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-indigo-400 text-xl">₿</span>
+        <span class="font-bold text-lg tracking-tight">Finance Ledger</span>
+      </div>
+      <span class="text-xs text-slate-500" id="navDate"></span>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-6 py-8 space-y-6">
+
+    <!-- SUMMARY CARDS -->
+    <div class="grid grid-cols-3 gap-4">
+      <div class="rounded-xl bg-surface border border-border p-4">
+        <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">Income</p>
+        <p class="text-2xl font-bold text-emerald-400 mt-1" id="totalIncome">$0.00</p>
+      </div>
+      <div class="rounded-xl bg-surface border border-border p-4">
+        <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">Expenses</p>
+        <p class="text-2xl font-bold text-rose-400 mt-1" id="totalExpenses">$0.00</p>
+      </div>
+      <div class="rounded-xl bg-surface border border-border p-4">
+        <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">Balance</p>
+        <p class="text-2xl font-bold mt-1" id="balance">$0.00</p>
+      </div>
+    </div>
+
+    <!-- ADD TRANSACTION FORM -->
+    <div class="rounded-xl bg-surface border border-border p-6">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-4">Add Transaction</h2>
+      <form id="txForm" novalidate class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <!-- Description -->
+        <div class="sm:col-span-2 space-y-1">
+          <label class="text-xs font-semibold uppercase tracking-wider text-slate-500" for="desc">
+            Description <span class="text-indigo-400">*</span>
+          </label>
+          <input id="desc" type="text" autocomplete="off" placeholder="e.g. Freelance invoice"
+            class="w-full rounded-lg bg-surface2 border border-border px-3 py-2 text-sm text-slate-200
+                   placeholder-slate-600 outline-none focus:border-indigo-500 focus:ring-2
+                   focus:ring-indigo-500/20 transition" />
+          <p class="text-xs text-rose-400 hidden" id="descErr">Description is required.</p>
+        </div>
+
+        <!-- Amount -->
+        <div class="space-y-1">
+          <label class="text-xs font-semibold uppercase tracking-wider text-slate-500" for="amount">
+            Amount <span class="text-indigo-400">*</span>
+          </label>
+          <div class="relative">
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">$</span>
+            <input id="amount" type="number" min="0.01" step="0.01" placeholder="0.00"
+              class="w-full rounded-lg bg-surface2 border border-border pl-7 pr-3 py-2 text-sm
+                     text-slate-200 placeholder-slate-600 outline-none focus:border-indigo-500
+                     focus:ring-2 focus:ring-indigo-500/20 transition" />
+          </div>
+          <p class="text-xs text-rose-400 hidden" id="amountErr">Enter a valid amount.</p>
+        </div>
+
+        <!-- Category -->
+        <div class="space-y-1">
+          <label class="text-xs font-semibold uppercase tracking-wider text-slate-500" for="category">
+            Category <span class="text-indigo-400">*</span>
+          </label>
+          <select id="category"
+            class="w-full rounded-lg bg-surface2 border border-border px-3 py-2 text-sm
+                   text-slate-200 outline-none focus:border-indigo-500 focus:ring-2
+                   focus:ring-indigo-500/20 transition">
+            <option value="">Select category</option>
+            <optgroup label="Income">
+              <option value="Salary|income">Salary</option>
+              <option value="Freelance|income">Freelance</option>
+              <option value="Investment|income">Investment</option>
+              <option value="Other Income|income">Other Income</option>
+            </optgroup>
+            <optgroup label="Expenses">
+              <option value="Food|expense">Food</option>
+              <option value="Transport|expense">Transport</option>
+              <option value="Housing|expense">Housing</option>
+              <option value="Entertainment|expense">Entertainment</option>
+              <option value="Healthcare|expense">Healthcare</option>
+              <option value="Shopping|expense">Shopping</option>
+              <option value="Other Expense|expense">Other Expense</option>
+            </optgroup>
+          </select>
+          <p class="text-xs text-rose-400 hidden" id="categoryErr">Select a category.</p>
+        </div>
+
+        <!-- Submit -->
+        <div class="sm:col-span-2 flex justify-end">
+          <button type="submit"
+            class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 hover:bg-indigo-500
+                   active:scale-95 px-5 py-2 text-sm font-semibold text-white transition
+                   shadow-lg shadow-indigo-600/20">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            Add Transaction
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- TRANSACTIONS TABLE -->
+    <div class="rounded-xl bg-surface border border-border overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-border">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400">Transactions</h2>
+        <span class="text-xs text-slate-500" id="txCount">0 entries</span>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead class="bg-surface2 text-slate-500 text-xs uppercase tracking-widest">
+            <tr>
+              <th class="px-6 py-3 text-left font-semibold">Date</th>
+              <th class="px-6 py-3 text-left font-semibold">Description</th>
+              <th class="px-6 py-3 text-left font-semibold">Category</th>
+              <th class="px-6 py-3 text-left font-semibold">Type</th>
+              <th class="px-6 py-3 text-right font-semibold">Amount</th>
+              <th class="px-4 py-3 text-center font-semibold"></th>
+            </tr>
+          </thead>
+          <tbody id="txBody"></tbody>
+        </table>
+
+        <!-- Empty state -->
+        <div id="emptyState" class="py-16 text-center text-slate-600">
+          <svg class="mx-auto mb-3 opacity-40" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+          </svg>
+          <p class="font-medium">No transactions yet</p>
+          <p class="text-sm mt-1">Add one using the form above.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
