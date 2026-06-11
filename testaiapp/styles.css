@@ -269,6 +269,17 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
+.metric-card--alert {
+  background: rgba(180, 30, 40, 0.18);
+  border-color: rgba(220, 50, 60, 0.35);
+}
+
+.metric-card--alert:hover {
+  background: rgba(180, 30, 40, 0.26);
+  border-color: rgba(220, 50, 60, 0.55);
+  box-shadow: 0 8px 32px rgba(180, 30, 40, 0.3);
+}
+
 .metric-icon {
   flex-shrink: 0;
   width: 44px;
@@ -495,10 +506,12 @@ body {
   box-shadow: var(--shadow-lg);
   transform: translateY(16px) scale(0.98);
   transition: transform 0.22s ease;
+  pointer-events: none;
 }
 
 .modal-overlay.open .modal {
   transform: translateY(0) scale(1);
+  pointer-events: auto;
 }
 
 .modal-header {
