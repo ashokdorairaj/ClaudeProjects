@@ -3,6 +3,7 @@ import { openai } from '@ai-sdk/openai';
 import { generateText, embed } from 'ai';
 import type { ExtractedFrame } from './ffmpeg';
 import type { PlayMatch } from './pinecone';
+import type { Drill } from './knowledgeBase';
 
 export interface PlayAnnotation {
   timestamp: number;
@@ -75,21 +76,39 @@ export interface GameAnalysisResult {
 }
 
 const GAME_ANALYSIS_PROMPT = `You are an expert basketball coach and analyst.
-You will be given a game tag, the number of frames analysed, and a list of plays detected via a vector knowledge base.
-Based on this context, return a JSON object — no markdown, no explanation — with exactly this shape:
+You will receive a game tag, frame count, detected plays, and a curated list of available drills from our Knowledge Base.
+Return a JSON object — no markdown, no extra text — with exactly this shape:
 {
   "playsExecutedWell": [{ "play": "string", "detail": "string" }],
   "missedOpportunities": [{ "play": "string", "detail": "string" }],
   "recommendedDrillsToPractice": [{ "drill": "string", "reason": "string" }]
 }
-Aim for 2-3 items per array. Be specific and actionable.`;
+Rules:
+- Aim for 2-3 items per array.
+- For recommendedDrillsToPractice, you MUST only use drill names that appear verbatim in the provided Knowledge Base drills.
+- Use each drill's correction_trigger as the basis for the "reason" field.
+- Be specific and actionable.`;
 
 export async function generateGameAnalysis(
   teamTag: string,
   framesAnalysed: number,
   matches: PlayMatch[],
+  availableDrills: Drill[],
 ): Promise<GameAnalysisResult> {
-  const context = JSON.stringify({ teamTag, framesAnalysed, matchedPlays: matches }, null, 2);
+  const context = JSON.stringify(
+    {
+      teamTag,
+      framesAnalysed,
+      matchedPlays: matches,
+      knowledgeBaseDrills: availableDrills.map(d => ({
+        name: d.name,
+        focus_area: d.focus_area,
+        correction_trigger: d.correction_trigger,
+      })),
+    },
+    null,
+    2,
+  );
 
   const { text } = await generateText({
     model: anthropic('claude-3-5-sonnet-20241022'),

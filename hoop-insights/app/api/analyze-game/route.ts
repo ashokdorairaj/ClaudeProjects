@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { extractFrames, type ExtractedFrame } from '@/lib/ffmpeg';
 import { searchSimilarPlays, type PlayMatch } from '@/lib/pinecone';
 import { generateGameAnalysis } from '@/lib/ai';
+import { getRelevantDrills } from '@/lib/knowledgeBase';
 import { writeFile, unlink } from 'fs/promises';
 import { join } from 'path';
 import { randomUUID } from 'crypto';
@@ -74,8 +75,11 @@ export async function POST(req: NextRequest) {
       ? MOCK_MATCHES
       : await searchSimilarPlays(`${teamTag} basketball plays`, 5);
 
+    // ── Step 3b: Resolve relevant drills from the Knowledge Base ─────────
+    const relevantDrills = getRelevantDrills(matches);
+
     // ── Step 4: Generate structured analysis via Claude 3.5 Sonnet ───────
-    const analysis = await generateGameAnalysis(teamTag, frames.length, matches);
+    const analysis = await generateGameAnalysis(teamTag, frames.length, matches, relevantDrills);
 
     // ── Step 5: Return final response ────────────────────────────────────
     return NextResponse.json({
@@ -83,6 +87,7 @@ export async function POST(req: NextRequest) {
       framesAnalysed: frames.length,
       mockMode: MOCK_MODE,
       matchedPlays: matches,
+      knowledgeBaseDrills: relevantDrills,
       playsExecutedWell: analysis.playsExecutedWell,
       missedOpportunities: analysis.missedOpportunities,
       recommendedDrillsToPractice: analysis.recommendedDrillsToPractice,
