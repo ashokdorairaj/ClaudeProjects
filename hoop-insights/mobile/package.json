@@ -14,10 +14,10 @@
     "typescript": "~6.0.3"
   },
   "scripts": {
-    "start": "../node_modules/.bin/expo start --project-root .",
-    "web": "../node_modules/.bin/expo start --web --project-root .",
-    "android": "../node_modules/.bin/expo start --android --project-root .",
-    "ios": "../node_modules/.bin/expo start --ios --project-root ."
+    "start": "npx expo start --project-root .",
+    "web": "npx expo start --web --project-root .",
+    "android": "npx expo start --android --project-root .",
+    "ios": "npx expo start --ios --project-root ."
   },
   "private": true
 }
