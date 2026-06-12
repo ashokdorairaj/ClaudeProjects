@@ -1,25 +1,40 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "Courtside Capture",
+    "slug": "hoop-insights-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow Courtside Capture to record basketball plays.",
+        "NSMicrophoneUsageDescription": "Allow Courtside Capture to record audio during plays."
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#0a0a0a",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
+      "permissions": ["android.permission.CAMERA", "android.permission.RECORD_AUDIO"],
       "predictiveBackGestureEnabled": false
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Courtside Capture to record basketball plays.",
+          "microphonePermission": "Allow Courtside Capture to record audio during plays.",
+          "recordAudioAndroid": true
+        }
+      ]
+    ]
   }
 }
