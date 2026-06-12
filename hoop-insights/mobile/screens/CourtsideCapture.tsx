@@ -60,27 +60,204 @@ function fmtTime(s: number): string {
     .padStart(2, '0')}`;
 }
 
-// ── Web gate ──────────────────────────────────────────────────────────────────
+// ── Web capture ───────────────────────────────────────────────────────────────
 // expo-camera video recording is not supported in a web browser.
-// Show an informational screen instead of a broken blank canvas.
+// Instead, render a file-picker UI that uploads to the same backend endpoint.
 
-function WebUnsupported() {
+interface VideoFile {
+  name: string;
+  file: File;
+  sizeMb: string;
+}
+
+function WebCapture() {
+  const [teamTag, setTeamTag] = useState('');
+  const [video, setVideo] = useState<VideoFile | null>(null);
+  const [phase, setPhase] = useState<'idle' | 'analyzing' | 'result' | 'error'>('idle');
+  const [result, setResult] = useState<AnalysisResult | null>(null);
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const pickVideo = useCallback(() => {
+    // document is available here — this component only renders on web.
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'video/*';
+    input.onchange = () => {
+      const f = input.files?.[0];
+      if (f) {
+        setVideo({ name: f.name, file: f, sizeMb: (f.size / 1024 / 1024).toFixed(1) });
+        setResult(null);
+        setErrorMsg('');
+        setPhase('idle');
+      }
+    };
+    input.click();
+  }, []);
+
+  const analyzePlay = useCallback(async () => {
+    if (!video) return;
+    if (!teamTag.trim()) {
+      Alert.alert('Team Tag Required', 'Enter a team name before analyzing.');
+      return;
+    }
+    setPhase('analyzing');
+    try {
+      const form = new FormData();
+      form.append('video', video.file, video.name);
+      form.append('teamTag', teamTag.trim());
+
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        body: form,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({})) as { error?: string };
+        throw new Error(body.error ?? `HTTP ${res.status}`);
+      }
+
+      setResult((await res.json()) as AnalysisResult);
+      setPhase('result');
+    } catch (e) {
+      setErrorMsg(e instanceof Error ? e.message : 'Request failed.');
+      setPhase('error');
+    }
+  }, [video, teamTag]);
+
+  const reset = useCallback(() => {
+    setVideo(null);
+    setResult(null);
+    setErrorMsg('');
+    setPhase('idle');
+  }, []);
+
+  const isAnalyzing = phase === 'analyzing';
+
   return (
-    <SafeAreaView style={styles.webScreen}>
+    <SafeAreaView style={webStyles.root}>
       <StatusBar style="light" />
-      <View style={styles.webIcon}>
-        <Text style={styles.webIconEmoji}>📱</Text>
-      </View>
-      <Text style={styles.webTitle}>Open on Your Phone</Text>
-      <Text style={styles.webBody}>
-        Courtside Capture uses your device camera to record basketball plays.
-        Video recording isn't available in a web browser.
-      </Text>
-      <View style={styles.webSteps}>
-        <Text style={styles.webStep}>1  Install Expo Go on iOS or Android</Text>
-        <Text style={styles.webStep}>2  Scan the QR code in your terminal</Text>
-        <Text style={styles.webStep}>3  Record and analyze plays live</Text>
-      </View>
+      <ScrollView
+        contentContainerStyle={webStyles.content}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Header */}
+        <Text style={webStyles.title}>Courtside Capture</Text>
+        <Text style={webStyles.subtitle}>
+          Upload a play clip and get AI-powered coaching insights
+        </Text>
+
+        {/* Upload card */}
+        <View style={webStyles.card}>
+          <TouchableOpacity
+            style={[webStyles.dropzone, video !== null && webStyles.dropzoneFilled]}
+            onPress={pickVideo}
+            activeOpacity={0.8}
+            disabled={isAnalyzing}
+          >
+            {video ? (
+              <>
+                <Text style={webStyles.dropzoneIcon}>🎬</Text>
+                <Text style={webStyles.dropzoneName} numberOfLines={1}>
+                  {video.name}
+                </Text>
+                <Text style={webStyles.dropzoneMeta}>{video.sizeMb} MB  ·  tap to change</Text>
+              </>
+            ) : (
+              <>
+                <Text style={webStyles.dropzoneIcon}>📤</Text>
+                <Text style={webStyles.dropzoneLabel}>Click to upload video</Text>
+                <Text style={webStyles.dropzoneMeta}>MP4, MOV, WebM  ·  60 s recommended</Text>
+              </>
+            )}
+          </TouchableOpacity>
+
+          <TextInput
+            style={[webStyles.tagInput, isAnalyzing && webStyles.inputDisabled]}
+            placeholder="Tag Team  —  e.g. Lakers vs Celtics"
+            placeholderTextColor="#555"
+            value={teamTag}
+            onChangeText={setTeamTag}
+            editable={!isAnalyzing}
+            returnKeyType="done"
+          />
+
+          <TouchableOpacity
+            style={[
+              webStyles.analyzeBtn,
+              (!video || isAnalyzing) && webStyles.analyzeBtnDisabled,
+            ]}
+            onPress={analyzePlay}
+            disabled={!video || isAnalyzing}
+            activeOpacity={0.85}
+          >
+            {isAnalyzing ? (
+              <ActivityIndicator color="#fff" size="small" />
+            ) : (
+              <Text style={webStyles.analyzeBtnText}>
+                {video ? 'Analyze Play' : 'Select a video first'}
+              </Text>
+            )}
+          </TouchableOpacity>
+        </View>
+
+        {/* Analyzing state */}
+        {isAnalyzing && (
+          <View style={webStyles.loadingBox}>
+            <ActivityIndicator color={ORANGE} size="large" style={{ marginBottom: 16 }} />
+            <Text style={webStyles.loadingTitle}>Analyzing Play…</Text>
+            <Text style={webStyles.loadingSub}>
+              Extracting frames and consulting the playbook
+            </Text>
+          </View>
+        )}
+
+        {/* Results */}
+        {(phase === 'result' || phase === 'error') && (
+          <View style={webStyles.resultsArea}>
+            {errorMsg ? (
+              <View style={styles.errorBox}>
+                <Text style={styles.errorTitle}>Analysis Failed</Text>
+                <Text style={styles.errorBody}>{errorMsg}</Text>
+              </View>
+            ) : result ? (
+              <>
+                <View style={styles.resultMeta}>
+                  <Text style={styles.resultTeam}>{result.teamTag}</Text>
+                  <Text style={styles.resultSub}>
+                    {result.framesAnalysed} frames analyzed
+                    {result.mockMode ? '  ·  Mock mode' : ''}
+                  </Text>
+                </View>
+
+                <InsightSection title="Plays Executed Well" accent={GREEN}>
+                  {result.playsExecutedWell.map((p, i) => (
+                    <InsightCard key={i} title={p.play} body={p.detail} />
+                  ))}
+                </InsightSection>
+
+                <InsightSection title="Missed Opportunities" accent={AMBER}>
+                  {result.missedOpportunities.map((p, i) => (
+                    <InsightCard key={i} title={p.play} body={p.detail} />
+                  ))}
+                </InsightSection>
+
+                <InsightSection title="Recommended Drills" accent={ORANGE}>
+                  {result.recommendedDrillsToPractice.map((d, i) => (
+                    <InsightCard key={i} title={d.drill} body={d.reason} />
+                  ))}
+                </InsightSection>
+              </>
+            ) : null}
+
+            <TouchableOpacity style={styles.dismissBtn} onPress={reset} activeOpacity={0.8}>
+              <Text style={styles.dismissText}>Analyze Another Play</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+
+        <View style={{ height: 40 }} />
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -89,7 +266,7 @@ function WebUnsupported() {
 
 // Shell: no hooks here, so the platform branch is safe.
 export default function CourtsideCapture() {
-  if (Platform.OS === 'web') return <WebUnsupported />;
+  if (Platform.OS === 'web') return <WebCapture />;
   return <CourtsideCaptureNative />;
 }
 
@@ -727,53 +904,123 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   dismissText: { color: ORANGE, fontSize: 15, fontWeight: '700' },
+});
 
-  // Web unsupported screen
-  webScreen: {
-    flex: 1,
-    backgroundColor: BG,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 36,
+// ── Web-specific styles ───────────────────────────────────────────────────────
+
+const webStyles = StyleSheet.create({
+  root: { flex: 1, backgroundColor: BG },
+  content: {
+    maxWidth: 640,
+    width: '100%',
+    alignSelf: 'center',
+    paddingHorizontal: 24,
+    paddingTop: 48,
   },
-  webIcon: {
-    width: 80,
-    height: 80,
-    borderRadius: 24,
-    backgroundColor: SURFACE,
-    borderWidth: 1,
-    borderColor: BORDER,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 24,
-  },
-  webIconEmoji: { fontSize: 36 },
-  webTitle: {
-    fontSize: 24,
+
+  // Header
+  title: {
+    fontSize: 28,
     fontWeight: '800',
     color: TEXT_PRIMARY,
-    marginBottom: 12,
-    textAlign: 'center',
+    marginBottom: 8,
   },
-  webBody: {
+  subtitle: {
     fontSize: 15,
     color: TEXT_MUTED,
-    textAlign: 'center',
-    lineHeight: 23,
-    marginBottom: 32,
+    lineHeight: 22,
+    marginBottom: 28,
   },
-  webSteps: {
-    alignSelf: 'stretch',
+
+  // Upload card
+  card: {
     backgroundColor: SURFACE,
-    borderRadius: 14,
+    borderRadius: 18,
     borderWidth: 1,
     borderColor: BORDER,
-    padding: 20,
-    gap: 12,
+    padding: 24,
+    marginBottom: 24,
   },
-  webStep: {
-    fontSize: 14,
+  dropzone: {
+    borderWidth: 2,
+    borderColor: BORDER,
+    borderStyle: 'dashed',
+    borderRadius: 12,
+    paddingVertical: 36,
+    paddingHorizontal: 24,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  dropzoneFilled: {
+    borderColor: ORANGE,
+    borderStyle: 'solid',
+  },
+  dropzoneIcon: { fontSize: 32, marginBottom: 10 },
+  dropzoneLabel: {
+    fontSize: 16,
+    fontWeight: '600',
     color: TEXT_PRIMARY,
-    lineHeight: 20,
+    marginBottom: 6,
+  },
+  dropzoneName: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: TEXT_PRIMARY,
+    marginBottom: 4,
+    maxWidth: '100%',
+  },
+  dropzoneMeta: { fontSize: 13, color: TEXT_MUTED },
+
+  // Inputs
+  tagInput: {
+    backgroundColor: CARD,
+    borderWidth: 1,
+    borderColor: BORDER,
+    borderRadius: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 13,
+    color: TEXT_PRIMARY,
+    fontSize: 15,
+    marginBottom: 16,
+  },
+  inputDisabled: { opacity: 0.35 },
+
+  // Analyze button
+  analyzeBtn: {
+    backgroundColor: ORANGE,
+    borderRadius: 12,
+    paddingVertical: 15,
+    alignItems: 'center',
+    minHeight: 50,
+    justifyContent: 'center',
+  },
+  analyzeBtnDisabled: { backgroundColor: '#3a2010', opacity: 0.7 },
+  analyzeBtnText: { color: '#fff', fontSize: 16, fontWeight: '700' },
+
+  // Loading
+  loadingBox: {
+    backgroundColor: SURFACE,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: BORDER,
+    padding: 32,
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  loadingTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: TEXT_PRIMARY,
+    marginBottom: 6,
+  },
+  loadingSub: {
+    fontSize: 14,
+    color: TEXT_MUTED,
+    textAlign: 'center',
+  },
+
+  // Results area
+  resultsArea: {
+    marginBottom: 8,
   },
 });
