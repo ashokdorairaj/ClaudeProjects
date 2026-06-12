@@ -14,5 +14,8 @@
     "mobile:web": "npx expo start mobile --web",
     "mobile:android": "npx expo start mobile --android",
     "mobile:ios": "npx expo start mobile --ios"
+  },
+  "dependencies": {
+    "react-native-web": "^0.21.2"
   }
 }
