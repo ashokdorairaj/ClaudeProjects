@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -59,9 +60,40 @@ function fmtTime(s: number): string {
     .padStart(2, '0')}`;
 }
 
+// ── Web gate ──────────────────────────────────────────────────────────────────
+// expo-camera video recording is not supported in a web browser.
+// Show an informational screen instead of a broken blank canvas.
+
+function WebUnsupported() {
+  return (
+    <SafeAreaView style={styles.webScreen}>
+      <StatusBar style="light" />
+      <View style={styles.webIcon}>
+        <Text style={styles.webIconEmoji}>📱</Text>
+      </View>
+      <Text style={styles.webTitle}>Open on Your Phone</Text>
+      <Text style={styles.webBody}>
+        Courtside Capture uses your device camera to record basketball plays.
+        Video recording isn't available in a web browser.
+      </Text>
+      <View style={styles.webSteps}>
+        <Text style={styles.webStep}>1  Install Expo Go on iOS or Android</Text>
+        <Text style={styles.webStep}>2  Scan the QR code in your terminal</Text>
+        <Text style={styles.webStep}>3  Record and analyze plays live</Text>
+      </View>
+    </SafeAreaView>
+  );
+}
+
 // ── Main screen ───────────────────────────────────────────────────────────────
 
+// Shell: no hooks here, so the platform branch is safe.
 export default function CourtsideCapture() {
+  if (Platform.OS === 'web') return <WebUnsupported />;
+  return <CourtsideCaptureNative />;
+}
+
+function CourtsideCaptureNative() {
   const cameraRef = useRef<CameraView>(null);
   const [camPerm, requestCamPerm] = useCameraPermissions();
   const [micPerm, requestMicPerm] = useMicrophonePermissions();
@@ -695,4 +727,53 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   dismissText: { color: ORANGE, fontSize: 15, fontWeight: '700' },
+
+  // Web unsupported screen
+  webScreen: {
+    flex: 1,
+    backgroundColor: BG,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 36,
+  },
+  webIcon: {
+    width: 80,
+    height: 80,
+    borderRadius: 24,
+    backgroundColor: SURFACE,
+    borderWidth: 1,
+    borderColor: BORDER,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 24,
+  },
+  webIconEmoji: { fontSize: 36 },
+  webTitle: {
+    fontSize: 24,
+    fontWeight: '800',
+    color: TEXT_PRIMARY,
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  webBody: {
+    fontSize: 15,
+    color: TEXT_MUTED,
+    textAlign: 'center',
+    lineHeight: 23,
+    marginBottom: 32,
+  },
+  webSteps: {
+    alignSelf: 'stretch',
+    backgroundColor: SURFACE,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: BORDER,
+    padding: 20,
+    gap: 12,
+  },
+  webStep: {
+    fontSize: 14,
+    color: TEXT_PRIMARY,
+    lineHeight: 20,
+  },
 });
