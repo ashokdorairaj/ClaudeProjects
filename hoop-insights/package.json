@@ -10,9 +10,9 @@
     "web:dev": "npm run dev --workspace=web",
     "web:build": "npm run build --workspace=web",
     "web:start": "npm run start --workspace=web",
-    "mobile:start": "node_modules/.bin/expo start --project-root mobile",
-    "mobile:web": "node_modules/.bin/expo start --web --project-root mobile",
-    "mobile:android": "node_modules/.bin/expo start --android --project-root mobile",
-    "mobile:ios": "node_modules/.bin/expo start --ios --project-root mobile"
+    "mobile:start": "npx expo start mobile",
+    "mobile:web": "npx expo start mobile --web",
+    "mobile:android": "npx expo start mobile --android",
+    "mobile:ios": "npx expo start mobile --ios"
   }
 }
