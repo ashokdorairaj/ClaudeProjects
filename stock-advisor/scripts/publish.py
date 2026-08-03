@@ -26,7 +26,8 @@ HISTORY = DATA / "history"
 DASH = ROOT / "dashboard"
 PUBLIC = DASH / "public"
 OUT = DASH / "data.js"
-PASSWORD_FILE = DATA / "dashboard_password.txt"
+PASSWORD_FILE = DATA / "dashboard_password.txt"  # local-only, gitignored
+KEY_FILE = DATA / "dashboard_key.txt"  # committed: salt + PBKDF2-derived AES key (not the password)
 PBKDF2_ITERATIONS = 200_000
 
 
@@ -112,17 +113,40 @@ def main() -> None:
     build_public(data)
 
 
+def load_key():
+    """Return (salt, aes_key) for the public build.
+
+    Preferred source is KEY_FILE ("v1:<salt_b64>:<key_b64>"), which holds the
+    PBKDF2-derived key so the actual password never has to be in the repo.
+    If only the local PASSWORD_FILE exists, derive the key from it once and
+    write KEY_FILE so subsequent (incl. cloud-agent) runs can encrypt.
+    The salt is embedded in the payload; the browser re-derives the same key
+    from the user's typed password + that salt (gate.js)."""
+    if KEY_FILE.exists():
+        _, salt_b64, key_b64 = KEY_FILE.read_text(encoding="utf-8").strip().split(":")
+        return base64.b64decode(salt_b64), base64.b64decode(key_b64)
+    if PASSWORD_FILE.exists():
+        password = PASSWORD_FILE.read_text(encoding="utf-8").strip()
+        salt = os.urandom(16)
+        key = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, PBKDF2_ITERATIONS, dklen=32)
+        b64 = lambda b: base64.b64encode(b).decode()
+        KEY_FILE.write_text(f"v1:{b64(salt)}:{b64(key)}\n", encoding="utf-8")
+        print(f"Derived {KEY_FILE.name} from {PASSWORD_FILE.name} (commit the key file; keep the password file local)")
+        return salt, key
+    return None
+
+
 def build_public(data: dict) -> None:
     """Build dashboard/public/: same dashboard but with AES-encrypted data
     behind a password gate, suitable for publishing on GitHub Pages."""
-    if not PASSWORD_FILE.exists():
-        print(f"No {PASSWORD_FILE.name} — skipping public build")
+    loaded = load_key()
+    if loaded is None:
+        print(f"No {KEY_FILE.name} or {PASSWORD_FILE.name} — skipping public build")
         return
+    salt, key = loaded
     from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
-    password = PASSWORD_FILE.read_text(encoding="utf-8").strip()
-    salt, iv = os.urandom(16), os.urandom(12)
-    key = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, PBKDF2_ITERATIONS, dklen=32)
+    iv = os.urandom(12)
     ciphertext = AESGCM(key).encrypt(iv, json.dumps(data).encode(), None)
 
     PUBLIC.mkdir(exist_ok=True)
