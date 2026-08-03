@@ -96,11 +96,14 @@ then add/update/remove the position (average up cost basis on adds; remove
 position when fully sold).
 
 ## Dashboard password
-`data/dashboard_password.txt` (private repo only) is the password for the
-public site; publish.py uses it to encrypt `dashboard/public/data.enc.js`
-(PBKDF2 + AES-256-GCM, decrypted in-browser by gate.js). If the user changes
-the password, the next publish run re-encrypts with the new one. Never print
-the password in reports, commits, or the public repo.
+The public site is encrypted (PBKDF2 + AES-256-GCM, decrypted in-browser by
+gate.js). publish.py encrypts using `data/dashboard_key.txt` — the committed
+salt + derived AES key. The password itself lives only on the user's machine
+(`data/dashboard_password.txt`, gitignored) and in their head. To change the
+password: locally delete both files, put the new password in
+dashboard_password.txt, rerun publish.py (which derives a fresh key file),
+and commit the new key file. Never print the password or key file contents in
+reports, and never commit either to the public stock-dashboard repo.
 
 ## Guardrails
 - Never fabricate prices or fundamentals — everything numeric comes from
