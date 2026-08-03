@@ -71,21 +71,21 @@ window.DASHBOARD_DATA = {
       "ticker": "MU",
       "rating": "BUY",
       "priceAtPick": 831.28,
-      "lastPrice": 834.14
+      "lastPrice": 829.5
     },
     {
       "datePicked": "2026-08-03",
       "ticker": "GEN",
       "rating": "BUY",
       "priceAtPick": 28.17,
-      "lastPrice": 28.15
+      "lastPrice": 28.17
     },
     {
       "datePicked": "2026-08-03",
       "ticker": "CPAY",
       "rating": "BUY",
       "priceAtPick": 386.08,
-      "lastPrice": 387.05
+      "lastPrice": 385.78
     }
   ]
 };

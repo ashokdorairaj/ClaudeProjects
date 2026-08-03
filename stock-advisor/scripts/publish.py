@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Regenerate dashboard/data.js from the latest weekly run.
+"""Regenerate dashboard/data.js and the encrypted public build from the latest run.
 
-Reads:  data/history/*.json (all runs), data/portfolio.json, data/candidates.json
-Writes: dashboard/data.js
+Reads:  data/history/*.json (all runs), data/portfolio.json,
+        data/dashboard_password.txt (for the public build)
+Writes: dashboard/data.js               (plaintext, local viewing)
+        dashboard/public/*              (password-protected GitHub Pages build)
 
 The scoreboard rolls up every pick from every historical run and refreshes
 last prices via yfinance so past picks show performance-since-pick.
@@ -10,14 +12,22 @@ last prices via yfinance so past picks show performance-since-pick.
 Usage: python scripts/publish.py
 """
 
+import base64
+import hashlib
 import json
+import os
+import shutil
 import datetime as dt
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 HISTORY = DATA / "history"
-OUT = ROOT / "dashboard" / "data.js"
+DASH = ROOT / "dashboard"
+PUBLIC = DASH / "public"
+OUT = DASH / "data.js"
+PASSWORD_FILE = DATA / "dashboard_password.txt"
+PBKDF2_ITERATIONS = 200_000
 
 
 def fetch_quotes(tickers: list[str]) -> dict[str, float]:
@@ -99,6 +109,37 @@ def main() -> None:
     )
     print(f"Wrote {OUT} (week {data['week']}, {len(data['picks'])} picks, "
           f"{len(portfolio_rows)} holdings, {len(scoreboard)} scoreboard rows)")
+    build_public(data)
+
+
+def build_public(data: dict) -> None:
+    """Build dashboard/public/: same dashboard but with AES-encrypted data
+    behind a password gate, suitable for publishing on GitHub Pages."""
+    if not PASSWORD_FILE.exists():
+        print(f"No {PASSWORD_FILE.name} — skipping public build")
+        return
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+    password = PASSWORD_FILE.read_text(encoding="utf-8").strip()
+    salt, iv = os.urandom(16), os.urandom(12)
+    key = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, PBKDF2_ITERATIONS, dklen=32)
+    ciphertext = AESGCM(key).encrypt(iv, json.dumps(data).encode(), None)
+
+    PUBLIC.mkdir(exist_ok=True)
+    b64 = lambda b: base64.b64encode(b).decode()
+    (PUBLIC / "data.enc.js").write_text(
+        "/* Encrypted dashboard payload - decrypted client-side by gate.js. */\n"
+        "window.ENCRYPTED_DASHBOARD = " + json.dumps({
+            "v": 1, "iter": PBKDF2_ITERATIONS,
+            "salt": b64(salt), "iv": b64(iv), "ct": b64(ciphertext),
+        }) + ";\n",
+        encoding="utf-8",
+    )
+    shutil.copy(DASH / "public_index.html", PUBLIC / "index.html")
+    for name in ("style.css", "app.js", "trade.js", "gate.js"):
+        shutil.copy(DASH / name, PUBLIC / name)
+    (PUBLIC / ".nojekyll").touch()
+    print(f"Wrote encrypted public build to {PUBLIC}")
 
 
 if __name__ == "__main__":
