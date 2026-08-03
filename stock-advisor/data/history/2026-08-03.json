@@ -1,0 +1,87 @@
+{
+  "week": "2026-08-03",
+  "generated": "2026-08-03T19:45:25+00:00",
+  "picks": [
+    {
+      "ticker": "MU",
+      "name": "Micron Technology, Inc.",
+      "price": 831.28,
+      "rating": "BUY",
+      "lynchCategory": "Cyclical (super-cycle upswing)",
+      "tags": [
+        "HBM",
+        "AI-Infrastructure",
+        "Oligopoly",
+        "NetCash",
+        "Cyclical"
+      ],
+      "thesis": "HBM supercycle with ~$100B of binding contracts at 5.3x forward earnings - the 31% pullback from the high is the entry.",
+      "fairValue": "Undervalued",
+      "fairPrice3y": 1400,
+      "fairPrice5y": 1750,
+      "fairPrice7y": 2200,
+      "analysisMd": "## 1. Segment: Revenue Report\n**Current Price:** $831.28 \u00b7 **Market Cap:** $939B\n\n| Fiscal Year (ends Aug) | Total Revenue | DRAM* | NAND & Other* |\n|---|---|---|---|\n| FY2022 | $30.8B | $22.4B* | $8.4B* |\n| FY2023 | $15.5B | $11.0B* | $4.5B* |\n| FY2024 | $25.1B | $17.6B* | $7.5B* |\n| FY2025 | $37.4B | $28.6B* | $8.8B* |\n| TTM (FY2026) | $90.3B | ~$78B* | ~$12B* |\n\n**Narrative:** The HBM/AI-memory supercycle has rewritten Micron's P&L: FQ4-26 guidance is $50B \u00b1 $1B revenue \u2014 a single quarter larger than all of FY2025. Micron holds roughly $100B of binding multi-year AI memory contracts, HBM supply is effectively sold out through 2026, and HBM4 is entering volume production. Only three companies make HBM at scale.\n\n## 2. Growth & Quality Scorecard\n- **Lynch category:** Cyclical (in a super-cycle upswing)\n- **Tags:** [HBM, AI-Infrastructure, Oligopoly, NetCash, Cyclical, CapexHeavy]\n- Revenue: FY25 \u2192 TTM +141%; EPS swung from an FY23 loss to $44.28 TTM\n- Gross margin: ~33% (FY24) \u2192 72.6% TTM \u2014 unprecedented memory pricing power\n- **Business Quality Score: 7/10** \u2014 oligopoly structure and binding contracts offset commodity-memory cyclicality\n\n## 3. Historical CAGR\n| Metric | YoY | 3Y | 5Y | Trend |\n|---|---|---|---|---|\n| Revenue | +141%* | +80%* | +25%* | Accelerating (HBM) |\n| EPS (diluted) | +1,269%* | n/m (FY23 loss) | +60%* | Exploding off trough |\n| Free Cash Flow | positive, lagging* | n/m | +20%* | Capex consumes most OCF |\n| Shares Outstanding | ~+1% | ~+1%/yr | ~+1%/yr | Mild dilution |\n| Stock Price | +90% (6M) | +75%*/yr | +55%*/yr | Huge run; now -31% off high |\n\n## 4. Yields & Valuation Checks\n| Metric | Value (TTM) | Per Share | Yield | Signal |\n|---|---|---|---|---|\n| Revenue | $90.3B | $79.94 | P/S 10.4x | Rich vs. history, cheap vs. growth |\n| Net Income / EPS | $50.0B* | $44.28 | 5.3% earnings yield (18.8x trailing, **5.3x forward**) | Cheap on forward |\n| Free Cash Flow | $7.6B | $6.76 | 0.8% FCF yield | Weak \u2014 HBM capex eats cash today |\n| Dividend | $0.5B* | $0.46* | 0.06% | Token |\n\n**Key tension:** the forward earnings yield (~19%) dwarfs the 10-year Treasury, but the FCF yield is only 0.8% because Micron is reinvesting everything into HBM capacity. You are paying today for the FCF of 2027-2028.\n\n## 5. Wall Street Drivers & Durability\n**Wall Street Drivers:**\n- FQ4-26 guidance of $50B \u00b1 $1B revenue and $30.73 \u00b1 $1.00 EPS \u2014 the largest quarter in memory-industry history\n- HBM TAM projected to exceed $100B in 2027 with tightness persisting beyond 2027; new AI-memory partnership with Anthropic\n- Stock is -15.6% over the past month and -31% off its 52-week high as the market debates \"cycle peak\" \u2014 sentiment reset in progress\n\n**Business Durability:**\n- Net cash balance sheet: $26.0B cash vs. $6.4B debt\n- One of only three HBM makers at scale (with SK Hynix and Samsung); ~$100B of binding multi-year contracts de-risk near-term earnings\n- Commodity DRAM/NAND remains brutally cyclical \u2014 the moat is process technology and advanced packaging, not brand\n\n## 6. Fair Price & Conclusion\n**Valuation Model: Undervalued** (on forward estimates, with an explicit cyclical caveat).\n\nMath: consensus forward EPS $155.56* \u00d7 8x cyclical-discount P/E = **$1,244 fair price** vs. $831.28 today (~+50%). Even at a punitive 6x trough multiple, fair value \u2248 $933 \u2014 above the current price.\n\n**Fair Price Ranges:** 3Y $1,250\u20131,550* \u00b7 5Y $1,600\u20131,900* \u00b7 7Y $2,000\u20132,400*\n\n**Summary Gauge: BUY**\n\n**Buy vs Wait:** Long-term/value investors: the -31% pullback is the entry; binding contracts underwrite roughly two years of earnings. Short-term/momentum traders: the 1-month trend is negative \u2014 scale in rather than buying a full position, as cycle-peak fear can overshoot."
+    },
+    {
+      "ticker": "GEN",
+      "name": "Gen Digital Inc.",
+      "price": 28.17,
+      "rating": "BUY",
+      "lynchCategory": "Stalwart -> Fast Grower",
+      "tags": [
+        "Subscription",
+        "CashCow",
+        "Fintech",
+        "Moat:Brand",
+        "Leveraged"
+      ],
+      "thesis": "An 8.4% FCF-yield consumer-security cash cow whose MoneyLion fintech arm just pushed revenue growth to +27%.",
+      "fairValue": "Undervalued",
+      "fairPrice3y": 38,
+      "fairPrice5y": 46,
+      "fairPrice7y": 55,
+      "analysisMd": "## 1. Segment: Revenue Report\n**Current Price:** $28.17 \u00b7 **Market Cap:** $16.9B\n\n| Fiscal Year (ends Mar) | Total Revenue | Cyber Safety* | Trust-Based Solutions (LifeLock + MoneyLion)* |\n|---|---|---|---|\n| FY2023 | $3.34B | ~$3.3B* | \u2014 |\n| FY2024 | $3.81B | ~$3.7B* | ~$0.1B* |\n| FY2025 | $3.94B | ~$3.8B* | ~$0.2B* |\n| FY2026 | $5.00B | ~$3.6B* | ~$1.4B* |\n\n**Narrative:** The Norton/Avast subscription base is a slow-growing cash cow; growth now comes from Trust-Based Solutions \u2014 Q4 FY26 segment revenue grew +121% YoY to $446M, with MoneyLion up 44% for the full year ($823M contribution). FY26 total revenue crossed the $5B milestone, +27%.\n\n## 2. Growth & Quality Scorecard\n- **Lynch category:** Stalwart transitioning toward Fast Grower (via MoneyLion)\n- **Tags:** [Subscription, CashCow, Fintech, Leveraged, Moat:Brand]\n- Revenue CAGR ~14%* (3Y) with FY26 at +27%; gross margin steady at 78.5%\n- **Business Quality Score: 6.5/10** \u2014 sticky subscriptions and reliable FCF, docked for the $8.3B debt load and consumer-churn exposure\n\n## 3. Historical CAGR\n| Metric | YoY | 3Y | 5Y | Trend |\n|---|---|---|---|---|\n| Revenue | +27% | +14%* | +12%* | Accelerating (M&A-fueled) |\n| EPS (non-GAAP) | +15%* | +12%* | +13%* | Steady compounder |\n| Free Cash Flow | +10%* | +9%* | +10%* | Reliable ~$1.4B/yr |\n| Shares Outstanding | +4%* | +1%*/yr | ~flat* | MoneyLion deal added shares |\n| Stock Price | +20%* | +9%*/yr | +6%*/yr | Breakout in progress (+44% in 3M) |\n\n## 4. Yields & Valuation Checks\n| Metric | Value (TTM) | Per Share | Yield | Signal |\n|---|---|---|---|---|\n| Revenue | $5.0B | $8.35 | P/S 3.4x | Reasonable |\n| Net Income / EPS | $973M GAAP | $1.57 GAAP / ~$2.60* non-GAAP | 5.6% earnings yield; **8.6x forward P/E** | Cheap |\n| Free Cash Flow | $1.42B | $2.38 | **8.4% FCF yield** | Cheap \u2014 roughly double the 10Y Treasury* |\n| Dividend | ~$300M* | $0.50* | 1.8% | Easily covered |\n\n## 5. Wall Street Drivers & Durability\n**Wall Street Drivers:**\n- MoneyLion One premium membership launched July 20, 2026 \u2014 bundles banking, rewards, and LifeLock identity protection\n- Management guides >$100M incremental annual revenue from embedded finance starting H2 FY27, scaling into FY28-29\n- Consensus \"Moderate Buy,\" average target $30.70 (+9%) \u2014 re-rating room if fintech growth persists\n\n**Business Durability:**\n- $8.3B debt vs. $0.4B cash is the main bear point; FCF covers deleveraging but limits flexibility\n- Tens of millions of paying Norton/LifeLock subscribers with high retention* \u2014 durable consumer-security brand moat\n- MoneyLion widens the cross-sell surface but adds consumer-credit-cycle exposure\n\n## 6. Fair Price & Conclusion\n**Valuation Model: Undervalued.**\n\nMath: FY27 consensus EPS $3.29* \u00d7 10x conservative multiple = **$32.90**; a modest re-rating to 12x = **$39.50** (+17% to +40% vs. $28.17).\n\n**Fair Price Ranges:** 3Y $36\u201340* \u00b7 5Y $44\u201348* \u00b7 7Y $52\u201358*\n\n**Summary Gauge: BUY**\n\n**Buy vs Wait:** Long-term/value investors: an 8.4% FCF yield pays you to wait while MoneyLion compounds. Momentum traders: +44% in three months \u2014 a pullback toward $26 is plausible; size the position accordingly."
+    },
+    {
+      "ticker": "CPAY",
+      "name": "Corpay, Inc.",
+      "price": 386.08,
+      "rating": "BUY",
+      "lynchCategory": "Stalwart / Fast Grower hybrid",
+      "tags": [
+        "Payments",
+        "SwitchingCosts",
+        "Buybacks",
+        "HighMargin"
+      ],
+      "thesis": "Quality B2B payments compounder guiding +22% EPS growth at 14x earnings with relentless buybacks.",
+      "fairValue": "Fairly Valued",
+      "fairPrice3y": 485,
+      "fairPrice5y": 590,
+      "fairPrice7y": 725,
+      "analysisMd": "## 1. Segment: Revenue Report\n**Current Price:** $386.08 \u00b7 **Market Cap:** $25.2B\n\n| Fiscal Year | Total Revenue | Vehicle Payments* | Corporate Payments* | Lodging & Other* |\n|---|---|---|---|---|\n| 2022 | $3.43B | ~$1.9B* | ~$0.8B* | ~$0.7B* |\n| 2023 | $3.76B | ~$2.0B* | ~$1.0B* | ~$0.8B* |\n| 2024 | $3.97B | ~$2.0B* | ~$1.2B* | ~$0.8B* |\n| TTM | $4.78B | ~$2.2B* | ~$1.7B* | ~$0.9B* |\n| 2026E | $5.33B* | slow grower* | fastest-growing* | steady* |\n\n**Narrative:** Corporate Payments (AP automation, cross-border B2B) is the growth engine at 20%+ organic*, steadily diversifying Corpay away from its legacy fuel-card base. 2026 guidance was raised after a strong Q1: up to $5.33B revenue (+16%) and $27.10 adjusted EPS (+22%).\n\n## 2. Growth & Quality Scorecard\n- **Lynch category:** Stalwart / Fast Grower hybrid\n- **Tags:** [Payments, SwitchingCosts, HighMargin, Serial-Acquirer, Buybacks, Leveraged]\n- Revenue CAGR ~12%* (3Y), accelerating to +16% (2026 guide); adjusted EPS growing 22-26%\n- Gross margin ~80%, operating margin 41%, ROE 32%\n- **Business Quality Score: 8/10** \u2014 embedded B2B payment workflows with high retention; docked for acquisition leverage\n\n## 3. Historical CAGR\n| Metric | YoY | 3Y | 5Y | Trend |\n|---|---|---|---|---|\n| Revenue | +25% | +12%* | +11%* | Accelerating |\n| EPS (adjusted) | +26%* | +18%* | +15%* | Strong |\n| Free Cash Flow | +15%* | +12%* | +11%* | $2.1B TTM |\n| Shares Outstanding | -3%* | -3%*/yr | -3%*/yr | Consistent buybacks (anti-dilution) |\n| Stock Price | +27%* | +14%*/yr | +9%*/yr | Near all-time high (-1.7% off) |\n\n## 4. Yields & Valuation Checks\n| Metric | Value (TTM) | Per Share | Yield | Signal |\n|---|---|---|---|---|\n| Revenue | $4.78B | $73.18 | P/S 5.3x | Fair for 80% gross margin |\n| Net Income / EPS | $1.09B* GAAP | $16.70 GAAP / $27.10* 2026E adj | 7.0% adj earnings yield (**14.2x 2026E**) | Attractive |\n| Free Cash Flow | $2.10B | $32.05 | **8.3% FCF yield** | Cheap |\n| Dividend | \u2014 | \u2014 | none | Capital returned via buybacks |\n\n## 5. Wall Street Drivers & Durability\n**Wall Street Drivers:**\n- Raised 2026 guidance: revenue up to $5.33B, adjusted EPS up to $27.10 (+22% at midpoint)\n- New \"Agent Card\" launch \u2014 AI-agent-initiated B2B payments; early-stage but strategically important\n- Street price targets cluster around $389-390 \u2014 the stock has caught up to targets, so the next leg requires estimate revisions\n\n**Business Durability:**\n- $10.5B debt vs. $2.6B cash \u2014 acquisition-driven leverage (~2.5x EBITDA*), serviceable from FCF\n- High switching costs: payments are embedded in customer AP and fleet workflows; retention >90%*\n- Legacy fuel-card business (~45% of revenue*) is a slow grower with a long-term EV-transition headwind\n\n## 6. Fair Price & Conclusion\n**Valuation Model: Fairly Valued to modestly Undervalued.**\n\nMath: 2026E adjusted EPS $27.10 \u00d7 16x quality-compounder multiple = **$434** (+12%). On FY27 consensus EPS $30.59* \u00d7 16x = **$489** (+27%).\n\n**Fair Price Ranges:** 3Y $470\u2013500* \u00b7 5Y $560\u2013620* \u00b7 7Y $690\u2013760*\n\n**Summary Gauge: BUY**\n\n**Buy vs Wait:** Long-term investors: a rare 20%+ EPS grower at 14x earnings with an 8% FCF yield and a relentlessly shrinking share count. Short-term traders: it sits at street targets and 2% off its high \u2014 no margin of safety against a market wobble; average in."
+    }
+  ],
+  "holdingsReview": [],
+  "candidatesConsidered": [
+    "MU",
+    "GEN",
+    "VLO",
+    "CPAY",
+    "FTNT",
+    "NTAP",
+    "ALL",
+    "DVA",
+    "WDC",
+    "DAL"
+  ],
+  "analystNotes": {
+    "VLO": "HOLD - Q2 blowout ($4.5B refining op income) but the stock trades above street targets ($261-280) after a +71% six-month run; cyclical margins are elevated.",
+    "FTNT": "HOLD - excellent Q2 (+25.6% revenue, EPS +40%) and a real firewall-refresh tailwind, but ~44x forward earnings after the stock doubled in six months leaves no room for error.",
+    "NTAP": "HOLD - solid AI-storage story and raised FY27 guidance ($8.70-9.00 EPS), but at its 52-week high with guided gross-margin compression from memory costs; watch for a better entry.",
+    "ALL": "Not analyzed in depth - passed screen on value, but P&C insurance earnings are mean-reverting after a benign cat season.",
+    "DVA": "Not analyzed in depth - heavy debt ($13.2B) against a $15.1B market cap despite strong momentum.",
+    "WDC": "Not analyzed in depth - same memory/storage supercycle exposure as MU pick; MU is the higher-quality vehicle.",
+    "DAL": "Not analyzed in depth - cheap at 10.3x forward but airline earnings quality is structurally low (PEG distorted by cyclicality)."
+  }
+}
