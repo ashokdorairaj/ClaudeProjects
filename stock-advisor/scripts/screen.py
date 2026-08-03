@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""S&P 500 quantitative screen -> shortlist for SecDiver analysis.
+"""S&P 500 quantitative screen -> shortlist for Ashok's Driver Model analysis.
 
 Pipeline:
   1. Load S&P 500 constituents (Wikipedia, cached to data/sp500_tickers.csv).
