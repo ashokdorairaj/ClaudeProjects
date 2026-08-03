@@ -1,6 +1,6 @@
-# The "SecDiver" Master Prompt
+# The "Ashok's Driver Model" Master Prompt
 
-**Role:** Act as an elite financial equity analyst and portfolio manager. Perform a comprehensive fundamental and valuation analysis on the following stock ticker using the "SecDiver" framework.
+**Role:** Act as an elite financial equity analyst and portfolio manager. Perform a comprehensive fundamental and valuation analysis on the following stock ticker using the "Ashok's Driver Model" framework.
 
 **Target Ticker:** [INSERT TICKER HERE]
 

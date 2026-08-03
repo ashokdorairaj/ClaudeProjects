@@ -1,4 +1,4 @@
-# Stock Advisor — Weekly Run Instructions
+# Stock Advisor — Weekly Run Instructions (Ashok's Driver Model)
 
 This project produces a weekly stock report: ~3 S&P 500 buy recommendations plus
 SELL/HOLD verdicts on current holdings, published to a static HTML dashboard.
@@ -18,9 +18,9 @@ momentum/quality/value score (already excludes tickers held in `data/portfolio.j
 plus current quotes for portfolio holdings. If the script fails (Yahoo outage),
 retry once; if still failing, stop and report the error instead of inventing data.
 
-### 2. Analyze candidates (SecDiver)
+### 2. Analyze candidates (Ashok's Driver Model)
 Take the **top 5–6 candidates** from `candidates.json`. For each, produce the full
-6-section SecDiver analysis using the exact template in `prompts/secdiver.md`.
+6-section Ashok's Driver Model analysis using the exact template in `prompts/ashoks-driver-model.md`.
 - Ground Sections 1–4 in the fetched fundamentals in `candidates.json` (mark
   estimates with `*` per the template).
 - Use WebSearch for Section 5 (near-term catalysts, sentiment, news) and to fill
@@ -28,13 +28,13 @@ Take the **top 5–6 candidates** from `candidates.json`. For each, produce the 
 - Section 6 must show the fair-price math (target multiple × forward estimate).
 
 ### 3. Pick 3
-Select the 3 strongest candidates by SecDiver Section 6 rating (prefer STRONG BUY,
+Select the 3 strongest candidates by Section 6 rating (prefer STRONG BUY,
 then BUY; break ties with the composite score). Diversify: avoid all 3 picks coming
 from the same GICS sector unless conviction is overwhelming.
 
 ### 4. Review holdings
 For each position in `data/portfolio.json` (use `portfolio_quotes` from
-candidates.json for last prices): run an abbreviated SecDiver check — is the thesis
+candidates.json for last prices): run an abbreviated Ashok's Driver Model check — is the thesis
 intact, is valuation stretched vs. fair price, any deterioration or better use of
 capital? Output **SELL** or **HOLD** with a 1–2 sentence reason. Do not recommend
 selling purely on short-term price movement.
@@ -51,7 +51,7 @@ a. Write `data/history/YYYY-MM-DD.json` (use today's date) with this shape:
       "lynchCategory": "", "tags": [], "thesis": "<one sentence>",
       "fairValue": "Undervalued|Fairly Valued|Overvalued",
       "fairPrice3y": 0, "fairPrice5y": 0, "fairPrice7y": 0,
-      "analysisMd": "<full 6-section SecDiver markdown>"
+      "analysisMd": "<full 6-section analysis markdown>"
     }
   ],
   "holdingsReview": [
