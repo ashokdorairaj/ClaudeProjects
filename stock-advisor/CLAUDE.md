@@ -67,7 +67,12 @@ python stock-advisor/scripts/publish.py
 This reads all history files + `portfolio.json`, refreshes last prices via
 yfinance (rolling up every past pick into the scoreboard), and rewrites
 `dashboard/data.js`. Do not hand-write `data.js`.
-c. Commit with message `stock-advisor: weekly report YYYY-MM-DD` and push.
+c. Sync the public dashboard site (https://ashokdorairaj.github.io/stock-dashboard/):
+   use the `stock-dashboard` checkout if one exists in the workspace, otherwise
+   `git clone https://github.com/ashokdorairaj/stock-dashboard`. Copy
+   `dashboard/index.html`, `style.css`, `app.js`, and `data.js` into its root,
+   commit `update dashboard YYYY-MM-DD`, and push to its `main`.
+d. Commit with message `stock-advisor: weekly report YYYY-MM-DD` and push.
 
 ## Portfolio file format (`data/portfolio.json`)
 ```json
