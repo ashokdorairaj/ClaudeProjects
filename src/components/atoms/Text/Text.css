@@ -1,0 +1,83 @@
+/* ── SAP Fiori Text ────────────────────────────────────────── */
+
+.fd-text {
+  font-family: var(--sap-font-family, '72', sans-serif);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body: default paragraph */
+.fd-text--body {
+  font-size: 0.875rem;
+  font-weight: var(--sap-font-weight-normal, 400);
+  color: var(--sap-text-color, #131e29);
+  line-height: 1.5;
+}
+
+/* Caption: small secondary text */
+.fd-text--caption {
+  font-size: 0.75rem;
+  font-weight: var(--sap-font-weight-normal, 400);
+  color: var(--sap-content-label-color, #556b82);
+  line-height: 1.4;
+}
+
+/* Label: bold label-style inline text */
+.fd-text--label {
+  font-size: 0.875rem;
+  font-weight: var(--sap-font-weight-semibold, 600);
+  color: var(--sap-content-label-color, #556b82);
+  line-height: 1.4;
+}
+
+/* Title: slightly larger bold */
+.fd-text--title {
+  font-size: 1rem;
+  font-weight: var(--sap-font-weight-semibold, 600);
+  color: var(--sap-text-color, #131e29);
+  line-height: 1.3;
+}
+
+/* Headings */
+.fd-text--h1 {
+  font-size: 2rem;
+  font-weight: var(--sap-font-weight-bold, 700);
+  color: var(--sap-text-color, #131e29);
+  line-height: 1.2;
+}
+
+.fd-text--h2 {
+  font-size: 1.5rem;
+  font-weight: var(--sap-font-weight-bold, 700);
+  color: var(--sap-text-color, #131e29);
+  line-height: 1.25;
+}
+
+.fd-text--h3 {
+  font-size: 1.25rem;
+  font-weight: var(--sap-font-weight-semibold, 600);
+  color: var(--sap-text-color, #131e29);
+  line-height: 1.3;
+}
+
+.fd-text--h4 {
+  font-size: 1.125rem;
+  font-weight: var(--sap-font-weight-semibold, 600);
+  color: var(--sap-text-color, #131e29);
+  line-height: 1.3;
+}
+
+/* Wrapping modifiers */
+.fd-text--nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+/* Selectable */
+.fd-text--selectable {
+  user-select: text;
+  -webkit-user-select: text;
+}

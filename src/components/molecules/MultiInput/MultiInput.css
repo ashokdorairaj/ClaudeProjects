@@ -1,0 +1,368 @@
+/* ── SAP Fiori Multi Input – Figma spec
+   File: V6wSQ73uQKzM7nChBBYJ5F / node 212341-2
+   ──────────────────────────────────────────────────────────────── */
+
+/* ── Token pill ─────────────────────────────────────────────── */
+/*  Figma: white bg, 1px sapButton_TokenBorderColor, 6px radius,
+    sapTextColor, decline icon 12px                               */
+.fd-token {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 8px 5px 5px;
+  background: var(--sapButton_TokenBackground, #fff);
+  border: var(--sapButton_BorderWidth, 1px) solid var(--sapButton_TokenBorderColor, #bcc3ca);
+  border-radius: var(--sapButton_TokenBorderCornerRadius, 6px);
+  color: var(--sapTextColor, #131e29);
+  font-family: var(--sapFontFamily, '72', sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 400;
+  white-space: nowrap;
+  max-width: 200px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  cursor: default;
+  transition: background 80ms, border-color 80ms;
+}
+
+.fd-token:hover {
+  background: var(--sapButton_Hover_Background, #eaecee);
+  border-color: var(--sapButton_Hover_BorderColor, #0064d9);
+}
+
+.fd-token--selected {
+  background: var(--sapButton_Selected_Background, #edf6ff);
+  border-color: var(--sapButton_Selected_BorderColor, #0064d9);
+  color: var(--sapButton_Selected_TextColor, #0064d9);
+}
+
+.fd-token--compact {
+  padding: 2px 6px 2px 4px;
+  gap: 4px;
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+.fd-token--readonly {
+  background: var(--sapField_ReadOnly_Background, #eaecee);
+  border-color: var(--sapField_ReadOnly_BorderColor, transparent);
+  cursor: default;
+}
+
+.fd-token--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  pointer-events: none;
+}
+
+.fd-token__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fd-token__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: var(--sapContent_IconColor, #556b82);
+  transition: background 80ms;
+}
+
+.fd-token__close:hover {
+  background: var(--sapButton_Hover_Background, #eaecee);
+}
+
+.fd-token__close:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: 1px;
+}
+
+/* ── MultiInput container ────────────────────────────────────── */
+.fd-multi-input {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--sapFontFamily, '72', sans-serif);
+}
+
+.fd-multi-input--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  pointer-events: none;
+}
+
+/* ── Field (token area + input + trailing button) ────────────── */
+/*  Figma: sapField_Background, bottom underline only at idle,
+    active: 2px solid sapField_Active_BorderColor full ring       */
+.fd-multi-input__field {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 4px;
+  min-height: 36px;
+  padding: 0 0 0 4px;
+  background: var(--sapField_Background, #fff);
+  border: 1px solid transparent;
+  border-radius: var(--sapField_BorderCornerRadius, 4px);
+  box-shadow: inset 0 0 0 1px rgba(85, 107, 129, 0.25);
+  box-sizing: border-box;
+  cursor: text;
+  overflow: hidden;
+  transition: border-color 80ms, box-shadow 80ms;
+  position: relative;
+}
+
+/* Bottom underline indicator when idle */
+.fd-multi-input__field::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--sapField_BorderColor, #8696a9);
+  pointer-events: none;
+}
+
+.fd-multi-input__field:focus-within {
+  border-color: var(--sapField_Active_BorderColor, #0064d9);
+  border-width: var(--sapContent_FocusWidth, 2px);
+  box-shadow: none;
+}
+
+.fd-multi-input__field:focus-within::after {
+  display: none;
+}
+
+/* Value states */
+.fd-multi-input--positive  .fd-multi-input__field { border-color: var(--sapField_SuccessColor, #30914c); box-shadow: none; }
+.fd-multi-input--negative  .fd-multi-input__field { border-color: var(--sapField_InvalidColor, #e90b0b); box-shadow: none; }
+.fd-multi-input--critical  .fd-multi-input__field { border-color: var(--sapField_WarningColor, #e76500); box-shadow: none; }
+.fd-multi-input--information .fd-multi-input__field { border-color: var(--sapField_InformationColor, #0064d9); box-shadow: none; }
+
+/* Compact */
+.fd-multi-input--compact .fd-multi-input__field {
+  min-height: 26px;
+  padding-left: 4px;
+  gap: 4px;
+}
+
+/* ── Inner text input ────────────────────────────────────────── */
+.fd-multi-input__input {
+  flex: 1;
+  min-width: 40px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--sapFontFamily, '72', sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTextColor, #131e29);
+  caret-color: var(--sapBrandColor, #0070f2);
+  padding: 0 4px;
+  height: 100%;
+}
+
+.fd-multi-input--compact .fd-multi-input__input {
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+.fd-multi-input__input::placeholder {
+  color: var(--sapField_PlaceholderTextColor, #8696a9);
+}
+
+/* ── Overflow link ("N more") ────────────────────────────────── */
+.fd-multi-input__overflow-link {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sapFontFamily, '72', sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapLinkColor, #0064d9);
+  white-space: nowrap;
+}
+
+.fd-multi-input__overflow-link:hover {
+  text-decoration: underline;
+}
+
+/* ── Trailing value-help button ──────────────────────────────── */
+/*  Figma: 36px square (cozy), sapButton_Lite_Background, px-8 py-5 */
+.fd-multi-input__value-help {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  min-height: 36px;
+  border: none;
+  background: var(--sapButton_Lite_Background, transparent);
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: var(--sapField_BorderCornerRadius, 4px);
+  color: var(--sapContent_IconColor, #556b82);
+  transition: background 80ms;
+  margin-right: -1px;
+}
+
+.fd-multi-input--compact .fd-multi-input__value-help {
+  min-height: 26px;
+  padding: 3px 6px;
+  width: 26px;
+}
+
+.fd-multi-input__value-help:hover {
+  background: var(--sapField_Hover_Background, #fff);
+  box-shadow: inset 0 0 0 1px rgba(79, 160, 255, 0.5);
+}
+
+.fd-multi-input__value-help:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: 1px;
+}
+
+/* ── Dropdown popover ────────────────────────────────────────── */
+/*  Figma: sapGroup_ContentBackground, 8px radius,
+    shadow: 1px rgba(34,53,72,.48) + 0 2px 8px rgba(34,53,72,.3) */
+.fd-multi-input__dropdown {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  z-index: var(--sapZIndex_Popover, 300);
+  background: var(--sapGroup_ContentBackground, #fff);
+  border-radius: var(--sapPopover_BorderCornerRadius, 8px);
+  box-shadow:
+    0 0 0 1px rgba(34, 53, 72, 0.48),
+    0 2px 8px 0 rgba(34, 53, 72, 0.3);
+  overflow: hidden;
+}
+
+/* ── Dropdown list ───────────────────────────────────────────── */
+.fd-multi-input__dropdown-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+/* ── Dropdown item ───────────────────────────────────────────── */
+/*  Figma: min-height 40px, px-16, text + right-side decline button */
+.fd-multi-input__dropdown-item {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding-right: 0;
+  background: var(--sapList_Background, #fff);
+  transition: background 80ms;
+}
+
+.fd-multi-input__dropdown-item:hover {
+  background: var(--sapList_Hover_Background, #eaecee);
+}
+
+.fd-multi-input__dropdown-text {
+  flex: 1;
+  padding: 10px 16px;
+  font-family: var(--sapFontFamily, '72', sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapList_TextColor, #131e29);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fd-multi-input--compact .fd-multi-input__dropdown-text {
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+/* ── Per-item decline button ─────────────────────────────────── */
+/*  Figma: Lite icon button, 36px min-height, p-10              */
+.fd-multi-input__dropdown-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-height: 36px;
+  width: 36px;
+  border: 1px solid transparent;
+  background: var(--sapButton_Lite_Background, transparent);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  color: var(--sapContent_IconColor, #556b82);
+  transition: background 80ms, border-color 80ms;
+  margin-right: 0;
+}
+
+.fd-multi-input__dropdown-remove:hover {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+  border-color: var(--sapButton_Lite_Hover_BorderColor, transparent);
+}
+
+.fd-multi-input__dropdown-remove:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: 1px;
+}
+
+/* ── Show all footer ─────────────────────────────────────────── */
+/*  Figma: sapPageFooter_Background, height 40px, link right-aligned */
+.fd-multi-input__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 40px;
+  padding: 4px 16px;
+  background: var(--sapPageFooter_Background, #fff);
+  border-top: 1px solid var(--sapList_BorderColor, #e8e8e8);
+}
+
+.fd-multi-input__show-all {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sapFontFamily, '72', sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapLinkColor, #0064d9);
+  padding: 0;
+  white-space: nowrap;
+}
+
+.fd-multi-input__show-all:hover {
+  text-decoration: underline;
+}
+
+/* ── Display-only mode ───────────────────────────────────────── */
+/*  Figma: inline text, sapContent_LabelColor, · separator, N more link */
+.fd-multi-input--display-only {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-family: var(--sapFontFamily, '72', sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapContent_LabelColor, #556b82);
+}
+
+.fd-multi-input__display-token {
+  white-space: nowrap;
+}
+
+.fd-multi-input__dot {
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapContent_LabelColor, #556b82);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}

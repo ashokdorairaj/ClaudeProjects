@@ -1,0 +1,322 @@
+/* ── SAP Fiori CheckBox – Figma V6wSQ73uQKzM7nChBBYJ5F node 18:2023 ─── */
+
+/* ── Wrapper ──────────────────────────────────────────────── */
+
+.fd-checkbox-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.fd-checkbox-wrapper--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.fd-checkbox-wrapper--readonly {
+  cursor: default;
+}
+
+/* ── Touch target (44px cozy / 32px compact) ─────────────── */
+
+.fd-checkbox__touch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  margin: -11px; /* pull in so gap/layout is not affected */
+}
+
+.fd-checkbox-wrapper--compact .fd-checkbox__touch {
+  width: 32px;
+  height: 32px;
+  margin: -8px;
+}
+
+/* ── Visual box ───────────────────────────────────────────── */
+
+.fd-checkbox__box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.fd-checkbox-wrapper--compact .fd-checkbox__box {
+  width: 16px;
+  height: 16px;
+}
+
+/* Hidden native input covers full box */
+.fd-checkbox__input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.fd-checkbox-wrapper--readonly .fd-checkbox__input {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Visual checkmark square */
+.fd-checkbox__checkmark {
+  width: 22px;
+  height: 22px;
+  border: var(--sapField_BorderWidth, 1px) solid var(--sapField_BorderColor, #8696a9);
+  border-radius: var(--sapField_BorderCornerRadius, 4px);
+  background: var(--sapField_Background, #fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 80ms, border-color 80ms;
+  pointer-events: none;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Trimark pseudo-element – hidden by default */
+.fd-checkbox__checkmark::after {
+  content: none;
+  display: none;
+}
+
+.fd-checkbox-wrapper--compact .fd-checkbox__checkmark {
+  width: 16px;
+  height: 16px;
+}
+
+/* Compact trimark is proportionally smaller */
+.fd-checkbox-wrapper--compact .fd-checkbox__input:indeterminate + .fd-checkbox__checkmark::after {
+  width: 8px;
+  height: 8px;
+}
+
+/* ── Checkmark icon ───────────────────────────────────────── */
+
+.fd-checkbox__icon {
+  display: block;
+  width: 12px;
+  height: 12px;
+  opacity: 0; /* hidden when unchecked */
+  pointer-events: none;
+  /* No default filter — checked states set their own color filter */
+}
+
+.fd-checkbox-wrapper--compact .fd-checkbox__icon {
+  width: 10px;
+  height: 10px;
+}
+
+/* ── Checked state ────────────────────────────────────────── */
+
+/* Checked: white box, blue icon (Figma spec: field background + colored checkmark) */
+.fd-checkbox__input:checked + .fd-checkbox__checkmark {
+  background: var(--sapField_Background, #fff);
+  border-color: var(--sapSelectedColor, #0064d9);
+}
+
+.fd-checkbox__input:checked + .fd-checkbox__checkmark .fd-checkbox__icon {
+  opacity: 1;
+  /* Render icon as --sapSelectedColor #0064d9 blue */
+  filter: invert(19%) sepia(82%) saturate(2000%) hue-rotate(205deg) brightness(95%) contrast(105%);
+}
+
+/* Indeterminate: white box, centered solid colored square – NOT a blue-filled box */
+.fd-checkbox__input:indeterminate + .fd-checkbox__checkmark {
+  background: var(--sapField_Background, #fff);
+  border-color: var(--sapSelectedColor, #0064d9);
+}
+
+/* Hide the icon in indeterminate – the trimark pseudo-element provides the indicator */
+.fd-checkbox__input:indeterminate + .fd-checkbox__checkmark .fd-checkbox__icon {
+  display: none;
+}
+
+/* Trimark: the solid square shown in indeterminate state */
+.fd-checkbox__input:indeterminate + .fd-checkbox__checkmark::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: var(--sapContent_Selected_ForegroundColor, #0064d9);
+  border-radius: 1px;
+  display: block;
+}
+
+/* ── Hover state ──────────────────────────────────────────── */
+
+.fd-checkbox__input:not(:disabled):hover + .fd-checkbox__checkmark {
+  border-color: var(--sapField_Hover_BorderColor, #0064d9);
+  background: var(--sapField_Hover_Background, #fff);
+}
+
+.fd-checkbox__input:not(:disabled):checked:hover + .fd-checkbox__checkmark,
+.fd-checkbox__input:not(:disabled):indeterminate:hover + .fd-checkbox__checkmark {
+  border-color: var(--sapButton_Selected_Hover_Background, #0058c0);
+  background: var(--sapField_Background, #fff);
+}
+
+/* ── Focus ────────────────────────────────────────────────── */
+
+.fd-checkbox__input:focus-visible + .fd-checkbox__checkmark {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 2px;
+}
+
+/* ── Read-only state ──────────────────────────────────────── */
+
+.fd-checkbox-wrapper--readonly .fd-checkbox__checkmark {
+  background: var(--sapField_ReadOnly_Background, #eaecee);
+  border-color: var(--sapField_ReadOnly_BorderColor, #8696a9);
+  border-style: dashed;
+}
+
+.fd-checkbox-wrapper--readonly .fd-checkbox__input:checked + .fd-checkbox__checkmark,
+.fd-checkbox-wrapper--readonly .fd-checkbox__input:indeterminate + .fd-checkbox__checkmark {
+  background: var(--sapField_ReadOnly_Background, #eaecee);
+  border-color: var(--sapField_ReadOnly_BorderColor, #8696a9);
+}
+
+.fd-checkbox-wrapper--readonly .fd-checkbox__input:checked + .fd-checkbox__checkmark .fd-checkbox__icon {
+  opacity: 1;
+  filter: brightness(0) saturate(100%) invert(10%) sepia(10%) saturate(800%) hue-rotate(181deg) brightness(90%) contrast(90%);
+  /* renders icon in --sapTextColor tone on the readonly background */
+}
+
+/* Trimark in read-only indeterminate */
+.fd-checkbox-wrapper--readonly .fd-checkbox__input:indeterminate + .fd-checkbox__checkmark::after {
+  background: var(--sapTextColor, #131e29);
+}
+
+/* ── Label ────────────────────────────────────────────────── */
+
+.fd-checkbox__label {
+  font-family: var(--sapFontFamily, '72', Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  line-height: var(--sapContent_LineHeight, 1.4);
+  color: var(--sapTextColor, #131e29);
+  cursor: pointer;
+  user-select: none;
+}
+
+.fd-checkbox-wrapper--compact .fd-checkbox__label {
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+.fd-checkbox-wrapper--disabled .fd-checkbox__label,
+.fd-checkbox-wrapper--readonly .fd-checkbox__label {
+  cursor: default;
+}
+
+/* ── Value states ─────────────────────────────────────────── */
+
+/* Positive */
+.fd-checkbox-wrapper--positive .fd-checkbox__checkmark {
+  border-color: var(--sapField_SuccessColor, #30914c);
+  background: var(--sapField_SuccessBackground, #f5fae5);
+}
+
+.fd-checkbox-wrapper--positive .fd-checkbox__input:checked + .fd-checkbox__checkmark,
+.fd-checkbox-wrapper--positive .fd-checkbox__input:indeterminate + .fd-checkbox__checkmark {
+  background: var(--sapField_SuccessBackground, #f5fae5);
+  border-color: var(--sapField_SuccessColor, #30914c);
+}
+
+.fd-checkbox-wrapper--positive .fd-checkbox__input:checked + .fd-checkbox__checkmark .fd-checkbox__icon {
+  opacity: 1;
+  filter: invert(38%) sepia(60%) saturate(520%) hue-rotate(95deg) brightness(85%) contrast(90%);
+  /* renders as --sapField_SuccessColor #30914c */
+}
+
+.fd-checkbox-wrapper--positive .fd-checkbox__input:indeterminate + .fd-checkbox__checkmark::after {
+  background: var(--sapField_SuccessColor, #30914c);
+}
+
+.fd-checkbox-wrapper--positive .fd-checkbox__input:not(:disabled):hover + .fd-checkbox__checkmark {
+  border-color: var(--sapField_SuccessColor, #30914c);
+  background: var(--sapField_SuccessBackground, #f5fae5);
+}
+
+/* Information */
+.fd-checkbox-wrapper--information .fd-checkbox__checkmark {
+  border-color: var(--sapField_InformationColor, #0064d9);
+  background: var(--sapField_InformationBackground, #e8f3ff);
+}
+
+.fd-checkbox-wrapper--information .fd-checkbox__input:checked + .fd-checkbox__checkmark,
+.fd-checkbox-wrapper--information .fd-checkbox__input:indeterminate + .fd-checkbox__checkmark {
+  background: var(--sapField_InformationBackground, #e8f3ff);
+  border-color: var(--sapField_InformationColor, #0064d9);
+}
+
+.fd-checkbox-wrapper--information .fd-checkbox__input:checked + .fd-checkbox__checkmark .fd-checkbox__icon {
+  opacity: 1;
+  filter: invert(19%) sepia(82%) saturate(2000%) hue-rotate(205deg) brightness(95%) contrast(105%);
+  /* renders as --sapField_InformationColor #0064d9 */
+}
+
+.fd-checkbox-wrapper--information .fd-checkbox__input:indeterminate + .fd-checkbox__checkmark::after {
+  background: var(--sapField_InformationColor, #0064d9);
+}
+
+/* Critical */
+.fd-checkbox-wrapper--critical .fd-checkbox__checkmark {
+  border-color: var(--sapField_WarningColor, #e76500);
+  background: var(--sapField_WarningBackground, #fef7f1);
+}
+
+.fd-checkbox-wrapper--critical .fd-checkbox__input:checked + .fd-checkbox__checkmark,
+.fd-checkbox-wrapper--critical .fd-checkbox__input:indeterminate + .fd-checkbox__checkmark {
+  background: var(--sapField_WarningBackground, #fef7f1);
+  border-color: var(--sapField_WarningColor, #e76500);
+}
+
+.fd-checkbox-wrapper--critical .fd-checkbox__input:checked + .fd-checkbox__checkmark .fd-checkbox__icon {
+  opacity: 1;
+  filter: invert(37%) sepia(90%) saturate(700%) hue-rotate(10deg) brightness(95%) contrast(100%);
+  /* renders as --sapField_WarningColor #e76500 */
+}
+
+.fd-checkbox-wrapper--critical .fd-checkbox__input:indeterminate + .fd-checkbox__checkmark::after {
+  background: var(--sapField_WarningColor, #e76500);
+}
+
+/* Negative */
+.fd-checkbox-wrapper--negative .fd-checkbox__checkmark {
+  border-width: var(--sapField_InvalidBorderWidth, 2px);
+  border-color: var(--sapField_InvalidColor, #e90b0b);
+  background: var(--sapField_InvalidBackground, #ffeaf4);
+}
+
+.fd-checkbox-wrapper--negative .fd-checkbox__input:checked + .fd-checkbox__checkmark,
+.fd-checkbox-wrapper--negative .fd-checkbox__input:indeterminate + .fd-checkbox__checkmark {
+  background: var(--sapField_InvalidBackground, #ffeaf4);
+  border-color: var(--sapField_InvalidColor, #e90b0b);
+}
+
+.fd-checkbox-wrapper--negative .fd-checkbox__input:checked + .fd-checkbox__checkmark .fd-checkbox__icon {
+  opacity: 1;
+  filter: invert(10%) sepia(95%) saturate(6000%) hue-rotate(0deg) brightness(90%) contrast(110%);
+  /* renders as --sapField_InvalidColor #e90b0b */
+}
+
+.fd-checkbox-wrapper--negative .fd-checkbox__input:indeterminate + .fd-checkbox__checkmark::after {
+  background: var(--sapField_InvalidColor, #e90b0b);
+}

@@ -1,0 +1,302 @@
+/* ── SAP Fiori TimePicker ────────────────────────────────── */
+
+/* ── Root / field wrapper ────────────────────────────────── */
+
+.fd-time-picker {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+/* ── Input row ───────────────────────────────────────────── */
+
+.fd-time-picker__input-row {
+  display: flex;
+  align-items: center;
+  height: var(--sapElement_Height, var(--sap-element-height, 36px));
+  border: 1px solid var(--sapField_BorderColor, #8696a9);
+  border-radius: var(--sapField_BorderCornerRadius, 12px);
+  background: var(--sapField_Background, #fff);
+  overflow: hidden;
+  transition: border-color 80ms, box-shadow 80ms;
+  box-sizing: border-box;
+}
+
+.fd-time-picker__input-row:focus-within {
+  border-color: var(--sapField_Active_BorderColor, #0064d9);
+  box-shadow: 0 0 0 1px var(--sapField_Active_BorderColor, #0064d9) inset;
+}
+
+.fd-time-picker--compact .fd-time-picker__input-row {
+  height: var(--sapElement_CompactHeight, var(--sap-element-compact-height, 26px));
+  border-radius: 8px;
+}
+
+.fd-time-picker--disabled .fd-time-picker__input-row {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  pointer-events: none;
+  background: var(--sapField_ReadOnly_Background, rgba(255, 255, 255, 0.4));
+  border-color: var(--sapField_ReadOnly_BorderColor, rgba(140, 160, 177, 0.4));
+}
+
+/* ── Value state borders ─────────────────────────────────── */
+
+.fd-time-picker--error .fd-time-picker__input-row {
+  border-color: var(--sapField_InvalidColor, #e90b0b);
+  background: var(--sapField_InvalidBackground, #fff1f1);
+}
+
+.fd-time-picker--warning .fd-time-picker__input-row {
+  border-color: var(--sapField_WarningColor, #e76500);
+  background: var(--sapField_WarningBackground, #fff8f5);
+}
+
+.fd-time-picker--success .fd-time-picker__input-row {
+  border-color: var(--sapField_SuccessColor, #30914c);
+  background: var(--sapField_SuccessBackground, #f6fff0);
+}
+
+.fd-time-picker--information .fd-time-picker__input-row {
+  border-color: var(--sapField_InformationColor, #0064d9);
+  background: var(--sapField_InformationBackground, #f5faff);
+}
+
+/* ── Text input (display field) ──────────────────────────── */
+
+.fd-time-picker__display {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapField_TextColor, #131e29);
+  padding: 0 12px;
+  min-width: 0;
+  cursor: default;
+}
+
+.fd-time-picker--compact .fd-time-picker__display {
+  font-size: var(--sapFontSmallSize, 0.75rem);
+  padding: 0 8px;
+}
+
+/* ── Clock icon button ───────────────────────────────────── */
+
+.fd-time-picker__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sapElement_Height, 36px);
+  height: 100%;
+  flex-shrink: 0;
+  border: none;
+  border-left: 1px solid var(--sapGroup_ContentBorderColor, #d9d9d9);
+  background: transparent;
+  color: var(--sapContent_IconColor, #556b82);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  transition: background 120ms;
+  border-radius: 0 var(--sapField_BorderCornerRadius, 12px) var(--sapField_BorderCornerRadius, 12px) 0;
+}
+
+.fd-time-picker--compact .fd-time-picker__icon-btn {
+  width: var(--sapElement_CompactHeight, 26px);
+  font-size: 0.75rem;
+}
+
+.fd-time-picker__icon-btn:hover {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+  color: var(--sapButton_Lite_TextColor, #0064d9);
+}
+
+.fd-time-picker__icon-btn:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0064d9);
+  outline-offset: -2px;
+}
+
+/* ── Popover ─────────────────────────────────────────────── */
+
+.fd-time-picker__popover {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: var(--sapZIndex_Popover, 300);
+  background: var(--sapGroup_ContentBackground, #fff);
+  border: 1px solid var(--sapGroup_ContentBorderColor, #d9d9d9);
+  border-radius: var(--sapPopover_BorderCornerRadius, 8px);
+  box-shadow: var(--sapContent_Shadow2, 0 4px 16px rgba(0, 0, 0, 0.15));
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 200px;
+}
+
+/* ── Columns row ─────────────────────────────────────────── */
+
+.fd-time-picker__columns {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+/* ── Single column ───────────────────────────────────────── */
+
+.fd-time-picker__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 2px;
+}
+
+/* ── Column label ────────────────────────────────────────── */
+
+.fd-time-picker__column-label {
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSmallSize, 0.75rem);
+  color: var(--sapContent_LabelColor, #556b82);
+  font-weight: 600;
+  padding-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fd-time-picker__column-list {
+  max-height: 180px;
+  overflow-y: auto;
+  width: 100%;
+  scroll-behavior: smooth;
+  /* Thin scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--sapScrollBar_FaceColor, #c8d1da) transparent;
+}
+
+.fd-time-picker__column-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.fd-time-picker__column-list::-webkit-scrollbar-thumb {
+  background: var(--sapScrollBar_FaceColor, #c8d1da);
+  border-radius: 2px;
+}
+
+/* ── Column item ─────────────────────────────────────────── */
+
+.fd-time-picker__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapField_TextColor, #131e29);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 80ms;
+  padding: 0 4px;
+  box-sizing: border-box;
+}
+
+.fd-time-picker__item:hover {
+  background: var(--sapList_Hover_Background, #eaecee);
+}
+
+.fd-time-picker__item--selected {
+  background: var(--sapButton_Selected_Background, #edf5ff);
+  color: var(--sapButton_Selected_TextColor, #0064d9);
+  font-weight: 600;
+  border: 1px solid var(--sapButton_Selected_BorderColor, #0064d9);
+}
+
+.fd-time-picker__item--selected:hover {
+  background: var(--sapButton_Selected_Hover_Background, #d9ecff);
+}
+
+.fd-time-picker__item:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0064d9);
+  outline-offset: -2px;
+}
+
+/* ── AM/PM selector ──────────────────────────────────────── */
+
+.fd-time-picker__ampm {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+  align-self: center;
+}
+
+.fd-time-picker__ampm-btn {
+  padding: 4px 8px;
+  border: 1px solid var(--sapField_BorderColor, #8696a9);
+  border-radius: 4px;
+  background: transparent;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSmallSize, 0.75rem);
+  cursor: pointer;
+  color: var(--sapField_TextColor, #131e29);
+  transition: background 80ms;
+}
+
+.fd-time-picker__ampm-btn--active {
+  background: var(--sapButton_Selected_Background, #edf5ff);
+  color: var(--sapButton_Selected_TextColor, #0064d9);
+  border-color: var(--sapButton_Selected_BorderColor, #0064d9);
+}
+
+.fd-time-picker__ampm-btn:hover:not(.fd-time-picker__ampm-btn--active) {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+}
+
+/* ── Footer with OK button ───────────────────────────────── */
+
+.fd-time-picker__footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--sapPageFooter_BorderColor, #d9d9d9);
+  padding-top: 8px;
+}
+
+.fd-time-picker__ok-btn {
+  padding: 0 16px;
+  height: 32px;
+  border: 1px solid var(--sapButton_Emphasized_BorderColor, #0064d9);
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  background: var(--sapButton_Emphasized_Background, #0070f2);
+  color: var(--sapButton_Emphasized_TextColor, #fff);
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 80ms;
+}
+
+.fd-time-picker__ok-btn:hover {
+  background: var(--sapButton_Emphasized_Hover_Background, #0064d9);
+  border-color: var(--sapButton_Emphasized_Hover_BorderColor, #0064d9);
+}
+
+.fd-time-picker__ok-btn:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0064d9);
+  outline-offset: 2px;
+}
+
+/* ── State message ───────────────────────────────────────── */
+
+.fd-time-picker__message {
+  font-size: var(--sapFontSmallSize, 0.75rem);
+  margin: 2px 0 0;
+}
+
+.fd-time-picker__message--negative { color: var(--sapNegativeTextColor, #aa0808); }
+.fd-time-picker__message--critical { color: var(--sapCriticalTextColor, #b44f00); }
+.fd-time-picker__message--positive { color: var(--sapPositiveTextColor, #256f3a); }
+.fd-time-picker__message--information { color: var(--sapInformativeTextColor, #0064d9); }

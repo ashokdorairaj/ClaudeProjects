@@ -1,0 +1,388 @@
+/* ─────────────────────────────────────────────────────────
+   SAP Fiori Calendar — Horizon theme
+   Figma: sapGroup_ContentBackground wrapper, sapContent_Shadow2
+   Day cells: 44px cozy / 28px compact (SAP Horizon touch target)
+   Today: sapLegend_CurrentDateTime (#a100c2) purple border
+   Weekend: sapLegend_NonWorkingBackground (#ebebeb)
+   Calendar width: 336px cozy (7 × 48px) / 294px compact
+   ───────────────────────────────────────────────────────── */
+
+/* ── Wrapper ───────────────────────────────────────────── */
+.fd-calendar {
+  display: inline-flex;
+  flex-direction: column;
+  background: var(--sapGroup_ContentBackground, #ffffff);
+  border-radius: var(--sapPopover_BorderCornerRadius, var(--sap-popover-border-radius, 8px));
+  box-shadow: var(--sapContent_Shadow2, var(--sap-shadow-lg, 0 4px 16px rgba(0, 0, 0, 0.12)));
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  overflow: hidden;
+  width: 336px;
+  box-sizing: border-box;
+  user-select: none;
+  padding: 8px;
+  gap: 0;
+}
+
+.fd-calendar--compact {
+  width: 294px;
+  padding: 6px;
+}
+
+/* ── Header ────────────────────────────────────────────── */
+.fd-calendar__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  flex-shrink: 0;
+}
+
+/* ── Nav icon buttons ──────────────────────────────────── */
+.fd-calendar__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-height: 36px;
+  padding: 10px;
+  border: 1px solid var(--sapButton_Lite_BorderColor, transparent);
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  background: var(--sapButton_Lite_Background, transparent);
+  color: var(--sapButton_Lite_TextColor, #0064d9);
+  cursor: pointer;
+  outline: none;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: background 80ms;
+}
+
+.fd-calendar__nav-btn:hover {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+  border-color: var(--sapButton_Lite_Hover_BorderColor, #bcc3ca);
+}
+
+.fd-calendar__nav-btn:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 1px;
+}
+
+.fd-calendar--compact .fd-calendar__nav-btn {
+  width: 28px;
+  height: 28px;
+  min-height: 28px;
+  padding: 6px;
+}
+
+/* ── Month / Year toggle buttons ───────────────────────── */
+.fd-calendar__header-btn {
+  flex: 1 0 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 10px 6px;
+  gap: 6px;
+  border: 1px solid var(--sapButton_Lite_BorderColor, transparent);
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  background: var(--sapButton_Lite_Background, transparent);
+  font-family: var(--sapButton_FontFamily, var(--sapFontFamily, inherit));
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sapButton_Lite_TextColor, #0064d9);
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: background 80ms;
+}
+
+.fd-calendar__header-btn:hover {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+  border-color: var(--sapButton_Lite_Hover_BorderColor, #bcc3ca);
+}
+
+.fd-calendar__header-btn--active {
+  background: var(--sapButton_Selected_Background, var(--sap-btn-selected-bg, #edf5ff));
+  border-color: var(--sapButton_Selected_BorderColor, var(--sap-btn-selected-border, #0064d9));
+}
+
+.fd-calendar__header-btn--active:hover {
+  background: var(--sapButton_Selected_Hover_Background, var(--sap-btn-selected-hover-bg, #d9ecff));
+  border-color: var(--sapButton_Selected_Hover_BorderColor, var(--sap-btn-selected-border, #0064d9));
+}
+
+.fd-calendar__header-btn:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 1px;
+}
+
+.fd-calendar--compact .fd-calendar__header-btn {
+  min-height: 28px;
+  padding: 6px 4px;
+  font-size: 12px;
+}
+
+/* ── Day grid body ─────────────────────────────────────── */
+.fd-calendar__body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Row (weekday headers + week rows) ─────────────────── */
+.fd-calendar__row {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* ── Generic cell ──────────────────────────────────────── */
+.fd-calendar__cell {
+  flex: 1 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 44px;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  background: transparent;
+  overflow: hidden;
+  position: relative;
+}
+
+.fd-calendar--compact .fd-calendar__cell {
+  min-width: 30px;
+  min-height: 28px;
+}
+
+/* ── Weekday header cell ───────────────────────────────── */
+.fd-calendar__cell--weekday {
+  min-height: 36px;
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSmallSize, 12px);
+  font-weight: 600;
+  color: var(--sapContent_LabelColor, #556b82);
+  background: transparent;
+}
+
+.fd-calendar--compact .fd-calendar__cell--weekday {
+  min-height: 28px;
+  font-size: 11px;
+}
+
+/* ── Week number cell ──────────────────────────────────── */
+.fd-calendar__cell--label,
+.fd-calendar__cell--week-num {
+  min-height: 36px;
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSmallSize, 12px);
+  color: var(--sapContent_LabelColor, #556b82);
+  background: transparent;
+}
+
+.fd-calendar--compact .fd-calendar__cell--label,
+.fd-calendar--compact .fd-calendar__cell--week-num {
+  min-height: 28px;
+}
+
+/* ── Working day cell (Mon–Fri) ────────────────────────── */
+.fd-calendar__cell--working {
+  background: var(--sapLegend_WorkingBackground, #ffffff);
+}
+
+/* ── Non-working day cell (Sat, Sun) ───────────────────── */
+.fd-calendar__cell--non-working {
+  background: var(--sapLegend_NonWorkingBackground, #ebebeb);
+}
+
+/* ── Day button ────────────────────────────────────────── */
+.fd-calendar__day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-width: 36px;
+  min-height: 44px;
+  border: 2px solid transparent;
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  background: transparent;
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSize, 14px);
+  color: var(--sapTextColor, #131e29);
+  cursor: pointer;
+  outline: none;
+  transition: background 80ms, border-color 80ms, color 80ms;
+  box-sizing: border-box;
+  padding: 0;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.fd-calendar--compact .fd-calendar__day {
+  min-width: 26px;
+  min-height: 26px;
+  font-size: 12px;
+}
+
+.fd-calendar__day:hover:not(:disabled) {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+}
+
+.fd-calendar__day:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 1px;
+}
+
+/* ── Today: purple border (sapLegend_CurrentDateTime) ──── */
+.fd-calendar__day--today {
+  border-color: var(--sapLegend_CurrentDateTime, #a100c2);
+  font-weight: 600;
+}
+
+/* ── Selected (single) ─────────────────────────────────── */
+.fd-calendar__day--selected {
+  background: var(--sapButton_Selected_Background, var(--sap-btn-selected-bg, #edf5ff));
+  border-color: var(--sapLegend_CurrentDateTime, #a100c2);
+  color: var(--sapLegend_CurrentDateTime, #a100c2);
+  font-weight: 600;
+}
+
+.fd-calendar__day--selected:hover {
+  background: var(--sapButton_Selected_Hover_Background, var(--sap-btn-selected-hover-bg, #d9ecff));
+  border-color: var(--sapLegend_CurrentDateTime, #a100c2);
+}
+
+/* ── Range start & end: pill caps ──────────────────────── */
+/*
+   SAP Fiori range pattern:
+   - Range-start cell: band fills from center to right edge
+   - Range-end cell: band fills from left edge to center
+   - In-range cells: band fills full width
+   Each day button sits on top of the band as a circle/rounded square
+*/
+
+/* Band layer: rendered via ::before on the cell, not the button */
+.fd-calendar__cell--day.fd-calendar__cell--range-band-start::before,
+.fd-calendar__cell--day.fd-calendar__cell--range-band-end::before,
+.fd-calendar__cell--day.fd-calendar__cell--range-band-mid::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 28px;
+  background: var(--sapList_SelectionBorderColor, rgba(0, 100, 217, 0.12));
+  z-index: 0;
+}
+
+.fd-calendar__cell--day.fd-calendar__cell--range-band-start::before {
+  left: 50%;
+  right: 0;
+}
+
+.fd-calendar__cell--day.fd-calendar__cell--range-band-end::before {
+  left: 0;
+  right: 50%;
+}
+
+.fd-calendar__cell--day.fd-calendar__cell--range-band-mid::before {
+  left: 0;
+  right: 0;
+}
+
+.fd-calendar--compact .fd-calendar__cell--day.fd-calendar__cell--range-band-start::before,
+.fd-calendar--compact .fd-calendar__cell--day.fd-calendar__cell--range-band-end::before,
+.fd-calendar--compact .fd-calendar__cell--day.fd-calendar__cell--range-band-mid::before {
+  height: 20px;
+}
+
+/* Day button appearance for range start/end */
+.fd-calendar__day--range-start,
+.fd-calendar__day--range-end {
+  background: var(--sapButton_Selected_Background, var(--sap-btn-selected-bg, #edf5ff));
+  border-color: var(--sapLegend_CurrentDateTime, #a100c2);
+  color: var(--sapLegend_CurrentDateTime, #a100c2);
+  font-weight: 600;
+}
+
+/* ── In range ──────────────────────────────────────────── */
+.fd-calendar__day--in-range {
+  background: var(--sapList_SelectionBorderColor, rgba(0, 100, 217, 0.12));
+  border-color: transparent;
+  color: var(--sapTextColor, #131e29);
+  border-radius: 0;
+}
+
+/* ── Other month ───────────────────────────────────────── */
+.fd-calendar__day--other-month {
+  color: var(--sapContent_LabelColor, #556b82);
+}
+
+/* ── Disabled ──────────────────────────────────────────── */
+.fd-calendar__day--disabled,
+.fd-calendar__day:disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Month / Year picker grid ──────────────────────────── */
+.fd-calendar__picker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  padding: 8px 0;
+  box-sizing: border-box;
+}
+
+.fd-calendar--compact .fd-calendar__picker-grid {
+  gap: 2px;
+  padding: 6px 0;
+}
+
+.fd-calendar__picker-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  border: 1px solid transparent;
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  background: var(--sapButton_Lite_Background, transparent);
+  font-family: var(--sapButton_FontFamily, var(--sapFontFamily, inherit));
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sapButton_Lite_TextColor, #0064d9);
+  cursor: pointer;
+  outline: none;
+  transition: background 80ms;
+}
+
+.fd-calendar--compact .fd-calendar__picker-item {
+  height: 28px;
+  font-size: 12px;
+}
+
+.fd-calendar__picker-item:hover {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+  border-color: var(--sapButton_Lite_Hover_BorderColor, #bcc3ca);
+}
+
+.fd-calendar__picker-item:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 1px;
+}
+
+.fd-calendar__picker-item--selected {
+  background: var(--sapButton_Selected_Background, var(--sap-btn-selected-bg, #edf5ff));
+  border-color: var(--sapButton_Selected_BorderColor, var(--sap-btn-selected-border, #0064d9));
+  color: var(--sapContent_Selected_TextColor, var(--sap-content-selected-text, #0064d9));
+}
+
+.fd-calendar__picker-item--selected:hover {
+  background: var(--sapButton_Selected_Hover_Background, var(--sap-btn-selected-hover-bg, #d9ecff));
+}

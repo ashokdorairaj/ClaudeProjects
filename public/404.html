@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Redirect 404s back to index.html preserving the path as a query param
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        '/ashokdorairaj/ClaudeProjects/FioriDemos/' +
+        '?p=' + encodeURIComponent(l.pathname.slice(1) + l.search + l.hash)
+      );
+    </script>
+  </head>
+</html>

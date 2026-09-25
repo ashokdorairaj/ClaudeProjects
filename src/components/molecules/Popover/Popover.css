@@ -1,0 +1,141 @@
+/* ── SAP Fiori Popover ──────────────────────────────────────── */
+
+.fd-popover {
+  position: fixed;
+  z-index: 400;
+  background: var(--sapGroup_ContentBackground, #fff);
+  border: 1px solid var(--sapPopover_BorderColor, #e8e8e8);
+  border-radius: var(--sapPopover_BorderCornerRadius, 8px);
+  box-shadow: var(
+    --sapContent_Shadow2,
+    0px 0px 0px 1px rgba(34, 53, 72, 0.20),
+    0px 8px 24px 0px rgba(34, 53, 72, 0.14)
+  );
+  overflow: hidden;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 320px;
+}
+
+/* ── Header ─────────────────────────────────────────── */
+.fd-popover__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--sapPopover_BorderColor, #e8e8e8);
+  flex-shrink: 0;
+}
+
+.fd-popover__title {
+  font-family: var(--sapFontFamily, '72', Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: var(--sapFontHeaderWeight, 600);
+  color: var(--sapTextColor, #131e29);
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+/* ── Body ───────────────────────────────────────────── */
+.fd-popover__body {
+  padding: 4px;
+  font-family: var(--sapFontFamily, '72', Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTextColor, #131e29);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── Footer ─────────────────────────────────────────── */
+.fd-popover__footer {
+  padding: 8px 12px;
+  border-top: 1px solid var(--sapPopover_BorderColor, #e8e8e8);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Arrow ──────────────────────────────────────────── */
+.fd-popover__arrow {
+  position: fixed;
+  width: 0;
+  height: 0;
+  z-index: 401;
+  pointer-events: none;
+}
+
+/* Arrow pointing up (popover is below anchor) */
+.fd-popover__arrow--bottom,
+.fd-popover__arrow--bottom-start,
+.fd-popover__arrow--bottom-end {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid var(--sapPopover_BorderColor, #e8e8e8);
+}
+
+.fd-popover__arrow--bottom::before,
+.fd-popover__arrow--bottom-start::before,
+.fd-popover__arrow--bottom-end::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: -7px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid var(--sapGroup_ContentBackground, #fff);
+}
+
+/* Arrow pointing down (popover is above anchor) */
+.fd-popover__arrow--top {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--sapPopover_BorderColor, #e8e8e8);
+}
+
+.fd-popover__arrow--top::before {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  left: -7px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid var(--sapGroup_ContentBackground, #fff);
+}
+
+/* Arrow pointing right (popover is to the left) */
+.fd-popover__arrow--left {
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid var(--sapPopover_BorderColor, #e8e8e8);
+}
+
+.fd-popover__arrow--left::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  right: 1px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid var(--sapGroup_ContentBackground, #fff);
+}
+
+/* Arrow pointing left (popover is to the right) */
+.fd-popover__arrow--right {
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid var(--sapPopover_BorderColor, #e8e8e8);
+}
+
+.fd-popover__arrow--right::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 1px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 7px solid var(--sapGroup_ContentBackground, #fff);
+}

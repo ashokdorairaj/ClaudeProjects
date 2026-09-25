@@ -1,0 +1,242 @@
+/* ── SAP Fiori List – canonical --sapXxx tokens ─────────────── */
+
+.fd-list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.fd-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--sapList_Background, var(--sap-list-bg, #fff));
+}
+
+/* ── Header / Footer ─────────────────────────────────────────── */
+
+.fd-list-header {
+  font-family: var(--sapFontFamily, var(--sap-font-family, "72", Arial, sans-serif));
+  font-size: var(--sapFontSmallSize, var(--sap-font-size-xs, 0.75rem));
+  font-weight: var(--sapFontHeaderWeight, var(--sap-font-weight-semibold, 600));
+  color: var(--sapList_GroupHeaderTextColor, var(--sap-list-header-text, #556b82));
+  background: var(--sapList_GroupHeaderBackground, var(--sap-list-header-bg, #f5f6f7));
+  padding: 6px 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fd-list-footer {
+  font-family: var(--sapFontFamily, var(--sap-font-family, "72", Arial, sans-serif));
+  font-size: var(--sapFontSmallSize, var(--sap-font-size-xs, 0.75rem));
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+  padding: 6px 16px;
+  background: var(--sapList_FooterBackground, var(--sap-list-header-bg, #f5f6f7));
+}
+
+/* ── List items ──────────────────────────────────────────────── */
+
+.fd-list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* SAP Fiori cozy: 2.75rem line-height = 44px */
+  padding: 0 16px;
+  min-height: var(--sapElement_LineHeight, var(--sap-element-line-height, 44px));
+  box-sizing: border-box;
+  font-family: var(--sapFontFamily, var(--sap-font-family, "72", Arial, sans-serif));
+  font-size: var(--sapFontSize, var(--sap-font-size-sm, 0.875rem));
+  color: var(--sapList_TextColor, var(--sap-text-color, #131e29));
+  transition: background 80ms;
+  /* Reserve left space for the selection indicator pseudo-element */
+  padding-left: 16px;
+}
+
+/* ── Compact density ─────────────────────────────────────────── */
+
+.fd-list--compact .fd-list-item {
+  min-height: var(--sapElement_CompactHeight, var(--sap-element-compact-height, 26px));
+  padding: 0 12px;
+  font-size: var(--sapFontSmallSize, var(--sap-font-size-xs, 0.75rem));
+}
+
+/* ── Borders ─────────────────────────────────────────────────── */
+
+.fd-list--borders .fd-list-item {
+  border-bottom: 1px solid var(--sapList_BorderColor, var(--sap-list-border, #e8e8e8));
+}
+
+.fd-list--borders .fd-list-item:last-child {
+  border-bottom: none;
+}
+
+/* ── Interactive (hover / focus) ─────────────────────────────── */
+
+.fd-list-item--interactive {
+  cursor: pointer;
+}
+
+.fd-list-item--interactive:hover {
+  background: var(--sapList_Hover_Background, var(--sap-list-hover-bg, #eaecee));
+}
+
+.fd-list-item--interactive:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, var(--sap-brand-color, #0070f2));
+  outline-offset: -2px;
+}
+
+/* ── Selected state ──────────────────────────────────────────── */
+/*
+   SAP Fiori uses a 3px left-edge indicator via ::before so that
+   padding/content width stays constant — no layout shift between
+   selected and unselected items.
+*/
+
+.fd-list-item--selected {
+  background: var(--sapList_SelectionBackgroundColor, var(--sap-list-selected-bg, #e3f0ff));
+}
+
+.fd-list-item--selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--sapList_Active_BorderColor, var(--sap-list-selected-border, #0064d9));
+  border-radius: 0 2px 2px 0;
+}
+
+.fd-list-item--selected:hover {
+  background: var(--sapList_Hover_SelectionBackground, var(--sap-content-selected-hover-bg, #d3e8ff));
+}
+
+/* ── Disabled state ──────────────────────────────────────────── */
+
+.fd-list-item--disabled {
+  opacity: var(--sapContent_DisabledOpacity, var(--sap-disabled-opacity, 0.4));
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Group header ────────────────────────────────────────────── */
+
+.fd-list-item--group-header {
+  background: var(--sapList_GroupHeaderBackground, var(--sap-list-header-bg, #f5f6f7));
+  padding: 6px 16px;
+  min-height: 28px;
+  font-size: var(--sapFontSmallSize, var(--sap-font-size-xs, 0.75rem));
+  font-weight: var(--sapFontHeaderWeight, var(--sap-font-weight-semibold, 600));
+  color: var(--sapList_GroupHeaderTextColor, var(--sap-list-header-text, #556b82));
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: default;
+  pointer-events: none;
+}
+
+.fd-list-item--group-header:hover {
+  background: var(--sapList_GroupHeaderBackground, var(--sap-list-header-bg, #f5f6f7));
+}
+
+/* ── Icon ────────────────────────────────────────────────────── */
+
+.fd-list-item__icon {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ── Content area ────────────────────────────────────────────── */
+
+.fd-list-item__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.fd-list-item__title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fd-list-item__description {
+  font-size: var(--sapFontSmallSize, var(--sap-font-size-xs, 0.75rem));
+  color: var(--sapList_DescriptionTextColor, var(--sap-content-label-color, #556b82));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Trailing info text ──────────────────────────────────────── */
+
+.fd-list-item__info {
+  font-size: var(--sapFontSmallSize, var(--sap-font-size-xs, 0.75rem));
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.fd-list-item__info--positive {
+  color: var(--sapPositiveColor, var(--sap-status-positive-color, #1d6332));
+}
+
+.fd-list-item__info--negative {
+  color: var(--sapNegativeColor, var(--sap-status-negative-color, #aa0808));
+}
+
+.fd-list-item__info--critical {
+  color: var(--sapCriticalColor, var(--sap-status-critical-color, #b44f00));
+}
+
+.fd-list-item__info--information {
+  color: var(--sapInformativeColor, var(--sap-status-informative-color, #0064d9));
+}
+
+/* ── Action buttons ──────────────────────────────────────────── */
+
+.fd-list-item__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+/* ── Navigation indicator (chevron ›) ────────────────────────── */
+
+.fd-list-item__nav-indicator {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+  padding-left: 8px;
+}
+
+.fd-list-item__nav-indicator::after {
+  content: '›';
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* ── Detail indicator (i icon) ───────────────────────────────── */
+
+.fd-list-item__detail-indicator {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+  padding-left: 8px;
+  font-size: 1rem;
+}
+
+.fd-list-item__detail-indicator::after {
+  content: 'ⓘ';
+  font-size: 1rem;
+  line-height: 1;
+}

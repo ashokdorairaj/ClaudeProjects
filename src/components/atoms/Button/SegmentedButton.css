@@ -1,0 +1,113 @@
+/* ─────────────────────────────────────────────────────────
+   SAP Fiori SegmentedButton – SegmentedButton.css
+   Canonical tokens: --sapButton_*, --sapContent_FocusColor
+   ───────────────────────────────────────────────────────── */
+
+.fd-segmented-button {
+  display: inline-flex;
+  align-items: stretch;
+  min-height: 36px;
+}
+
+.fd-segmented-button--compact {
+  min-height: 26px;
+}
+
+/* ── Items ─────────────────────────────────────────────── */
+.fd-segmented-button__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 14px;
+  min-width: 40px;
+  border: var(--sapButton_BorderWidth, 1px) solid var(--sapButton_BorderColor, #bcc3ca);
+  border-radius: 0;
+  background: var(--sapButton_Background, #fff);
+  color: var(--sapButton_TextColor, #0064d9);
+  font-family: var(--sapFontFamily, '72', Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  outline: none;
+  transition: background 80ms, border-color 80ms, color 80ms;
+  box-sizing: border-box;
+  user-select: none;
+  /* Collapse adjacent borders to 1px */
+  margin-left: -1px;
+  position: relative;
+}
+
+/* Restore visible border on first item */
+.fd-segmented-button__item--first {
+  margin-left: 0;
+  border-top-left-radius: var(--sapButton_BorderCornerRadius, 8px);
+  border-bottom-left-radius: var(--sapButton_BorderCornerRadius, 8px);
+}
+
+.fd-segmented-button__item--last {
+  border-top-right-radius: var(--sapButton_BorderCornerRadius, 8px);
+  border-bottom-right-radius: var(--sapButton_BorderCornerRadius, 8px);
+}
+
+.fd-segmented-button--compact .fd-segmented-button__item {
+  padding: 0 10px;
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+/* ── Hover ─────────────────────────────────────────────── */
+.fd-segmented-button__item:hover:not(:disabled):not(.fd-segmented-button__item--selected) {
+  background: var(--sapButton_Hover_Background, #eaecee);
+  border-color: var(--sapButton_Hover_BorderColor, #bcc3ca);
+  z-index: 1;
+}
+
+/* ── Selected ──────────────────────────────────────────── */
+.fd-segmented-button__item--selected {
+  background: var(--sapButton_Selected_Background, #edf5ff);
+  border-color: var(--sapButton_Selected_BorderColor, #0064d9);
+  color: var(--sapButton_Selected_TextColor, #0064d9);
+  z-index: 2;
+}
+
+.fd-segmented-button__item--selected:hover {
+  background: var(--sapButton_Selected_Hover_Background, #d9ecff);
+  border-color: var(--sapButton_Selected_Hover_BorderColor, #0064d9);
+}
+
+/* ── Active (Down) ─────────────────────────────────────── */
+.fd-segmented-button__item:active:not(:disabled) {
+  background: var(--sapButton_Active_Background, #fff);
+  border-color: var(--sapButton_Active_BorderColor, #0064d9);
+  color: var(--sapButton_Active_TextColor, #0064d9);
+  z-index: 2;
+}
+
+/* ── Disabled ──────────────────────────────────────────── */
+.fd-segmented-button__item--disabled,
+.fd-segmented-button__item:disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Focus ─────────────────────────────────────────────── */
+.fd-segmented-button__item:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0070f2);
+  outline-offset: var(--sapContent_FocusOffset, 2px);
+  z-index: 3;
+}
+
+/* ── Icon and text ─────────────────────────────────────── */
+.fd-segmented-button__icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.fd-segmented-button__text {
+  /* inherits font properties from item */
+}

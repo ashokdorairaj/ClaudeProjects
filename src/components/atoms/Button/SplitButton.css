@@ -1,0 +1,123 @@
+/* ─────────────────────────────────────────────────────────
+   SAP Fiori SplitButton – SplitButton.css
+   Canonical tokens: --sapButton_*, --sapContent_FocusColor
+   ───────────────────────────────────────────────────────── */
+
+/* ── Wrapper ───────────────────────────────────────────── */
+.fd-split-button {
+  display: inline-flex;
+  align-items: stretch;
+  position: relative;
+}
+
+.fd-split-button--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  pointer-events: none;
+}
+
+/* ── Main action part ──────────────────────────────────── */
+.fd-split-button__main {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  /* right border shared with arrow – collapse to 1px */
+  border-right-width: 0;
+}
+
+.fd-split-button__main:focus-visible {
+  z-index: 2;
+}
+
+/* ── Arrow trigger ─────────────────────────────────────── */
+.fd-split-button__arrow {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  /* Divider between main and arrow parts */
+  border-left: var(--sapButton_BorderWidth, 1px) solid
+    var(--sapButton_TokenizerSeparator_BorderColor, rgba(0, 0, 0, 0.18));
+  min-width: 36px;
+  width: 36px;
+  padding: 0;
+}
+
+.fd-split-button--compact .fd-split-button__arrow {
+  min-width: 26px;
+  width: 26px;
+}
+
+.fd-split-button__chevron {
+  transition: transform 200ms ease;
+}
+
+.fd-split-button--open .fd-split-button__chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown menu ─────────────────────────────────────── */
+.fd-split-button__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: var(--sapZIndex_Popover, 300);
+  min-width: 160px;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  background: var(--sapList_Background, #fff);
+  border: 1px solid var(--sapGroup_ContentBorderColor, #d9d9d9);
+  border-radius: var(--sapElement_BorderCornerRadius, 8px);
+  box-shadow:
+    0px 0px 0px 1px rgba(34, 53, 72, 0.12),
+    0px 4px 16px 0px rgba(34, 53, 72, 0.16);
+  outline: none;
+}
+
+/* ── Menu items ────────────────────────────────────────── */
+.fd-split-button__menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  height: 44px;
+  font-family: var(--sapFontFamily, '72', Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 400;
+  color: var(--sapTextColor, #131e29);
+  cursor: pointer;
+  outline: none;
+  transition: background 80ms;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.fd-split-button--compact .fd-split-button__menu-item {
+  height: 32px;
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+.fd-split-button__menu-item:hover:not(.fd-split-button__menu-item--disabled) {
+  background: var(--sapList_Hover_Background, #eaecee);
+}
+
+.fd-split-button__menu-item:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0070f2);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+.fd-split-button__menu-item--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.fd-split-button__menu-item-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.fd-split-button__menu-item-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

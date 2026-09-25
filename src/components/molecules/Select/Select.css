@@ -1,0 +1,184 @@
+/* ── SAP Fiori Select – canonical tokens ───────────────────── */
+
+.fd-select-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+/* ── Label ────────────────────────────────────────────────── */
+.fd-select__label {
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapContent_LabelColor, #556b82);
+  font-weight: var(--sapFontWeight, 400);
+}
+
+.fd-select__label-required {
+  color: var(--sapNegativeColor, #aa0808);
+  margin-left: 2px;
+}
+
+/* ── Trigger button ───────────────────────────────────────── */
+.fd-select {
+  display: flex;
+  align-items: center;
+  height: var(--sapElement_Height, 36px);
+  padding: 0 12px;
+  border: var(--sapField_BorderWidth, 1px) solid var(--sapField_BorderColor, #8696a9);
+  border-radius: var(--sapField_BorderCornerRadius, 12px);
+  background: var(--sapField_Background, #fff);
+  cursor: pointer;
+  position: relative;
+  gap: 8px;
+  transition: border-color 80ms, box-shadow 80ms;
+  user-select: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.fd-select--compact {
+  height: var(--sapElement_CompactHeight, 26px);
+  padding: 0 8px;
+  border-radius: 8px;
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+.fd-select:focus-visible,
+.fd-select--open {
+  border-color: var(--sapField_Active_BorderColor, #0064d9);
+  box-shadow: 0 0 0 1px var(--sapField_Active_BorderColor, #0064d9) inset;
+}
+
+.fd-select:hover:not(.fd-select--disabled) {
+  border-color: var(--sapField_Hover_BorderColor, #8696a9);
+}
+
+/* Hover shouldn't override open/focus active border */
+.fd-select--open:hover,
+.fd-select:focus-visible:hover {
+  border-color: var(--sapField_Active_BorderColor, #0064d9);
+}
+
+.fd-select--disabled {
+  background: var(--sapField_Background, #fff);
+  border-color: var(--sapField_BorderColor, #8696a9);
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Value states ─────────────────────────────────────────── */
+.fd-select--negative   { border-color: var(--sapField_InvalidColor, #e90b0b);     background: var(--sapField_InvalidBackground, #ffeaf4); }
+.fd-select--critical   { border-color: var(--sapField_WarningColor, #e76500);     background: var(--sapField_WarningBackground, #fef7f1); }
+.fd-select--positive   { border-color: var(--sapField_SuccessColor, #30914c);     background: var(--sapField_SuccessBackground, #f5fae5); }
+.fd-select--information{ border-color: var(--sapField_InformationColor, #0064d9); background: var(--sapField_InformationBackground, #e8f3ff); }
+
+/* ── Text (selected value / placeholder) ─────────────────── */
+.fd-select__text {
+  flex: 1;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapField_TextColor, #131e29);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.fd-select__placeholder {
+  color: var(--sapField_PlaceholderTextColor, #8696a9);
+}
+
+/* ── Value-state icon (inside trigger) ───────────────────── */
+.fd-select__state-icon {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  color: var(--sapContent_LabelColor, #556b82);
+}
+
+.fd-select--negative   .fd-select__state-icon { color: var(--sapField_InvalidColor,     #e90b0b); }
+.fd-select--critical   .fd-select__state-icon { color: var(--sapField_WarningColor,     #e76500); }
+.fd-select--positive   .fd-select__state-icon { color: var(--sapField_SuccessColor,     #30914c); }
+.fd-select--information .fd-select__state-icon{ color: var(--sapField_InformationColor, #0064d9); }
+
+/* ── Chevron arrow ────────────────────────────────────────── */
+.fd-select__arrow {
+  flex-shrink: 0;
+  width: 10px;
+  height: 6px;
+  /* CSS-only downward chevron — no Unicode, no image dependency */
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--sapContent_LabelColor, #556b82);
+  transition: transform 200ms;
+}
+
+.fd-select--open .fd-select__arrow {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown list ────────────────────────────────────────── */
+.fd-select__list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--sapGroup_ContentBackground, #fff);
+  border: 1px solid var(--sapGroup_ContentBorderColor, #d9d9d9);
+  border-radius: var(--sapPopover_BorderCornerRadius, 8px);
+  box-shadow: var(--sapContent_Shadow2, 0 4px 16px rgba(0, 0, 0, 0.15), 0 1px 4px rgba(0, 0, 0, 0.10));
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  z-index: 200;
+  max-height: 240px;
+  overflow: auto;
+}
+
+/* ── Option ───────────────────────────────────────────────── */
+.fd-select__option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTextColor, #131e29);
+  cursor: pointer;
+  transition: background 80ms;
+}
+
+.fd-select__option:hover:not(.fd-select__option--disabled) {
+  background: var(--sapList_Hover_Background, #eaecee);
+}
+
+.fd-select__option--selected {
+  background: var(--sapList_SelectionBackgroundColor, #ebf8ff);
+  color: var(--sapList_Active_TextColor, #0064d9);
+  font-weight: var(--sapFontHeaderWeight, 600);
+}
+
+.fd-select__option--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+}
+
+.fd-select__option-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--sapContent_LabelColor, #556b82);
+}
+
+/* ── Value state message ──────────────────────────────────── */
+.fd-select__message {
+  font-size: var(--sapFontSmallSize, 0.75rem);
+  margin: 2px 0 0;
+}
+
+.fd-select__message--negative    { color: var(--sapNegativeColor,    #e90b0b); }
+.fd-select__message--critical    { color: var(--sapCriticalColor,    #e76500); }
+.fd-select__message--positive    { color: var(--sapPositiveColor,    #30914c); }
+.fd-select__message--information { color: var(--sapInformativeColor, #0064d9); }

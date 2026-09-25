@@ -1,0 +1,185 @@
+/* ─────────────────────────────────────────────────────────
+   SAP Fiori Button – Button.css
+   Canonical tokens: --sapButton_*, --sapContent_FocusColor
+   ───────────────────────────────────────────────────────── */
+
+.fd-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;                 /* Cozy — Figma: p-[10px] */
+  min-height: 36px;
+  min-width: 64px;
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  border: var(--sapButton_BorderWidth, 1px) solid var(--sapButton_BorderColor, #bcc3ca);
+  background: var(--sapButton_Background, #fff);
+  color: var(--sapButton_TextColor, #0064d9);
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  outline: none;
+  transition: background 80ms, border-color 80ms, color 80ms, box-shadow 80ms;
+  box-sizing: border-box;
+  user-select: none;
+  text-decoration: none;
+}
+
+.fd-button:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0070f2);
+  outline-offset: var(--sapContent_FocusOffset, 2px);
+}
+
+.fd-button:hover:not(:disabled) {
+  background: var(--sapButton_Hover_Background, #eaecee);
+  border-color: var(--sapButton_Hover_BorderColor, #bcc3ca);
+  color: var(--sapButton_Hover_TextColor, #0064d9);
+}
+
+.fd-button:active:not(:disabled) {
+  background: var(--sapButton_Active_Background, #fff);
+  border-color: var(--sapButton_Active_BorderColor, #0064d9);
+  color: var(--sapButton_Active_TextColor, #0064d9);
+}
+
+.fd-button:disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Compact ─────────────────────────────────────────────── */
+.fd-button--compact {
+  min-height: 26px;
+  padding: 5px 8px;
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+/* ── Icon only ───────────────────────────────────────────── */
+.fd-button--icon-only {
+  min-width: 36px;
+  padding: 0;
+  width: 36px;
+}
+.fd-button--icon-only.fd-button--compact {
+  width: 26px;
+  min-width: 26px;
+}
+
+.fd-button__icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.fd-button__text {
+  flex: 1;
+}
+
+/* ── Emphasized ──────────────────────────────────────────── */
+.fd-button--emphasized {
+  --sapButton_Background: var(--sapButton_Emphasized_Background, #0070f2);
+  --sapButton_BorderColor: var(--sapButton_Emphasized_BorderColor, #0070f2);
+  --sapButton_TextColor: var(--sapButton_Emphasized_TextColor, #fff);
+  --sapButton_Hover_Background: var(--sapButton_Emphasized_Hover_Background, #0064d9);
+  --sapButton_Hover_BorderColor: var(--sapButton_Emphasized_Hover_BorderColor, #0064d9);
+  --sapButton_Hover_TextColor: var(--sapButton_Emphasized_Hover_TextColor, #fff);
+  --sapButton_Active_Background: var(--sapButton_Emphasized_Active_Background, #fff);
+  --sapButton_Active_BorderColor: var(--sapButton_Emphasized_Active_BorderColor, #0064d9);
+  --sapButton_Active_TextColor: var(--sapButton_Emphasized_Active_TextColor, #0064d9);
+}
+
+/* ── Transparent / Lite ──────────────────────────────────── */
+.fd-button--transparent {
+  --sapButton_Background: var(--sapButton_Lite_Background, transparent);
+  --sapButton_BorderColor: var(--sapButton_Lite_BorderColor, transparent);
+  --sapButton_TextColor: var(--sapButton_Lite_TextColor, #0064d9);
+  --sapButton_Hover_Background: var(--sapButton_Lite_Hover_Background, #eaecee);
+  --sapButton_Hover_BorderColor: var(--sapButton_Lite_Hover_BorderColor, #bcc3ca);
+  --sapButton_Hover_TextColor: var(--sapButton_Lite_Hover_TextColor, #0064d9);
+  --sapButton_Active_Background: var(--sapButton_Lite_Active_Background, #fff);
+  --sapButton_Active_BorderColor: var(--sapButton_Lite_Active_BorderColor, #0064d9);
+}
+
+/* ── Positive (Accept) ───────────────────────────────────── */
+.fd-button--positive {
+  --sapButton_Background: var(--sapButton_Accept_Background, #ebf5cb);
+  --sapButton_BorderColor: var(--sapButton_Accept_BorderColor, #dbeea1);
+  --sapButton_TextColor: var(--sapButton_Accept_TextColor, #256f3a);
+  --sapButton_Hover_Background: var(--sapButton_Accept_Hover_Background, #e3f167);
+  --sapButton_Hover_BorderColor: var(--sapButton_Accept_Hover_BorderColor, #e3f167);
+  --sapButton_Hover_TextColor: var(--sapButton_Accept_Hover_TextColor, #256f3a);
+  --sapButton_Active_Background: #fff;
+  --sapButton_Active_BorderColor: var(--sapButton_Accept_Active_BorderColor, #30914c);
+}
+
+/* ── Negative (Reject) ───────────────────────────────────── */
+.fd-button--negative {
+  --sapButton_Background: var(--sapButton_Reject_Background, #ffd6e9);
+  --sapButton_BorderColor: var(--sapButton_Reject_BorderColor, #ffc2de);
+  --sapButton_TextColor: var(--sapButton_Reject_TextColor, #aa0808);
+  --sapButton_Hover_Background: var(--sapButton_Reject_Hover_Background, #ffbddb);
+  --sapButton_Hover_BorderColor: var(--sapButton_Reject_Hover_BorderColor, #ffbddb);
+  --sapButton_Hover_TextColor: var(--sapButton_Reject_Hover_TextColor, #aa0808);
+  --sapButton_Active_Background: #fff;
+  --sapButton_Active_BorderColor: var(--sapButton_Reject_Active_BorderColor, #e90b0b);
+}
+
+/* ── Attention ───────────────────────────────────────────── */
+.fd-button--attention {
+  --sapButton_Background: var(--sapButton_Attention_Background, #fff3b8);
+  --sapButton_BorderColor: var(--sapButton_Attention_BorderColor, #ffeb84);
+  --sapButton_TextColor: var(--sapButton_Attention_TextColor, #b44f00);
+  --sapButton_Hover_Background: var(--sapButton_Attention_Hover_Background, #ffe566);
+  --sapButton_Active_Background: #fff;
+  --sapButton_Active_BorderColor: var(--sapButton_Attention_Active_BorderColor, #e76500);
+}
+
+/* ── Critical ────────────────────────────────────────────── */
+.fd-button--critical {
+  --sapButton_Background: var(--sapCriticalColor, #e76500);
+  --sapButton_BorderColor: var(--sapCriticalColor, #e76500);
+  --sapButton_TextColor: var(--sapContent_ContrastTextColor, #fff);
+  --sapButton_Hover_Background: #dc5c00;
+  --sapButton_Active_Background: #fff;
+  --sapButton_Active_BorderColor: #dc5c00;
+  --sapButton_Active_TextColor: #b44f00;
+}
+
+/* ── Success ─────────────────────────────────────────────── */
+.fd-button--success {
+  --sapButton_Background: var(--sapPositiveColor, #30914c);
+  --sapButton_BorderColor: var(--sapPositiveColor, #30914c);
+  --sapButton_TextColor: var(--sapContent_ContrastTextColor, #fff);
+  --sapButton_Hover_Background: #2d864c;
+  --sapButton_Active_Background: #fff;
+  --sapButton_Active_BorderColor: #30914c;
+  --sapButton_Active_TextColor: #256f3a;
+}
+
+/* ── Neutral / Information ───────────────────────────────── */
+.fd-button--neutral,
+.fd-button--information {
+  --sapButton_Background: var(--sapNeutralBackground, #e8f2ff);
+  --sapButton_BorderColor: var(--sapNeutralBorderColor, #b5d7ff);
+  --sapButton_TextColor: var(--sapNeutralTextColor, #0064d9);
+  --sapButton_Hover_Background: var(--sapNeutralElement_Hover_Background, #d3e8ff);
+  --sapButton_Active_Background: #fff;
+  --sapButton_Active_BorderColor: #0064d9;
+}
+
+/* ── Toggled (pressed) state – used by IconButton ────────── */
+.fd-button--toggled {
+  background: var(--sapButton_Selected_Background, #edf5ff);
+  border-color: var(--sapButton_Selected_BorderColor, #0064d9);
+  color: var(--sapButton_Selected_TextColor, #0064d9);
+}
+
+.fd-button--toggled:hover:not(:disabled) {
+  background: var(--sapButton_Selected_Hover_Background, #d9ecff);
+  border-color: var(--sapButton_Selected_Hover_BorderColor, #0064d9);
+}

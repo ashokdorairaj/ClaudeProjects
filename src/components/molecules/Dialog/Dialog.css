@@ -1,0 +1,172 @@
+/* ── SAP Fiori Dialog ───────────────────────────────────────
+   Figma: SAP-Fiori-for-Web-UI-Kit node 1101:2437
+   Variants: Cozy / Compact × Scrollable / Non-scrollable
+   ─────────────────────────────────────────────────────────── */
+
+/* ── Shell ─────────────────────────────────────────────────── */
+
+.fd-dialog {
+  padding: 0;
+  border: none;
+  border-radius: var(--sapDialog_BorderCornerRadius, 16px);
+  background: var(--sapGroup_ContentBackground, #fff);
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 48px);
+  overflow: hidden;
+
+  /* sapContent_Shadow3 – two-layer drop shadow from Figma */
+  box-shadow: var(
+    --sapContent_Shadow3,
+    0px 0px 0px 1px rgba(34, 53, 72, 0.48),
+    0px 20px 80px 0px rgba(34, 53, 72, 0.25)
+  );
+}
+
+.fd-dialog::backdrop {
+  background: var(--sapBackdropLayer_Background, rgba(0, 0, 0, 0.6));
+}
+
+/* ── Inner flex column ─────────────────────────────────────── */
+
+.fd-dialog__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: calc(100vh - 48px);
+  overflow: hidden;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+
+.fd-dialog__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 16px;
+  min-height: 44px;             /* cozy touch target */
+  flex-shrink: 0;
+  background: var(--sapPageHeader_Background, #fff);
+  position: relative;
+
+  /* Header shadow: drop-shadow below + bottom border via inner shadow */
+  box-shadow:
+    0px 2px 2px 0px rgba(34, 53, 72, 0.05),
+    inset 0px -1px 0px 0px #d9d9d9;
+}
+
+.fd-dialog--compact .fd-dialog__header {
+  padding: 7px 16px;
+  min-height: 40px;             /* compact touch target */
+  gap: 9px;
+}
+
+.fd-dialog__title {
+  flex: 1;
+  margin: 0;
+  font-family: var(--sapFontFamily, '72', Arial, sans-serif);
+  font-size: var(--sapFontHeader4Size, 1rem);
+  font-weight: var(--sapFontHeaderWeight, 600);
+  line-height: 1;
+  color: var(--sapPageHeader_TextColor, #131e29);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Close button ──────────────────────────────────────────── */
+
+.fd-dialog__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  cursor: pointer;
+  color: var(--sapContent_IconColor, #556b82);
+  transition: background 80ms, color 80ms;
+}
+.fd-dialog__close:hover {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+  color: var(--sapTextColor, #131e29);
+}
+.fd-dialog__close:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 2px;
+}
+
+/* ── Body ──────────────────────────────────────────────────── */
+
+.fd-dialog__body {
+  flex: 1;
+  padding: 16px;
+  overflow: hidden;
+  font-family: var(--sapFontFamily, '72', Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTextColor, #131e29);
+}
+
+/* Scrollable variant: body becomes the scroll container */
+.fd-dialog--scrollable .fd-dialog__body {
+  overflow-y: auto;
+
+  /* Custom scrollbar matching Figma scrollbar tokens */
+  scrollbar-width: thin;
+  scrollbar-color: var(--sapScrollBar_FaceColor, #7b91a8) var(--sapScrollBar_TrackColor, #fff);
+}
+
+.fd-dialog--scrollable .fd-dialog__body::-webkit-scrollbar {
+  width: 13px;
+}
+.fd-dialog--scrollable .fd-dialog__body::-webkit-scrollbar-track {
+  background: var(--sapScrollBar_TrackColor, #fff);
+}
+.fd-dialog--scrollable .fd-dialog__body::-webkit-scrollbar-thumb {
+  background: var(--sapScrollBar_FaceColor, #7b91a8);
+  border: 2px solid var(--sapScrollBar_TrackColor, #fff);
+  border-radius: var(--sapElement_BorderCornerRadius, 12px);
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+
+.fd-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  min-height: 44px;             /* cozy */
+  flex-shrink: 0;
+  background: var(--sapPageFooter_Background, #f5f6f7);
+  border-top: var(--sapGroup_TitleBorderWidth, 1px) solid var(--sapPageFooter_BorderColor, #d9d9d9);
+}
+
+.fd-dialog--compact .fd-dialog__footer {
+  padding: 7px 16px;
+  min-height: 40px;             /* compact */
+}
+
+/* ── Resize handle ─────────────────────────────────────────── */
+
+.fd-dialog--resizable {
+  resize: both;
+}
+
+.fd-dialog__resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 3px;
+  pointer-events: none;
+  opacity: 0.5;
+}

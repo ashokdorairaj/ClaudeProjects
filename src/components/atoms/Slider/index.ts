@@ -1,0 +1,4 @@
+export { Slider } from './Slider';
+export type { SliderProps } from './Slider';
+export { RangeSlider } from './RangeSlider';
+export type { RangeSliderProps } from './RangeSlider';

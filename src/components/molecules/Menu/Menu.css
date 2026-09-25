@@ -1,0 +1,139 @@
+/* ── SAP Fiori Menu ─────────────────────────────────────────── */
+
+.fd-menu {
+  position: fixed;
+  z-index: 500;
+  min-width: 180px;
+  background: var(--sapList_Background, #fff);
+  border: 1px solid var(--sapList_BorderColor, #e8e8e8);
+  border-radius: var(--sapPopover_BorderCornerRadius, 8px);
+  box-shadow: var(--sapContent_Shadow2, 0 4px 16px rgba(0, 0, 0, 0.15), 0 1px 4px rgba(0, 0, 0, 0.10));
+  padding: 4px 0;
+  outline: none;
+  overflow: hidden;
+}
+
+/* ── Items ──────────────────────────────────────────── */
+.fd-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fd-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  height: 44px;
+  min-height: 44px;
+  font-family: var(--sapFontFamily, '72', sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: var(--sap-font-weight-normal, 400);
+  color: var(--sapTextColor, #131e29);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  box-sizing: border-box;
+  transition: background 80ms;
+  outline: none;
+}
+
+.fd-menu__item:hover,
+.fd-menu__item:focus-visible {
+  background: var(--sapList_Hover_Background, #eaecee);
+}
+
+.fd-menu__item:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0070f2);
+  outline-offset: -2px;
+}
+
+/* Compact density */
+.fd-menu--compact .fd-menu__item {
+  height: 32px;
+  min-height: 32px;
+  font-size: var(--sapFontSmallSize, 0.875rem);
+}
+
+/* Selected */
+.fd-menu__item--selected {
+  background: var(--sapList_SelectionBackgroundColor, #e3f0ff);
+  color: var(--sapTextColor, #131e29);
+  font-weight: var(--sap-font-weight-semibold, 600);
+}
+
+.fd-menu__item--selected:hover,
+.fd-menu__item--selected:focus-visible {
+  background: var(--sapList_SelectionBackgroundColor, #e3f0ff);
+}
+
+/* Disabled */
+.fd-menu__item--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Icon ───────────────────────────────────────────── */
+.fd-menu__item-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  color: var(--sapContent_IconColor, #556b82);
+  font-size: 1rem;
+}
+
+/* ── Label text ─────────────────────────────────────── */
+.fd-menu__item-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Shortcut ───────────────────────────────────────── */
+.fd-menu__item-shortcut {
+  margin-left: auto;
+  font-size: var(--sapFontSmallSize, 0.875rem);
+  color: var(--sapContent_LabelColor, #556b82);
+  white-space: nowrap;
+  padding-left: 16px;
+  flex-shrink: 0;
+}
+
+/* ── Submenu arrow ──────────────────────────────────── */
+.fd-menu__submenu-arrow {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--sapContent_LabelColor, #556b82);
+  flex-shrink: 0;
+  padding-left: 8px;
+}
+
+.fd-menu__submenu-arrow::after {
+  content: '›';
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* ── Separator ──────────────────────────────────────── */
+.fd-menu__separator {
+  height: 1px;
+  background: var(--sapList_BorderColor, #e8e8e8);
+  margin: 4px 0;
+}
+
+/* ── Nested submenu panel ───────────────────────────── */
+.fd-menu__submenu {
+  position: fixed;
+  z-index: 501;
+  min-width: 160px;
+  background: var(--sapList_Background, #fff);
+  border: 1px solid var(--sapList_BorderColor, #e8e8e8);
+  border-radius: var(--sapPopover_BorderCornerRadius, 8px);
+  box-shadow: var(--sapContent_Shadow2, 0 4px 16px rgba(0, 0, 0, 0.15), 0 1px 4px rgba(0, 0, 0, 0.10));
+  padding: 4px 0;
+  overflow: hidden;
+}

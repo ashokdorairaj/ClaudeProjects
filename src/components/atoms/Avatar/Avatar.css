@@ -1,0 +1,176 @@
+/* ── SAP Fiori Horizon Avatar ───────────────────────────────── */
+
+.fd-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Horizon: fixed 12px corner-radius (rounded square, not circle) */
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: var(--sap-font-family);
+  font-weight: var(--sap-font-weight-semibold, 600);
+  user-select: none;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* ── Sizes (SAP Fiori Horizon spec: XS=24, S=32, M=36, L=48, XL=72, XXL=96) ── */
+.fd-avatar--xs  { width: 24px;  height: 24px;  font-size: 0.625rem;  } /* 10px */
+.fd-avatar--sm  { width: 32px;  height: 32px;  font-size: 0.75rem;   } /* 12px */
+.fd-avatar--md  { width: 36px;  height: 36px;  font-size: 0.875rem;  } /* 14px */
+.fd-avatar--lg  { width: 48px;  height: 48px;  font-size: 1.125rem;  } /* 18px */
+.fd-avatar--xl  { width: 72px;  height: 72px;  font-size: 1.75rem;   } /* 28px */
+.fd-avatar--xxl { width: 96px;  height: 96px;  font-size: 2.25rem;   } /* 36px */
+
+/* ── Colors — Horizon pastel backgrounds with per-color text ── */
+.fd-avatar--color-1  { background: var(--sap-avatar-1-bg,  #fff3b8); color: var(--sap-avatar-1-text,  #a45d00); }
+.fd-avatar--color-2  { background: var(--sap-avatar-2-bg,  #ffd0e7); color: var(--sap-avatar-2-text,  #aa0808); }
+.fd-avatar--color-3  { background: var(--sap-avatar-3-bg,  #ffdbeb); color: var(--sap-avatar-3-text,  #ba066c); }
+.fd-avatar--color-4  { background: var(--sap-avatar-4-bg,  #ffdcf3); color: var(--sap-avatar-4-text,  #a100c2); }
+.fd-avatar--color-5  { background: var(--sap-avatar-5-bg,  #ded3ff); color: var(--sap-avatar-5-text,  #552cff); }
+.fd-avatar--color-6  { background: var(--sap-avatar-6-bg,  #d1efff); color: var(--sap-avatar-6-text,  #0057d2); }
+.fd-avatar--color-7  { background: var(--sap-avatar-7-bg,  #c2fcee); color: var(--sap-avatar-7-text,  #046c7a); }
+.fd-avatar--color-8  { background: var(--sap-avatar-8-bg,  #ebf5cb); color: var(--sap-avatar-8-text,  #256f3a); }
+.fd-avatar--color-9  { background: var(--sap-avatar-9-bg,  #ddccf0); color: var(--sap-avatar-9-text,  #6c32a9); }
+.fd-avatar--color-10 { background: var(--sap-avatar-10-bg, #eaecee); color: var(--sap-avatar-10-text, #556b82); }
+
+/* ── Border ─────────────────────────────────────────────────── */
+.fd-avatar--border {
+  border: 2px solid var(--sap-group-content-border, #d9d9d9);
+}
+
+/* ── Interactive ─────────────────────────────────────────────── */
+.fd-avatar--interactive {
+  cursor: pointer;
+  transition: box-shadow 80ms;
+}
+.fd-avatar--interactive:hover {
+  box-shadow: var(--sap-shadow-md);
+}
+.fd-avatar--interactive:focus-visible {
+  outline: var(--sap-focus-outline, 2px solid var(--sap-brand-color));
+  outline-offset: 2px;
+}
+
+/* ── Image ───────────────────────────────────────────────────── */
+.fd-avatar--image {
+  background: none;
+}
+.fd-avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fd-avatar__initials,
+.fd-avatar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Icon avatar: SAP spec says icon renders at 60% of the avatar's size */
+.fd-avatar__icon {
+  width: 60%;
+  height: 60%;
+  font-size: inherit;
+}
+
+/* ── AvatarBadge ─────────────────────────────────────────────── */
+/* Horizon spec: 12px for XS/S/M avatars; 16px for L/XL/XXL avatars */
+
+.fd-avatar-badge {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid var(--sap-shell-bg, #fff);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  box-sizing: border-box;
+}
+
+/* XS / S / M avatars → 12 px dot */
+.fd-avatar-badge--sm { width: 12px; height: 12px; }
+
+/* L / XL / XXL avatars → 16 px dot */
+.fd-avatar-badge--l  { width: 16px; height: 16px; }
+
+.fd-avatar-badge--positive    { background: var(--sap-positive-color, #107e3e); }
+.fd-avatar-badge--negative    { background: var(--sap-negative-color, #bb0000); }
+.fd-avatar-badge--critical    { background: var(--sap-critical-color, #e9730c); }
+.fd-avatar-badge--information { background: var(--sap-informative-color, #0070f2); }
+.fd-avatar-badge--neutral     { background: var(--sap-neutral-color, #6a6d70); }
+
+/* ── AvatarGroup ─────────────────────────────────────────────── */
+
+.fd-avatar-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+/* Individual: each avatar fully visible, 4px gap */
+.fd-avatar-group--individual {
+  gap: 4px;
+}
+
+/* Group: overlapping avatars (no gap, negative margin) */
+.fd-avatar-group--group {
+  gap: 0;
+}
+
+.fd-avatar-group--group .fd-avatar-group__avatar {
+  margin-left: -12px;
+  transition: margin-left 120ms ease;
+  position: relative;
+  z-index: 0;
+}
+
+.fd-avatar-group--group .fd-avatar-group__avatar:first-child {
+  margin-left: 0;
+}
+
+.fd-avatar-group--group .fd-avatar-group__avatar:hover {
+  z-index: 1;
+}
+
+/* Tighter overlap for smaller sizes */
+.fd-avatar-group--group .fd-avatar--xs { margin-left: -6px;  }
+.fd-avatar-group--group .fd-avatar--sm { margin-left: -8px;  }
+.fd-avatar-group--group .fd-avatar--md { margin-left: -10px; }
+
+/* Overflow badge */
+.fd-avatar-group__overflow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--sap-neutral-element-color, #6a6d70);
+  color: #fff;
+  font-family: var(--sap-font-family);
+  font-weight: var(--sap-font-weight-semibold, 600);
+  font-size: 0.875rem;
+  border: 2px solid var(--sap-group-content-border, #d9d9d9);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.fd-avatar-group--group .fd-avatar-group__overflow {
+  margin-left: -12px;
+}
+
+.fd-avatar-group__overflow--interactive {
+  cursor: pointer;
+  transition: box-shadow 80ms;
+}
+
+.fd-avatar-group__overflow--interactive:hover {
+  box-shadow: var(--sap-shadow-md);
+}
+
+.fd-avatar-group__overflow--interactive:focus-visible {
+  outline: var(--sap-focus-outline, 2px solid var(--sap-brand-color));
+  outline-offset: 2px;
+}

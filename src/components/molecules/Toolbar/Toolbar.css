@@ -1,0 +1,152 @@
+/* ── SAP Fiori Toolbar ───────────────────────────────────────────
+   Design variants: Auto (default), Solid, Transparent, Translucent, Info
+   Modes: cozy (44px), compact/dense (32px)
+   Canonical tokens: --sapToolbar_*, --sapGroup_Title*, --sapInfobar_*,
+                     --sapContent_Focus*, --sapButton_Lite_*
+   ─────────────────────────────────────────────────────────────── */
+
+/* ── Base ────────────────────────────────────────────────── */
+
+.fd-toolbar {
+  display: flex;
+  align-items: center;
+  /* cozy row height per SAP Fiori Horizon spec */
+  min-height: var(--sapElement_Height, 44px);
+  padding: 0 var(--sap-spacing-tiny, 8px);
+  background: var(--sapToolbar_Background, #f5f6f7);
+  border-bottom: 1px solid var(--sapToolbar_SeparatorColor, #d9d9d9);
+  box-sizing: border-box;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+/* ── Compact / Dense (32px) ──────────────────────────────── */
+
+.fd-toolbar--compact {
+  min-height: var(--sapElement_CompactHeight, 32px);
+  padding: 0 6px;
+}
+
+/* ── Design: Solid ───────────────────────────────────────── */
+
+.fd-toolbar--solid {
+  background: var(--sapGroup_TitleBackground, #ffffff);
+  border-bottom-color: var(--sapGroup_TitleBorderColor, #a8b2bc);
+}
+
+/* ── Design: Transparent ─────────────────────────────────── */
+
+.fd-toolbar--transparent {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+/* ── Design: Translucent ─────────────────────────────────── */
+
+.fd-toolbar--translucent {
+  background: var(--sapTranslucentBackground, rgba(245, 246, 247, 0.72));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom-color: var(--sapToolbar_SeparatorColor, #d9d9d9);
+}
+
+/* ── Design: Info ────────────────────────────────────────── */
+
+.fd-toolbar--info {
+  background: var(--sapInfobar_Background, #e8f2ff);
+  border-bottom-color: var(--sapInfobar_BorderColor, #b5d7ff);
+  color: var(--sapInfobar_TextColor, #0064d9);
+}
+
+.fd-toolbar--info .fd-toolbar__title {
+  color: var(--sapInfobar_TextColor, #0064d9);
+}
+
+/* ── Title ───────────────────────────────────────────────── */
+
+.fd-toolbar__title {
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: var(--sap-font-weight-semibold, 600);
+  color: var(--sapGroup_Title_TextColor, #1d2d3e);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+
+/* ── Spacer ──────────────────────────────────────────────── */
+
+.fd-toolbar__spacer {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ── Separator ───────────────────────────────────────────── */
+
+.fd-toolbar__separator {
+  display: inline-block;
+  width: 1px;
+  height: 24px;
+  background: var(--sapToolbar_SeparatorColor, #d9d9d9);
+  margin: 0 4px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* Buttons inside a compact toolbar inherit compact sizing */
+.fd-toolbar--compact .fd-button {
+  min-height: 26px;
+  padding: 5px 8px;
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+.fd-toolbar--compact .fd-button.fd-button--icon-only {
+  width: 26px;
+  min-width: 26px;
+}
+
+/* Separator scales down in compact/dense mode */
+.fd-toolbar--compact .fd-toolbar__separator {
+  height: 16px;
+}
+
+/* ── Overflow button ─────────────────────────────────────── */
+
+.fd-toolbar__overflow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  cursor: pointer;
+  color: var(--sapButton_Lite_TextColor, #0064d9);
+  flex-shrink: 0;
+  transition: background 80ms, border-color 80ms;
+  padding: 0;
+}
+
+.fd-toolbar__overflow-btn:hover {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+  border-color: var(--sapButton_Lite_Hover_BorderColor, #bcc3ca);
+}
+
+.fd-toolbar__overflow-btn:active {
+  background: var(--sapButton_Lite_Active_Background, #ffffff);
+  border-color: var(--sapButton_Lite_Active_BorderColor, #0064d9);
+}
+
+.fd-toolbar__overflow-btn:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid)
+    var(--sapContent_FocusColor, #0070f2);
+  outline-offset: var(--sapContent_FocusOffset, 2px);
+}
+
+/* Compact overflow button */
+.fd-toolbar--compact .fd-toolbar__overflow-btn {
+  width: 26px;
+  height: 26px;
+}

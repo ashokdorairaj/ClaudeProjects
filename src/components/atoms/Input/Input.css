@@ -1,0 +1,175 @@
+/* ── SAP Fiori Input – project token namespace (--sap-input-*) ── */
+/*
+ * Uses the FioriWeb project's own --sap-* token schema defined in
+ * src/tokens/tokens.css. Fallback hex values match Horizon Morning theme.
+ *
+ * Token mapping reference:
+ *   --sap-input-bg          ← sapField_Background
+ *   --sap-input-border      ← sapField_BorderColor
+ *   --sap-input-focus-border ← sapField_Focus_BorderColor
+ *   --sap-input-hover-border ← sapField_Hover_BorderColor
+ *   --sap-input-text        ← sapField_TextColor
+ *   --sap-input-placeholder ← sapField_PlaceholderTextColor
+ *   --sap-input-error-*     ← sapField_Invalid*
+ *   --sap-input-warning-*   ← sapField_Warning*
+ *   --sap-input-success-*   ← sapField_Success*
+ *   --sap-input-info-*      ← sapField_Information*
+ *   --sap-input-disabled-bg/border ← sapField_Disabled_Background/BorderColor
+ */
+
+.fd-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fd-label {
+  font-family: var(--sap-font-family, "72", Arial, sans-serif);
+  font-size: var(--sap-font-size-sm, 0.875rem);
+  color: var(--sap-content-label-color, #556b82);
+  font-weight: var(--sap-font-weight-normal, 400);
+}
+
+.fd-label__required {
+  color: var(--sap-status-negative-color, #aa0808);
+  margin-left: 2px;
+}
+
+.fd-input-wrapper {
+  display: flex;
+  align-items: center;
+  height: var(--sap-element-height, 36px);
+  border: var(--sap-element-border-width, 1px) solid var(--sap-input-border, #8696a9);
+  border-radius: var(--sap-element-border-radius, 12px);
+  background: var(--sap-input-bg, #ffffff);
+  padding: 0 12px;
+  gap: 8px;
+  transition: border-color 80ms, box-shadow 80ms;
+  box-sizing: border-box;
+}
+
+/* Focus ring: 2px ring outside the element, matching Horizon specification */
+.fd-input-wrapper:focus-within {
+  border-color: var(--sap-input-focus-border, #0064d9);
+  outline: 2px solid var(--sap-input-focus-border, #0064d9);
+  outline-offset: 2px;
+}
+
+.fd-input-wrapper:hover:not(.fd-input-wrapper--disabled):not(.fd-input-wrapper--readonly):not(:focus-within) {
+  border-color: var(--sap-input-hover-border, #5b738b);
+}
+
+.fd-input-wrapper--compact {
+  height: var(--sap-element-compact-height, 26px);
+  padding: 0 8px;
+  border-radius: var(--sap-popover-border-radius, 8px);
+}
+
+.fd-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--sap-font-family, "72", Arial, sans-serif);
+  font-size: var(--sap-font-size-sm, 0.875rem);
+  color: var(--sap-input-text, #131e29);
+  min-width: 0;
+}
+
+.fd-input::placeholder {
+  color: var(--sapContent_PlaceholderTextColor, var(--sap-input-placeholder, #8696a9));
+}
+
+/* Disabled state – uses dedicated disabled tokens, NOT read-only tokens */
+.fd-input-wrapper--disabled {
+  background: var(--sap-input-disabled-bg, rgba(255, 255, 255, 0.4));
+  border-color: var(--sap-input-disabled-border, rgba(140, 160, 177, 0.4));
+  opacity: var(--sap-disabled-opacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.fd-input-wrapper--disabled .fd-input {
+  cursor: not-allowed;
+}
+
+/* Read-only state – distinct from disabled; uses neutral surface background */
+.fd-input-wrapper--readonly {
+  background: var(--sap-status-neutral-bg, #f5f6f7);
+  border-color: var(--sap-group-content-border, #d9d9d9);
+}
+
+.fd-input-wrapper--readonly .fd-input {
+  color: var(--sap-input-text, #131e29);
+}
+
+/* ── Value States ─────────────────────────────────────────────
+ * SAP Fiori Horizon requires 2px solid border on all value-state inputs.
+ * ------------------------------------------------------------ */
+.fd-input-wrapper.fd-input--error {
+  border: 2px solid var(--sap-input-error-border, #e90b0b);
+  background: var(--sap-input-error-bg, #fff1f1);
+}
+
+.fd-input-wrapper.fd-input--warning {
+  border: 2px solid var(--sap-input-warning-border, #e76500);
+  background: var(--sap-input-warning-bg, #fff8f5);
+}
+
+.fd-input-wrapper.fd-input--success {
+  border: 2px solid var(--sap-input-success-border, #30914c);
+  background: var(--sap-input-success-bg, #f6fff0);
+}
+
+.fd-input-wrapper.fd-input--information {
+  border: 2px solid var(--sap-input-info-border, #0064d9);
+  background: var(--sap-input-info-bg, #f5faff);
+}
+
+/* ── Icon slots ────────────────────────────────────────── */
+.fd-input__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--sap-content-label-color, #556b82);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Value-state indicator icon (right side, before trailing action) */
+.fd-input__value-state-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.fd-input--error   .fd-input__value-state-icon { color: var(--sap-input-error-border,   #e90b0b); }
+.fd-input--warning .fd-input__value-state-icon { color: var(--sap-input-warning-border, #e76500); }
+.fd-input--success .fd-input__value-state-icon { color: var(--sap-input-success-border, #30914c); }
+.fd-input--information .fd-input__value-state-icon { color: var(--sap-input-info-border, #0064d9); }
+
+/* Trailing action slot (rightmost, e.g. clear button, value-help button) */
+.fd-input__trailing-action {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Supplemental text below the field ─────────────────── */
+.fd-input__description {
+  font-size: var(--sap-font-size-xs, 0.75rem);
+  color: var(--sap-content-label-color, #556b82);
+  margin: 2px 0 0;
+}
+
+.fd-input__message {
+  font-size: var(--sap-font-size-xs, 0.75rem);
+  margin: 2px 0 0;
+}
+
+.fd-input__message--negative    { color: var(--sap-status-negative-color,   #aa0808); }
+.fd-input__message--critical    { color: var(--sap-status-critical-color,   #b44f00); }
+.fd-input__message--positive    { color: var(--sap-status-positive-color,   #1d6332); }
+.fd-input__message--information { color: var(--sap-status-informative-color, #0064d9); }

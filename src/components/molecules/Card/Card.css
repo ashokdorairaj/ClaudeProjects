@@ -1,0 +1,466 @@
+/* ── SAP Fiori Card ────────────────────────────────────────── */
+/* Figma tokens: sapTile_Background, sapTile_BorderColor (transparent),
+   sapTile_BorderCornerRadius (16px), sapContent_Shadow0              */
+
+.fd-card {
+  background: var(--sapTile_Background, var(--sap-card-bg, #ffffff));
+  border: 1px solid var(--sapTile_BorderColor, var(--sap-card-border, transparent));
+  border-radius: var(--sapTile_BorderCornerRadius, var(--sap-card-border-radius, 16px));
+  box-shadow: var(--sap-card-shadow,
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 150ms;
+  box-sizing: border-box;
+  padding-bottom: 16px;
+  position: relative;
+}
+
+.fd-card--interactive {
+  cursor: pointer;
+}
+
+.fd-card--interactive:hover {
+  box-shadow: var(--sap-card-hover-shadow,
+    0 0 0 1px rgba(0, 0, 0, 0.16),
+    0 4px 16px rgba(0, 0, 0, 0.12));
+}
+
+.fd-card--interactive:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 2px;
+}
+
+/* Header — no border, sapTile_Background, 16px padding */
+.fd-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px 16px 24px;
+  background: var(--sapTile_Background, #ffffff);
+  margin-bottom: -24px;
+}
+
+.fd-card--compact .fd-card__header {
+  padding: 12px 12px 20px;
+  gap: 8px;
+}
+
+.fd-card__avatar {
+  flex-shrink: 0;
+}
+
+.fd-card__header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.fd-card__title {
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: var(--sapFontHeader4Size, var(--sap-font-size-md, 1rem));
+  font-weight: var(--sapFontHeaderWeight, 600);
+  color: var(--sapTile_TitleTextColor, #131e29);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fd-card__subtitle {
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapContent_LabelColor, var(--sapTile_TextColor, #556b82));
+  margin-top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fd-card__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* Content */
+.fd-card__content {
+  padding: 16px;
+  flex: 1;
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTextColor, #131e29);
+}
+
+.fd-card--compact .fd-card__content {
+  padding: 10px 12px;
+}
+
+/* Footer — no top border, right-aligned, padding-top 12px */
+.fd-card__footer {
+  padding: 12px 16px 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  background: var(--sapTile_Background, #ffffff);
+}
+
+.fd-card--compact .fd-card__footer {
+  padding: 8px 12px 0;
+}
+
+/* Loading skeleton */
+@keyframes fd-skeleton-shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.fd-card__skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fd-card__skeleton-line {
+  height: 12px;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--sapContent_ImagePlaceholderBackground, #f0f0f0) 25%,
+    var(--sapContent_ForegroundBorderColor, #e0e0e0) 50%,
+    var(--sapContent_ImagePlaceholderBackground, #f0f0f0) 75%
+  );
+  background-size: 800px 12px;
+  animation: fd-skeleton-shimmer 1.5s infinite linear;
+}
+
+.fd-card__skeleton-line--full   { width: 100%; }
+.fd-card__skeleton-line--wide   { width: 80%; }
+.fd-card__skeleton-line--medium { width: 60%; }
+
+/* ─────────────────────────────────────────────────────────
+   CardHeader sub-component
+   ───────────────────────────────────────────────────────── */
+
+.fd-card-header {
+  /* Extends .fd-card__header – interactive variant */
+}
+
+.fd-card-header--interactive {
+  cursor: pointer;
+  transition: background 80ms;
+}
+
+.fd-card-header--interactive:hover {
+  background: var(--sapTile_Hover_Background, #eaecee);
+}
+
+.fd-card-header--interactive:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0070f2);
+  outline-offset: -2px;
+  border-radius: var(--sapTile_BorderCornerRadius, 16px) var(--sapTile_BorderCornerRadius, 16px) 0 0;
+}
+
+.fd-card-header--compact {
+  padding: 8px 12px 6px;
+  gap: 8px;
+}
+
+.fd-card-header__title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.fd-card-header__counter {
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSmallSize, 0.75rem);
+  color: var(--sapContent_LabelColor, #556b82);
+  font-weight: 400;
+  flex-shrink: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.fd-card-header__timestamp {
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSmallSize, 0.75rem);
+  color: var(--sapContent_LabelColor, #556b82);
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.fd-card-header__status {
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSmallSize, 0.75rem);
+  color: var(--sapContent_LabelColor, #556b82);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Action area stacks items column-wise, aligned to top-right */
+.fd-card-header__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.fd-card-header__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.fd-card-header__tag {
+  display: inline-flex;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CardBanner sub-component
+   Colored strip displayed at the top of a card
+   ───────────────────────────────────────────────────────── */
+
+.fd-card-banner {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 6px 16px;
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSmallSize, 0.75rem);
+  border-bottom: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+.fd-card-banner__title {
+  font-weight: 600;
+}
+
+.fd-card-banner__text {
+  font-weight: 400;
+}
+
+/* Banner type variants */
+.fd-card-banner--informative {
+  background: var(--sapInformativeBackground, #e8f3ff);
+  border-bottom-color: var(--sapInformationBorderColor, #b5d7ff);
+  color: var(--sapInformativeTextColor, #0064d9);
+}
+
+.fd-card-banner--positive {
+  background: var(--sapPositiveBackground, #ebf5cb);
+  border-bottom-color: var(--sapSuccessBorderColor, #dbeea1);
+  color: var(--sapPositiveTextColor, #256f3a);
+}
+
+.fd-card-banner--critical {
+  background: var(--sapCriticalBackground, #fff3b8);
+  border-bottom-color: var(--sapWarningBorderColor, #ffeb84);
+  color: var(--sapCriticalTextColor, #b44f00);
+}
+
+.fd-card-banner--negative {
+  background: var(--sapNegativeBackground, #ffd6e9);
+  border-bottom-color: var(--sapErrorBorderColor, #ffc2de);
+  color: var(--sapNegativeTextColor, #aa0808);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Card Media Block — image at the top of card
+   ───────────────────────────────────────────────────────── */
+
+.fd-card-media {
+  flex-shrink: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.fd-card-media__image {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CardNumericHeader — KPI + side indicators
+   ───────────────────────────────────────────────────────── */
+
+.fd-card-numeric-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 16px;
+  background: var(--sapTile_Background, #ffffff);
+}
+
+.fd-card-numeric-header__top {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.fd-card-numeric-header__kpi-area {
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.fd-card-numeric-header__kpi {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 48px;
+}
+
+.fd-card-numeric-header__value {
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontHeader1Size, 2.25rem); /* 36px */
+  font-weight: 300;
+  color: var(--sapNeutralTextColor, #1d2d3e);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.fd-card-numeric-header__scale {
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 700;
+  color: var(--sapNeutralTextColor, #1d2d3e);
+  align-self: flex-end;
+  padding-bottom: 6px;
+}
+
+.fd-card-numeric-header__spacer {
+  flex: 1;
+  min-width: 16px;
+  max-width: 48px;
+}
+
+.fd-card-numeric-header__indicators {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.fd-card-numeric-header__indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.fd-card-numeric-header__indicator-label {
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapContent_LabelColor, #556b82);
+  white-space: nowrap;
+}
+
+.fd-card-numeric-header__indicator-value {
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapNeutralTextColor, #1d2d3e);
+  white-space: nowrap;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.fd-card-numeric-header__indicator-value--positive {
+  color: var(--sapPositiveColor, #256f3a);
+}
+
+.fd-card-numeric-header__indicator-value--negative {
+  color: var(--sapNegativeColor, #aa0808);
+}
+
+.fd-card-numeric-header__indicator-value--critical {
+  color: var(--sapCriticalColor, #b44f00);
+}
+
+.fd-card-numeric-header__label {
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapContent_LabelColor, #556b82);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Card Badge Overlay — top-right badges floating at card top edge
+   ───────────────────────────────────────────────────────── */
+
+.fd-card__badge-overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CardBadge sub-component
+   Small overlay badge for card corners
+   ───────────────────────────────────────────────────────── */
+
+.fd-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 4px;
+  border-radius: 16px;
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSmallSize, 0.75rem);
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+  min-height: 18px;
+  background: var(--sapHighlightColor, #0064d9);
+  color: var(--sapContent_ContrastTextColor, #ffffff);
+}
+
+.fd-card-badge__icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+/* Badge color variants */
+.fd-card-badge--neutral {
+  background: var(--sapNeutralBackground, #eaecee);
+  color: var(--sapTextColor, #131e29);
+}
+
+.fd-card-badge--informative {
+  background: var(--sapInformativeBackground, #e8f3ff);
+  color: var(--sapInformativeTextColor, #0064d9);
+}
+
+.fd-card-badge--positive {
+  background: var(--sapPositiveBackground, #ebf5cb);
+  color: var(--sapPositiveTextColor, #256f3a);
+}
+
+.fd-card-badge--critical {
+  background: var(--sapCriticalBackground, #fff3b8);
+  color: var(--sapCriticalTextColor, #b44f00);
+}
+
+.fd-card-badge--negative {
+  background: var(--sapNegativeBackground, #ffd6e9);
+  color: var(--sapNegativeTextColor, #aa0808);
+}

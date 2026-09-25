@@ -1,0 +1,82 @@
+/* ── SAP Fiori Progress Indicator ─────────────────────────── */
+/* Matches Figma file V6wSQ73uQKzM7nChBBYJ5F, page "❖ Progress Indicator" */
+
+.fd-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Disabled state: matches --sapContent_DisabledOpacity (0.4) */
+.fd-progress--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  pointer-events: none;
+}
+
+/* ── Text label (shown above the bar in Figma) ─────────────
+   Figma: font-size 14px, color --sapProgress_TextColor (#131e29)
+   Displayed to the right of the bar in our inline layout.   */
+.fd-progress__value {
+  font-family: var(--sap-font-family, "72", Arial, sans-serif);
+  font-size: var(--sap-font-size-sm, 0.875rem);  /* 14px – matches Figma */
+  color: var(--sapProgress_TextColor, #131e29);
+  min-width: 40px;
+  text-align: right;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Track wrapper ─────────────────────────────────────────
+   Figma: outer container is 16px tall; track is 6px tall
+   (vertically centred inside); fill bar is 10px tall.      */
+.fd-progress__track {
+  position: relative;
+  flex: 1;
+  height: 16px;   /* outer wrapper – matches Figma "Progress Indicator" frame */
+  display: flex;
+  align-items: center;
+}
+
+/* 6px track rail (centred inside the 16px wrapper) */
+.fd-progress__rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  border-radius: 4px;
+  background: var(--sapProgress_Background, #d5dadd);
+  border: 1px solid var(--sapProgress_BorderColor, #d5dadd);
+}
+
+/* 10px fill bar (centred inside the 16px wrapper) */
+.fd-progress__fill {
+  position: relative;
+  height: 10px;
+  border-radius: 8px;
+  background: var(--sapProgress_Value_Background, #617b94);
+  border: 1px solid var(--sapProgress_Value_BorderColor, #617b94);
+  transition: width 300ms ease;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+/* ── Value states: track rail ──────────────────────────────── */
+.fd-progress--positive  .fd-progress__rail { background: var(--sapProgress_PositiveBackground, #e5f2ba);     border-color: var(--sapProgress_PositiveBorderColor, #e5f2ba); }
+.fd-progress--negative  .fd-progress__rail { background: var(--sapProgress_NegativeBackground, #ffdbec);    border-color: var(--sapProgress_NegativeBorderColor, #ffdbec); }
+.fd-progress--critical  .fd-progress__rail { background: var(--sapProgress_CriticalBackground, #fff4bd);    border-color: var(--sapProgress_CriticalBorderColor, #fff4bd); }
+.fd-progress--information .fd-progress__rail { background: var(--sapProgress_InformationBackground, #cdedff); border-color: var(--sapProgress_InformationBorderColor, #cdedff); }
+
+/* ── Value states: fill bar ────────────────────────────────── */
+.fd-progress--positive  .fd-progress__fill { background: var(--sapProgress_Value_PositiveBackground, #30914c);     border-color: var(--sapProgress_Value_PositiveBorderColor, #30914c); }
+.fd-progress--negative  .fd-progress__fill { background: var(--sapProgress_Value_NegativeBackground, #f53232);    border-color: var(--sapProgress_Value_NegativeBorderColor, #f53232); }
+.fd-progress--critical  .fd-progress__fill { background: var(--sapProgress_Value_CriticalBackground, #e76500);    border-color: var(--sapProgress_Value_CriticalBorderColor, #e76500); }
+.fd-progress--information .fd-progress__fill { background: var(--sapProgress_Value_InformationBackground, #0070f2); border-color: var(--sapProgress_Value_InformationBorderColor, #0070f2); }
+
+/* ── Value-state text label overrides ────────────────────── */
+.fd-progress--positive  .fd-progress__value { color: var(--sapProgress_PositiveTextColor, #131e29); }
+.fd-progress--negative  .fd-progress__value { color: var(--sapProgress_NegativeTextColor, #131e29); }
+.fd-progress--critical  .fd-progress__value { color: var(--sapProgress_CriticalTextColor, #131e29); }
+.fd-progress--information .fd-progress__value { color: var(--sapProgress_InformationTextColor, #131e29); }

@@ -1,0 +1,166 @@
+/* ── SAP Fiori Carousel ──────────────────────────────────── */
+/* Figma: content area + Page Indicator bar (sapPageFooter_Background)
+   On Bar: nav buttons inside indicator row (same height 56px)
+   On Image: nav buttons overlaid on content
+   Dots: active=8px, inactive=4px, each in 16px container          */
+
+.fd-carousel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--sapFontFamily, inherit);
+  overflow: hidden;
+}
+
+/* ── Viewport ── */
+.fd-carousel__viewport {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* ── Track ── */
+.fd-carousel__track {
+  display: flex;
+  transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* ── Page (one visible "window" worth of slides) */
+.fd-carousel__page {
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* ── Individual slide ── */
+.fd-carousel__slide {
+  box-sizing: border-box;
+}
+
+/* ── Page Indicator bar (On Bar + On Content) ──────────── */
+.fd-carousel__bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  min-height: 56px;
+  padding: 0 16px;
+  background: var(--sapPageFooter_Background, #ffffff);
+  border-top: 1px solid var(--sapList_BorderColor, #e5e5e5);
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fd-carousel__bar--top {
+  border-top: none;
+  border-bottom: 1px solid var(--sapList_BorderColor, #e5e5e5);
+  order: -1;
+}
+
+/* ── Nav buttons (circular, bordered) ─────────────────── */
+.fd-carousel__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 20px;
+  border: 1px solid var(--sapButton_BorderColor, #bcc3ca);
+  background: transparent;
+  color: var(--sapTextColor, #131e29);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 80ms;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.fd-carousel__btn:hover:not(:disabled) {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+  border-color: var(--sapButton_Hover_BorderColor, #bcc3ca);
+}
+
+.fd-carousel__btn:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 2px;
+}
+
+.fd-carousel__btn:disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+}
+
+/* ── On Image: buttons overlaid on content ─────────────── */
+.fd-carousel--on-image .fd-carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: var(--sapButton_Background, rgba(255, 255, 255, 0.9));
+  box-shadow: var(--sapContent_Shadow1, 0 1px 4px rgba(34, 53, 72, 0.16));
+}
+
+.fd-carousel--on-image .fd-carousel__btn--prev {
+  left: 8px;
+}
+
+.fd-carousel--on-image .fd-carousel__btn--next {
+  right: 8px;
+}
+
+/* ── Dots row ───────────────────────────────────────────── */
+.fd-carousel__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Each dot has a fixed 16px container */
+.fd-carousel__dot-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0 6px;
+  border-radius: 1000px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+}
+
+.fd-carousel__dot-wrap:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 1px;
+}
+
+/* Inactive dot: 4×4px */
+.fd-carousel__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--sapContent_NonInteractiveIconColor, #bcc3ca);
+  flex-shrink: 0;
+  transition: width 200ms, height 200ms, background 200ms;
+}
+
+/* Active dot: 8×8px */
+.fd-carousel__dot--active {
+  width: 8px;
+  height: 8px;
+  background: var(--sapContent_Selected_ForegroundColor, #0064d9);
+}
+
+/* ── Numbers indicator ──────────────────────────────────── */
+.fd-carousel__page-indicator {
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTextColor, #131e29);
+  white-space: nowrap;
+  user-select: none;
+}

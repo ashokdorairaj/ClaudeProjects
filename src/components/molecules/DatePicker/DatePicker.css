@@ -1,0 +1,443 @@
+/* ── SAP Fiori DatePicker – canonical --sapField_* tokens ─── */
+
+/* Container */
+.fd-datepicker-container {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+}
+
+/* Label */
+.fd-datepicker__label {
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: var(--sapFontHeaderWeight, 600);
+  color: var(--sapContent_LabelColor, #556b82);
+}
+
+/* Input group */
+.fd-datepicker {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--sapField_BorderColor, #8696a9);
+  border-radius: var(--sapField_BorderCornerRadius, 12px);
+  background: var(--sapField_Background, #fff);
+  overflow: hidden;
+  transition: border-color 120ms, box-shadow 120ms;
+  cursor: text;
+}
+
+.fd-datepicker:focus-within {
+  border-color: var(--sapField_Active_BorderColor, #0064d9);
+  box-shadow: var(--sapContent_Shadow0, 0 0 0 2px var(--sapBrandColor, #0070f2));
+  outline: none;
+}
+
+.fd-datepicker:hover:not(.fd-datepicker--disabled):not(:focus-within) {
+  border-color: var(--sapField_Hover_BorderColor, #8696a9);
+}
+
+/* Value states */
+.fd-datepicker--positive  { border-color: var(--sapField_SuccessColor, #30914c); background: var(--sapField_SuccessBackground, #f6fff0); }
+.fd-datepicker--negative  { border-color: var(--sapField_InvalidColor, #e90b0b); background: var(--sapField_InvalidBackground, #fff1f1); }
+.fd-datepicker--critical  { border-color: var(--sapField_WarningColor, #e76500); background: var(--sapField_WarningBackground, #fff8f5); }
+.fd-datepicker--information { border-color: var(--sapField_InformationColor, #0064d9); background: var(--sapField_InformationBackground, #f5faff); }
+
+/* Disabled */
+.fd-datepicker--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  pointer-events: none;
+  background: var(--sapField_ReadOnly_Background, rgba(255,255,255,0.4));
+  border-color: var(--sapField_ReadOnly_BorderColor, rgba(140,160,177,0.4));
+}
+
+/* Text input inside the picker */
+.fd-datepicker__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0 12px;
+  height: var(--sapElement_Height, var(--sap-element-height, 36px));
+  font-family: var(--sapFontFamily, var(--sap-font-family, "72", Arial, sans-serif));
+  font-size: var(--sapFontSize, var(--sap-font-size-sm, 0.875rem));
+  color: var(--sapField_TextColor, var(--sap-input-text, #131e29));
+  cursor: pointer;
+  min-width: 0;
+}
+
+.fd-datepicker__input::placeholder {
+  color: var(--sapField_PlaceholderTextColor, var(--sap-input-placeholder, #8696a9));
+}
+
+.fd-datepicker--compact .fd-datepicker__input {
+  height: var(--sapElement_CompactHeight, var(--sap-element-compact-height, 26px));
+  font-size: var(--sapFontSmallSize, var(--sap-font-size-xs, 0.75rem));
+  padding: 0 8px;
+}
+
+/* Calendar icon button */
+.fd-datepicker__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sapElement_Height, var(--sap-element-height, 36px));
+  height: var(--sapElement_Height, var(--sap-element-height, 36px));
+  border: none;
+  border-left: 1px solid var(--sapGroup_ContentBorderColor, var(--sap-group-content-border, #d9d9d9));
+  background: transparent;
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+  cursor: pointer;
+  flex-shrink: 0;
+  border-radius: 0 var(--sapField_BorderCornerRadius, var(--sap-element-border-radius, 12px)) var(--sapField_BorderCornerRadius, var(--sap-element-border-radius, 12px)) 0;
+  transition: background 120ms;
+}
+
+.fd-datepicker__icon-btn:hover {
+  background: var(--sapButton_Lite_Hover_Background, var(--sap-btn-lite-hover-bg, #eaecee));
+}
+
+.fd-datepicker--compact .fd-datepicker__icon-btn {
+  width: var(--sapElement_CompactHeight, var(--sap-element-compact-height, 26px));
+  height: var(--sapElement_CompactHeight, var(--sap-element-compact-height, 26px));
+}
+
+/* Range picker content */
+.fd-datepicker--range {
+  padding: 0 12px;
+  gap: 8px;
+  min-height: var(--sapElement_Height, 36px);
+  cursor: pointer;
+  user-select: none;
+}
+
+.fd-datepicker--range.fd-datepicker--compact {
+  min-height: var(--sapElement_CompactHeight, 26px);
+  padding: 0 8px;
+  gap: 4px;
+}
+
+.fd-datepicker__range-value {
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapField_TextColor, #131e29);
+  white-space: nowrap;
+}
+
+.fd-datepicker__range-sep {
+  color: var(--sapContent_LabelColor, #556b82);
+  flex-shrink: 0;
+}
+
+.fd-datepicker__placeholder {
+  color: var(--sapField_PlaceholderTextColor, #8696a9);
+}
+
+/* Floating popover */
+.fd-datepicker__popover {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 300;
+  background: var(--sapGroup_ContentBackground, #fff);
+  border: 1px solid var(--sapGroup_ContentBorderColor, var(--sap-group-content-border, #d9d9d9));
+  border-radius: var(--sapPopover_BorderCornerRadius, var(--sap-popover-border-radius, 8px));
+  box-shadow: var(--sapContent_Shadow2, var(--sap-shadow-lg, 0 4px 16px rgba(0,0,0,0.12)));
+  padding: 8px;
+  min-width: 280px;
+}
+
+/* ── Range popover: two-month side-by-side layout ─────────── */
+
+.fd-datepicker__popover--range {
+  padding: 0;
+  min-width: unset;
+}
+
+.fd-daterangepicker__two-month {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 0;
+}
+
+.fd-daterangepicker__month-col {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Navigation arrow overlay: each column owns prev/next */
+.fd-daterangepicker__nav {
+  position: absolute;
+  top: 8px;
+  left: 4px;
+  z-index: 2;
+}
+
+.fd-daterangepicker__nav--right {
+  left: auto;
+  right: 4px;
+}
+
+.fd-daterangepicker__divider {
+  width: 1px;
+  background: var(--sapGroup_ContentBorderColor, var(--sap-group-content-border, #d9d9d9));
+  align-self: stretch;
+  flex-shrink: 0;
+  margin: 8px;
+}
+
+/* Hide internal nav buttons when calendar is embedded in DateRangePicker */
+.fd-daterangepicker__calendar .fd-calendar__nav-btn {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Show the left-most nav on the left calendar and the right-most on the right calendar */
+.fd-daterangepicker__calendar--left .fd-calendar__nav-btn:first-child {
+  visibility: hidden;
+}
+
+.fd-daterangepicker__calendar--right .fd-calendar__nav-btn:last-child {
+  visibility: hidden;
+}
+
+/* Ensure calendars don't have a separate shadow/border inside range popover */
+.fd-daterangepicker__calendar {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+
+/* ── DateTime popover layout ─────────────────────────────── */
+
+.fd-datepicker__popover--datetime {
+  padding: 0;
+  min-width: unset;
+}
+
+.fd-datetime__body {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  padding: 16px;
+}
+
+.fd-datetime__separator {
+  width: 1px;
+  background: var(--sapGroup_ContentBorderColor, #d9d9d9);
+  align-self: stretch;
+  flex-shrink: 0;
+  margin: 0 16px;
+}
+
+/* ── Time section (right column) ────────────────────────── */
+
+.fd-datetime__time-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* ── Hours / minutes display row ────────────────────────── */
+
+.fd-datetime__hm-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.fd-datetime__hm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 41px;
+  height: 41px;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontHeader4Size, 1.25rem);
+  font-weight: 600;
+  color: var(--sapTextColor, #131e29);
+  background: var(--sapField_Background, #fff);
+  border: 1px solid var(--sapField_BorderColor, #8696a9);
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  cursor: pointer;
+  transition: background 80ms;
+}
+
+.fd-datetime__hm-btn--active {
+  background: var(--sapButton_Selected_Background, #edf6ff);
+  border-color: var(--sapButton_Selected_BorderColor, #0064d9);
+  color: var(--sapButton_Selected_TextColor, #0064d9);
+}
+
+.fd-datetime__hm-btn:hover:not(.fd-datetime__hm-btn--active) {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+}
+
+.fd-datetime__hm-sep {
+  font-size: var(--sapFontHeader4Size, 1.25rem);
+  font-weight: 600;
+  color: var(--sapTextColor, #131e29);
+  padding: 0 2px;
+  line-height: 1;
+}
+
+/* ── AM / PM segmented ──────────────────────────────────── */
+
+.fd-datetime__ampm {
+  display: flex;
+  margin-left: 8px;
+  border: 1px solid var(--sapField_BorderColor, #8696a9);
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  overflow: hidden;
+}
+
+.fd-datetime__ampm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 41px;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSmallSize, 0.8125rem);
+  font-weight: 600;
+  color: var(--sapTextColor, #131e29);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 80ms;
+}
+
+.fd-datetime__ampm-btn + .fd-datetime__ampm-btn {
+  border-left: 1px solid var(--sapField_BorderColor, #8696a9);
+}
+
+.fd-datetime__ampm-btn--selected {
+  background: var(--sapButton_Selected_Background, #edf6ff);
+  color: var(--sapButton_Selected_TextColor, #0064d9);
+}
+
+.fd-datetime__ampm-btn:hover:not(.fd-datetime__ampm-btn--selected) {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+}
+
+/* ── Clock face ─────────────────────────────────────────── */
+
+.fd-clock {
+  position: relative;
+  width: 288px;
+  height: 288px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--sapGroup_ContentBackground, #fff);
+  border: 1px solid var(--sapGroup_ContentBorderColor, #e8e8e8);
+}
+
+.fd-clock__center-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSmallSize, 0.8125rem);
+  color: var(--sapContent_LabelColor, #556b82);
+  pointer-events: none;
+  user-select: none;
+}
+
+.fd-clock__number {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 400;
+  color: var(--sapTextColor, #131e29);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 22px;
+  cursor: pointer;
+  transition: background 80ms, border-color 80ms, color 80ms;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.fd-clock__number:hover:not(.fd-clock__number--selected) {
+  background: var(--sapList_Hover_Background, #eaecee);
+  border-color: var(--sapField_BorderColor, #8696a9);
+}
+
+.fd-clock__number--selected {
+  background: var(--sapButton_Selected_Background, #edf6ff);
+  border-color: var(--sapButton_Selected_BorderColor, #0064d9);
+  color: var(--sapButton_Selected_TextColor, #0064d9);
+  font-weight: 600;
+}
+
+/* ── DateTime footer ────────────────────────────────────── */
+
+.fd-datetime__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 4px 16px;
+  background: var(--sapPageFooter_Background, #f5f6f7);
+  border-top: 1px solid var(--sapPageFooter_BorderColor, #d9d9d9);
+  border-radius: 0 0 var(--sapPopover_BorderCornerRadius, 8px) var(--sapPopover_BorderCornerRadius, 8px);
+}
+
+.fd-datetime__footer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 16px;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 600;
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  cursor: pointer;
+  transition: background 80ms;
+  color: var(--sapButton_Lite_TextColor, #0064d9);
+  background: var(--sapButton_Lite_Background, transparent);
+  border: 1px solid var(--sapButton_Lite_BorderColor, transparent);
+}
+
+.fd-datetime__footer-btn:hover {
+  background: var(--sapButton_Lite_Hover_Background, #eaecee);
+}
+
+.fd-datetime__footer-btn--emphasized {
+  color: var(--sapButton_Emphasized_TextColor, #fff);
+  background: var(--sapButton_Emphasized_Background, #0070f2);
+  border-color: var(--sapButton_Emphasized_BorderColor, #0064d9);
+}
+
+.fd-datetime__footer-btn--emphasized:hover {
+  background: var(--sapButton_Emphasized_Hover_Background, #0064d9);
+  border-color: var(--sapButton_Emphasized_Hover_BorderColor, #0064d9);
+}
+
+/* ── State message ───────────────────────────────────────── */
+
+.fd-datepicker__state-msg {
+  font-size: var(--sapFontSmallSize, 0.75rem);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.fd-datepicker__state-msg--positive    { color: var(--sapField_SuccessColor, #30914c); }
+.fd-datepicker__state-msg--negative    { color: var(--sapField_InvalidColor, #e90b0b); }
+.fd-datepicker__state-msg--critical    { color: var(--sapField_WarningColor, #e76500); }
+.fd-datepicker__state-msg--information { color: var(--sapField_InformationColor, #0064d9); }

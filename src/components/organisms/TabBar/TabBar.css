@@ -1,0 +1,330 @@
+/* ── SAP Fiori Tab Bar – canonical tokens ────────────────────── */
+
+.fd-tab-bar {
+  display: flex;
+  align-items: stretch;
+  background: var(--sapTab_Background, var(--sapList_Background, #ffffff));
+  border-bottom: 1px solid var(--sapGroup_ContentBorderColor, #d9d9d9);
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ── Tab list ────────────────────────────────────────────── */
+
+.fd-tab-bar__tabs {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Individual Tab ──────────────────────────────────────── */
+
+.fd-tab-bar__tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 44px;
+  padding: 0 3px;
+  position: relative;
+  cursor: pointer;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTab_TextColor, #131e29);
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: color 80ms, background 80ms;
+  flex-shrink: 0;
+  user-select: none;
+  outline: none;
+}
+
+/* Inner content row (icon + label + counter) */
+.fd-tab-bar__tab-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  padding: 0 13px;
+  /* reserve 3px at bottom for the selection bar */
+  margin-bottom: 3px;
+}
+
+.fd-tab-bar--compact .fd-tab-bar__tab {
+  height: 32px;
+  font-size: var(--sapFontSmallSize, 0.8125rem);
+}
+
+.fd-tab-bar--compact .fd-tab-bar__tab-inner {
+  padding: 0 9px;
+}
+
+.fd-tab-bar__tab:hover:not(.fd-tab-bar__tab--disabled) {
+  background: var(--sapList_Hover_Background, #eaecee);
+  color: var(--sapTab_Selected_TextColor, #0064d9);
+}
+
+.fd-tab-bar__tab:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: -2px;
+}
+
+.fd-tab-bar__tab--selected {
+  color: var(--sapTab_Selected_TextColor, #0064d9);
+  font-weight: var(--sapFontHeaderWeight, 700);
+}
+
+.fd-tab-bar__tab--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.fd-tab-bar__tab--hidden {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+}
+
+/* ── Value State Semantics ───────────────────────────────── */
+
+.fd-tab-bar__tab--positive {
+  color: var(--sapTab_Positive_TextColor, #256f3a);
+}
+
+.fd-tab-bar__tab--positive.fd-tab-bar__tab--selected {
+  color: var(--sapTab_Positive_Selected_TextColor, #256f3a);
+}
+
+.fd-tab-bar__tab--positive .fd-tab-bar__indicator {
+  background: var(--sapTab_Positive_ForegroundColor, #30914c);
+}
+
+.fd-tab-bar__tab--negative {
+  color: var(--sapTab_Negative_TextColor, #aa0808);
+}
+
+.fd-tab-bar__tab--negative.fd-tab-bar__tab--selected {
+  color: var(--sapTab_Negative_Selected_TextColor, #aa0808);
+}
+
+.fd-tab-bar__tab--negative .fd-tab-bar__indicator {
+  background: var(--sapTab_Negative_ForegroundColor, #f53232);
+}
+
+.fd-tab-bar__tab--critical {
+  color: var(--sapTab_Critical_TextColor, #b44f00);
+}
+
+.fd-tab-bar__tab--critical.fd-tab-bar__tab--selected {
+  color: var(--sapTab_Critical_Selected_TextColor, #b44f00);
+}
+
+.fd-tab-bar__tab--critical .fd-tab-bar__indicator {
+  background: var(--sapTab_Critical_ForegroundColor, #e76500);
+}
+
+.fd-tab-bar__tab--information {
+  color: var(--sapInformativeColor, #0064d9);
+}
+
+/* ── Tab Selection Bar (indicator) ──────────────────────── */
+/*
+  Figma: absolute element at bottom of tab, 3px high,
+  border-radius 2px top-left + top-right,
+  color = --sapTab_ForegroundColor (#0064d9).
+  Only visible on selected tab.
+*/
+
+.fd-tab-bar__indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--sapTab_Selected_Indicator_Dimension, 3px);
+  border-radius: 2px 2px 0 0;
+  background: var(--sapTab_ForegroundColor, #0064d9);
+  display: none;
+}
+
+.fd-tab-bar__tab--selected .fd-tab-bar__indicator {
+  display: block;
+}
+
+/* ── Icon ────────────────────────────────────────────────── */
+
+.fd-tab-bar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ── Icon-Only tabs: circular pill ──────────────────────── */
+/*
+  Figma: icon-only tabs use a circular container.
+  Inactive: white background, 2px border in state colour.
+  Active:   filled background + border in state colour.
+  The selection bar is still shown at the very bottom.
+*/
+
+.fd-tab-bar--icon .fd-tab-bar__tab {
+  justify-content: center;
+  padding: 0 3px;
+  /* taller to accommodate the pill + indicator */
+  height: auto;
+  min-height: 44px;
+}
+
+.fd-tab-bar--icon.fd-tab-bar--compact .fd-tab-bar__tab {
+  min-height: 32px;
+}
+
+/* ── Counter & Additional Text ───────────────────────────── */
+
+.fd-tab-bar__counter {
+  font-size: var(--sapFontSmallSize, 0.8125rem);
+  color: var(--sapContent_LabelColor, #556b82);
+  /* counter appears inline — no parentheses in CSS, rendered in TSX */
+}
+
+.fd-tab-bar__additional-text {
+  font-size: var(--sapFontSmallSize, 0.8125rem);
+  color: var(--sapContent_LabelColor, #556b82);
+}
+
+/* ── Badge ───────────────────────────────────────────────── */
+/*
+  Figma: tiny 6px dot at top-right corner of tab, offset slightly outside.
+  Not a count bubble — just a presence dot.
+  For text inline tabs: position: absolute, right: -5px, top: 15px, 6×6px.
+*/
+
+.fd-tab-bar__badge {
+  position: absolute;
+  top: 15px;
+  right: -5px;
+  width: 6px;
+  height: 6px;
+  background: var(--sapIndicationColor_8_Background, #a100c2);
+  border-radius: 50%;
+  box-sizing: border-box;
+  /* For count badges (badge prop is a string), show the text in a pill */
+}
+
+/* When badge has text content (count), switch to pill shape */
+.fd-tab-bar__badge:not(:empty) {
+  width: auto;
+  height: 16px;
+  min-width: 16px;
+  padding: 0 4px;
+  top: 4px;
+  right: 4px;
+  background: var(--sapNegativeColor, #aa0808);
+  color: var(--sapButton_Negative_TextColor, #fff);
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ── Overflow ────────────────────────────────────────────── */
+
+.fd-tab-bar__overflow-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid var(--sapGroup_ContentBorderColor, #d9d9d9);
+}
+
+.fd-tab-bar__overflow-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 44px;
+  padding: 0 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTab_TextColor, #131e29);
+  transition: background 80ms, color 80ms;
+  white-space: nowrap;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+}
+
+.fd-tab-bar--compact .fd-tab-bar__overflow-btn {
+  height: 32px;
+  font-size: var(--sapFontSmallSize, 0.8125rem);
+}
+
+.fd-tab-bar__overflow-btn:hover {
+  background: var(--sapList_Hover_Background, #eaecee);
+  color: var(--sapTab_Selected_TextColor, #0064d9);
+}
+
+.fd-tab-bar__overflow-btn:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: -2px;
+}
+
+/* chevron icon inside overflow button */
+.fd-tab-bar__overflow-chevron {
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.fd-tab-bar__overflow-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 200;
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 4px 0;
+  background: var(--sapList_Background, #ffffff);
+  border: 1px solid var(--sapGroup_ContentBorderColor, #d9d9d9);
+  border-radius: var(--sapPopover_BorderCornerRadius, 8px);
+  box-shadow: var(--sapContent_Shadow1, 0 2px 8px rgba(0,0,0,0.08));
+  min-width: 160px;
+}
+
+.fd-tab-bar__overflow-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTab_TextColor, #131e29);
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  transition: background 80ms;
+}
+
+.fd-tab-bar__overflow-item:hover {
+  background: var(--sapList_Hover_Background, #eaecee);
+}
+
+.fd-tab-bar__overflow-item--selected {
+  color: var(--sapTab_Selected_TextColor, #0064d9);
+  font-weight: var(--sapFontHeaderWeight, 700);
+}
+
+.fd-tab-bar__overflow-item--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+}

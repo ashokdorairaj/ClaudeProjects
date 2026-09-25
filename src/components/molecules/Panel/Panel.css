@@ -1,0 +1,129 @@
+/* ── SAP Fiori Panel ─────────────────────────────────────── */
+/* Figma tokens: sapGroup_TitleBackground, sapGroup_ContentBorderColor,
+   sapGroup_BorderCornerRadius (8px), sapContent_Shadow0             */
+
+.fd-panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--sapGroup_ContentBackground, var(--sap-group-content-bg, #ffffff));
+  border: 1px solid var(--sapGroup_ContentBorderColor, var(--sap-group-content-border, #d9d9d9));
+  border-radius: var(--sapGroup_BorderCornerRadius, 8px);
+  overflow: hidden;
+  box-shadow: var(--sap-shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.08));
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+
+.fd-panel__header {
+  display: flex;
+  align-items: center;
+  min-height: var(--sap-element-line-height, 44px);
+  padding: 0 8px 0 0;
+  background: var(--sapGroup_TitleBackground, var(--sap-group-title-bg, #ffffff));
+  border-bottom: 1px solid var(--sapGroup_ContentBorderColor, var(--sap-group-content-border, #d9d9d9));
+  gap: 8px;
+  user-select: none;
+}
+
+.fd-panel--compact .fd-panel__header {
+  min-height: var(--sap-element-compact-line-height, 32px);
+}
+
+/* ── Toggle button ───────────────────────────────────────── */
+
+.fd-panel__toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--sap-element-height, 36px);
+  min-height: var(--sap-element-line-height, 44px);
+  border-radius: var(--sapButton_BorderCornerRadius, var(--sap-popover-border-radius, 8px));
+  border: 1px solid transparent;
+  background: var(--sapButton_Lite_Background, transparent);
+  cursor: pointer;
+  color: var(--sapContent_IconColor, var(--sap-content-label-color, #556b82));
+  font-size: var(--sapFontSize, var(--sap-font-size-sm, 0.875rem));
+  transition: background 120ms, color 120ms, border-color 120ms;
+  padding: 0;
+}
+
+.fd-panel--compact .fd-panel__toggle-btn {
+  width: var(--sap-element-compact-height, 26px);
+  min-height: var(--sap-element-compact-line-height, 32px);
+}
+
+.fd-panel__toggle-btn:hover {
+  background: var(--sapButton_Lite_Hover_Background, var(--sap-hover-color, #eaecee));
+  border-color: var(--sapButton_Lite_Hover_BorderColor, transparent);
+  color: var(--sapButton_Lite_Hover_TextColor, var(--sap-highlight-color, #0064d9));
+}
+
+.fd-panel__toggle-btn:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, var(--sap-brand-color, #0070f2));
+  outline-offset: 1px;
+}
+
+.fd-panel__toggle-icon {
+  display: inline-block;
+  transition: transform 200ms ease;
+  line-height: 1;
+}
+
+.fd-panel__toggle-icon--collapsed {
+  transform: rotate(-90deg);
+}
+
+/* ── Title ───────────────────────────────────────────────── */
+
+.fd-panel__title {
+  flex: 1;
+  font-family: var(--sapFontFamily, var(--sap-font-family, "72", Arial, sans-serif));
+  font-size: var(--sapFontHeader4Size, var(--sap-font-size-md, 1rem));
+  font-weight: var(--sapFontHeaderWeight, 600);
+  color: var(--sapGroup_TitleTextColor, var(--sap-group-title-text, #1d2d3e));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fd-panel--compact .fd-panel__title {
+  font-size: var(--sapFontSmallSize, var(--sap-font-size-xs, 0.75rem));
+}
+
+/* ── Actions ─────────────────────────────────────────────── */
+
+.fd-panel__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Content ─────────────────────────────────────────────── */
+
+.fd-panel__content {
+  max-height: 2000px;
+  overflow: hidden;
+  transition: max-height 260ms cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 200ms ease;
+  opacity: 1;
+}
+
+.fd-panel__content--collapsed {
+  max-height: 0 !important;
+  opacity: 0;
+}
+
+.fd-panel__content-inner {
+  padding: 16px;
+}
+
+.fd-panel--compact .fd-panel__content-inner {
+  padding: 12px 16px;
+}
+
+/* When header has no toggle (fixed), add left padding */
+.fd-panel--fixed .fd-panel__header {
+  padding-left: var(--sap-spacing-small, 16px);
+}

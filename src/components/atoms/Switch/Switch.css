@@ -1,0 +1,156 @@
+/* ── SAP Fiori Switch – canonical tokens ───────────────────── */
+
+.fd-switch-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fd-switch-wrapper--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  pointer-events: none;
+}
+
+.fd-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.fd-switch__input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fd-switch__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 52px;
+  height: 28px;
+  border-radius: 14px;
+  background: var(--sapButton_Track_Background, #bcc3ca);
+  border: 1px solid var(--sapField_BorderColor, #8696a9);
+  transition: background 200ms, border-color 200ms;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.fd-switch__input:checked ~ .fd-switch__track {
+  background: var(--sapButton_Track_Selected_Background, #0064d9);
+  border-color: var(--sapButton_Track_Selected_Background, #0064d9);
+}
+
+.fd-switch__thumb {
+  position: absolute;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--sapButton_TokenBackground, #fff);
+  box-shadow: var(--sapContent_Shadow1, 0 1px 4px rgba(0,0,0,0.15));
+  transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.fd-switch__input:checked ~ .fd-switch__track .fd-switch__thumb {
+  transform: translateX(24px);
+}
+
+.fd-switch__input:focus-visible ~ .fd-switch__track {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 2px;
+}
+
+/* ── Hover state ──────────────────────────────────────────── */
+
+.fd-switch:hover .fd-switch__input:not(:disabled) ~ .fd-switch__track {
+  filter: brightness(0.92);
+}
+
+/* Text labels */
+.fd-switch__track-label {
+  font-size: 9px;
+  font-weight: 700;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  color: var(--sapContent_ContrastTextColor, #fff);
+  position: absolute;
+  transition: opacity 200ms;
+  user-select: none;
+  z-index: 0;
+}
+
+.fd-switch__track-label--on { left: 6px; opacity: 0; }
+.fd-switch__track-label--off { right: 6px; opacity: 1; }
+
+.fd-switch__input:checked ~ .fd-switch__track .fd-switch__track-label--on { opacity: 1; }
+.fd-switch__input:checked ~ .fd-switch__track .fd-switch__track-label--off { opacity: 0; }
+
+/* Compact */
+.fd-switch-wrapper--compact .fd-switch__track {
+  width: 40px;
+  height: 22px;
+  border-radius: 11px;
+}
+
+.fd-switch-wrapper--compact .fd-switch__thumb {
+  width: 16px;
+  height: 16px;
+}
+
+.fd-switch-wrapper--compact .fd-switch__input:checked ~ .fd-switch__track .fd-switch__thumb {
+  transform: translateX(19px);
+}
+
+.fd-switch__label {
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTextColor, #131e29);
+  cursor: pointer;
+  user-select: none;
+}
+
+.fd-switch-wrapper--compact .fd-switch__label {
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+/* ── Hover preview helper (showcase only) ─────────────────── */
+.fd-switch--hover-preview .fd-switch__track {
+  filter: brightness(0.92);
+}
+
+
+/* OFF state: red track */
+.fd-switch-wrapper--semantic .fd-switch__track {
+  background: var(--sapButton_Track_Negative_Background, #f53232);
+  border-color: var(--sapButton_Track_Negative_Background, #f53232);
+}
+
+/* OFF thumb: white with decline icon */
+.fd-switch-wrapper--semantic .fd-switch__thumb::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: var(--sapNegativeColor, #aa0808);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M1 1l10 10M11 1L1 11' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+/* ON state: green track */
+.fd-switch-wrapper--semantic .fd-switch__input:checked ~ .fd-switch__track {
+  background: var(--sapButton_Track_Positive_Background, #30914c);
+  border-color: var(--sapButton_Track_Positive_Background, #30914c);
+}
+
+/* ON thumb: white with accept icon */
+.fd-switch-wrapper--semantic .fd-switch__input:checked ~ .fd-switch__track .fd-switch__thumb::after {
+  background: var(--sapPositiveColor, #256f3a);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M1.5 6l3 3 6-6' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+}

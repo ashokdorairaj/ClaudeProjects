@@ -1,0 +1,163 @@
+/* ── SAP Fiori StepInput ─────────────────────────────────── */
+
+.fd-form-field {
+  /* shared with Input – defined here to avoid duplication */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Re-use shared label styles via fd-label (defined in Input.css globally)
+   They are repeated here so StepInput is self-contained. */
+.fd-step-input-field .fd-label {
+  font-family: var(--sap-font-family, "72", Arial, sans-serif);
+  font-size: var(--sap-font-size-sm, 0.875rem);
+  color: var(--sap-content-label-color, #556b82);
+}
+
+.fd-step-input-field .fd-label__required {
+  color: var(--sap-status-negative-color, #aa0808);
+  margin-left: 2px;
+}
+
+/* ── Wrapper ─────────────────────────────────────────────── */
+
+.fd-step-input {
+  display: inline-flex;
+  align-items: stretch;
+  height: var(--sap-element-height, 36px);
+  border: 1px solid var(--sap-input-border, #8696a9);
+  border-radius: var(--sap-element-border-radius, 12px);
+  overflow: hidden;
+  background: var(--sap-input-bg, #fff);
+  transition: border-color 80ms, box-shadow 80ms;
+  box-sizing: border-box;
+}
+
+.fd-step-input:focus-within {
+  border-color: var(--sap-input-focus-border, #0064d9);
+  box-shadow: 0 0 0 1px var(--sap-input-focus-border, #0064d9) inset;
+}
+
+.fd-step-input--compact {
+  height: var(--sap-element-compact-height, 26px);
+  border-radius: 8px;
+}
+
+/* ── Disabled ────────────────────────────────────────────── */
+
+.fd-step-input--disabled {
+  opacity: var(--sap-disabled-opacity, 0.4);
+  pointer-events: none;
+  background: var(--sap-input-disabled-bg, rgba(255, 255, 255, 0.4));
+  border-color: var(--sap-input-disabled-border, rgba(140, 160, 177, 0.4));
+}
+
+/* ── Value state ─────────────────────────────────────────── */
+
+.fd-step-input--error {
+  border-color: var(--sap-input-error-border, #e90b0b);
+  background: var(--sap-input-error-bg, #fff1f1);
+}
+
+.fd-step-input--warning {
+  border-color: var(--sap-input-warning-border, #e76500);
+  background: var(--sap-input-warning-bg, #fff8f5);
+}
+
+.fd-step-input--success {
+  border-color: var(--sap-input-success-border, #30914c);
+  background: var(--sap-input-success-bg, #f6fff0);
+}
+
+.fd-step-input--information {
+  border-color: var(--sap-input-info-border, #0064d9);
+  background: var(--sap-input-info-bg, #f5faff);
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+
+.fd-step-input__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  flex-shrink: 0;
+  border: none;
+  /* Use canonical lite-button token (transparent by default) */
+  background: var(--sap-btn-lite-bg, transparent);
+  color: var(--sap-content-icon-color, #556b82);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 120ms, color 120ms;
+  padding: 0;
+  line-height: 1;
+}
+
+.fd-step-input--compact .fd-step-input__btn {
+  width: 26px;
+  font-size: 0.875rem;
+}
+
+.fd-step-input__btn:hover:not(:disabled) {
+  background: var(--sap-btn-lite-hover-bg, #eaecee);
+  color: var(--sap-btn-lite-text, #0064d9);
+}
+
+.fd-step-input__btn:active:not(:disabled) {
+  background: var(--sap-btn-active-bg, #ffffff);
+}
+
+.fd-step-input__btn:focus-visible {
+  outline: 2px solid var(--sap-content-focus-color, #0064d9);
+  outline-offset: -2px;
+}
+
+.fd-step-input__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Dividers between button and input */
+.fd-step-input__btn--dec {
+  border-right: 1px solid var(--sap-input-border, #8696a9);
+}
+
+.fd-step-input__btn--inc {
+  border-left: 1px solid var(--sap-input-border, #8696a9);
+}
+
+/* ── Number input ────────────────────────────────────────── */
+
+.fd-step-input__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  text-align: center;
+  font-family: var(--sap-font-family, "72", Arial, sans-serif);
+  font-size: var(--sap-font-size-sm, 0.875rem);
+  color: var(--sap-input-text, #131e29);
+  /* Hide native spinners */
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.fd-step-input__input::-webkit-outer-spin-button,
+.fd-step-input__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ── Message ─────────────────────────────────────────────── */
+
+.fd-step-input__message {
+  font-size: var(--sap-font-size-xs, 0.75rem);
+  margin: 2px 0 0;
+}
+
+.fd-step-input__message--negative { color: var(--sap-status-negative-color, #aa0808); }
+.fd-step-input__message--critical { color: var(--sap-status-critical-color, #b44f00); }
+.fd-step-input__message--positive { color: var(--sap-status-positive-color, #1d6332); }
+.fd-step-input__message--information { color: var(--sap-status-informative-color, #0064d9); }

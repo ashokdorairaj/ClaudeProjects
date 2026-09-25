@@ -1,0 +1,125 @@
+/*
+ * FioriWeb UI Patterns
+ *
+ * Reusable overrides for @ui5/webcomponents-react components.
+ * These target known CSS module class hashes for v2.x and should be
+ * re-verified when upgrading @ui5/webcomponents-react.
+ *
+ * ─────────────────────────────────────────────────────────────────
+ * PATTERNS
+ * ─────────────────────────────────────────────────────────────────
+ *
+ * 1. ObjectStatus with icon gap
+ *    Problem:  Default icon-to-text spacing (0.25rem) is too tight in list rows.
+ *    Fix:      Add className="os-with-gap" to any <ObjectStatus showDefaultIcon>.
+ *    Example:
+ *
+ *      <ObjectStatus state="Positive" showDefaultIcon className="os-with-gap">
+ *        Detailed Study
+ *      </ObjectStatus>
+ *
+ *    Verified: @ui5/webcomponents-react v2.21.2
+ *
+ * 2. Table section header (title + actions above a table/AnalyticalTable)
+ *    Problem:  <Toolbar> shadow DOM locks height to 32px compact / 44px cozy.
+ *              You cannot add vertical padding to it from outside.
+ *    Fix:      Use a plain flex div with the table-header class.
+ *    Example:
+ *
+ *      <div className="table-header">
+ *        <Title level="H5">Orders <span className="table-header__count">(9)</span></Title>
+ *        <div style={{ flex: 1 }} />
+ *        <Input placeholder="Search…"><Icon slot="icon" name="search" /></Input>
+ *        <div className="table-header__separator" />
+ *        <Button icon="filter" design="Transparent" />
+ *      </div>
+ *
+ *    When to still use <Toolbar>: actionsBar slot in DynamicPageTitle, Card headers,
+ *    or anywhere button overflow/priority behavior is needed.
+ *
+ * 3. TabContainer as a tab-strip-only header (headless tabs)
+ *    Problem:  TabContainer's shadow DOM applies padding: 1rem (S) / 1rem 2rem (M/L) /
+ *              1rem 3rem (XL) to the .ui5-tc__content area. No ::part() is exposed and
+ *              no CSS custom property controls this padding — it is hardcoded inside the
+ *              Shadow DOM and CANNOT be overridden from outside.
+ *    Fix:      Use TabContainer as a header-only strip. Set contentCollapsed on all Tab
+ *              children (they will never render content) and render your own content div
+ *              below, switching visibility with React state. This is the "headless tabs"
+ *              pattern and produces zero gap between the tab bar and the content.
+ *    Example:
+ *
+ *      const [tab, setTab] = useState(0);
+ *
+ *      <TabContainer
+ *        collapsed                        // ← hides the internal content area entirely
+ *        onTabSelect={(e) => setTab(e.detail.tabIndex)}
+ *        style={{ borderBottom: '1px solid var(--sapList_BorderColor)' }}
+ *      >
+ *        <Tab text="Account Overview" selected={tab === 0} />
+ *        <Tab text="Open Items"       selected={tab === 1} />
+ *        <Tab text="Payments"         selected={tab === 2} />
+ *      </TabContainer>
+ *
+ *      <div style={{ display: tab === 0 ? 'block' : 'none' }}>
+ *        {/* Account Overview content */}
+ *      </div>
+ *      <div style={{ display: tab === 1 ? 'block' : 'none' }}>
+ *        {/* Open Items content */}
+ *      </div>
+ *
+ *    The `collapsed` prop on TabContainer suppresses the .ui5-tc__content wrapper
+ *    entirely, leaving only the tab strip header with its own correct 48px height.
+ *    Content is managed entirely outside the web component.
+ *
+ *    DO NOT use TabContainer with Tab children that have their own content (slot),
+ *    and then place content inside — the 1rem padding gap will appear on every breakpoint.
+ *
+ *    Verified: @ui5/webcomponents-react v2.x / @ui5/webcomponents v2.x
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+/* 1. ObjectStatus — icon-text gap --------------------------------
+   ObjectStatus renders in the light DOM (React component, not web component).
+   The icon span has a hashed module class like "_icon_XXXXX" and sets
+   padding-inline-end:.25rem inside a @layer. Our un-layered rules win.
+   We switch the host to inline-flex + gap, zero the icon's padding.     */
+/* 1. ObjectStatus — icon-text gap --------------------------------
+   ObjectStatus renders in the light DOM (React component, not web component).
+   The icon span has a hashed module class like "_icon_XXXXX" and sets
+   padding-inline-end:.25rem inside a @layer. Our un-layered rules win.
+   We switch the host to inline-flex + gap, zero the icon's padding.     */
+.os-with-gap {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.375rem;
+}
+/* Zero out the icon span's built-in padding so gap is the only spacing. */
+.os-with-gap span[class^="_icon_"],
+.os-with-gap span[class*="_icon_"] {
+  padding-inline-end: 0 !important;
+  flex-shrink: 0;
+}
+
+/* 2. Table section header ---------------------------------------- */
+.table-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: var(--sapContent_GridGutter, 0.75rem) 1rem;
+  border-bottom: 1px solid var(--sapGroup_TitleBorderColor);
+  background: var(--sapList_Background);
+}
+
+.table-header__count {
+  font-weight: normal;
+  color: var(--sapContent_LabelColor);
+}
+
+.table-header__separator {
+  width: 1px;
+  height: 1rem;
+  background: var(--sapSeparatorColor, var(--sapList_BorderColor));
+  flex-shrink: 0;
+}
+
+

@@ -1,0 +1,355 @@
+/* ── SAP Fiori Side Navigation – canonical tokens ────────────────────── */
+/*
+ * Figma source: "❖ Side Navigation" (283218:5691) in the SAP Fiori for Web
+ * UI Kit (Community) file V6wSQ73uQKzM7nChBBYJ5F.
+ *
+ * Key dimensions from Figma:
+ *   Expanded width: 256 px  |  Collapsed width: 64 px
+ *   Cozy item height: 44 px  |  Compact item height: 32 px
+ *   Content container padding: 8px (all sides), gap 4px between items
+ *   Top-level item padding: pl-16px  pr-6px  (expanded)
+ *   Child item padding:     pl-40px  pr-6px  (expanded)
+ *   Icon container (collapsed): 44×44px  px-14px py-8px
+ *   Selected accent bar: 3px, --sapList_HighlightColor
+ *   Group header text: --sapContent_LabelColor, regular weight
+ */
+
+/* ── Root ─────────────────────────────────────────────────── */
+
+.fd-side-nav {
+  display: flex;
+  flex-direction: column;
+  width: 256px;
+  height: 100%;
+  background: var(--sapList_Background, #ffffff);
+  border-right: 1px solid var(--sapGroup_ContentBorderColor, #d9d9d9);
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: width 200ms ease;
+  flex-shrink: 0;
+}
+
+.fd-side-nav--collapsed {
+  /* Figma collapsed variant: 64px wide (44px icon touch area + 8px padding × 2) */
+  width: 64px;
+}
+
+/* ── Compact form factor ──────────────────────────────────── */
+
+.fd-side-nav--compact .fd-side-nav__item,
+.fd-side-nav--compact .fd-side-nav__group-header {
+  height: 32px;
+  font-size: var(--sapFontSize, 0.875rem);
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+
+.fd-side-nav__header {
+  padding: 12px;
+  border-bottom: 1px solid var(--sapGroup_ContentBorderColor, #d9d9d9);
+  flex-shrink: 0;
+}
+
+/* ── Content container (scrollable) ──────────────────────── */
+
+.fd-side-nav__content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ── Navigation List ─────────────────────────────────────── */
+
+.fd-side-nav__list {
+  list-style: none;
+  margin: 0;
+  /* Figma: pt-8px px-8px gap-4px on the content container */
+  padding: 8px 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Footer list has top padding removed (separator provides the gap) */
+.fd-side-nav__footer-list {
+  padding-top: 0;
+}
+
+.fd-side-nav__children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ── Nav Item (shared between <a> and <button>) ──────────── */
+
+.fd-side-nav__item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 44px;
+  /* Figma expanded: pl-16px pr-6px; gap-8px between icon and text */
+  padding-left: 16px;
+  padding-right: 6px;
+  gap: 8px;
+  background: var(--sapList_Background, #ffffff);
+  border: none;
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: var(--sapFontFamily, '72', Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  /* Figma uses --sapList_TextColor (not --sapTextColor) for item labels */
+  color: var(--sapList_TextColor, #131e29);
+  text-decoration: none;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: background 80ms;
+  /* Remove default button outline — keep focus visible via :focus-visible */
+  outline: none;
+}
+
+.fd-side-nav__item:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0064d9);
+  outline-offset: -2px;
+}
+
+.fd-side-nav__item:hover:not(.fd-side-nav__item--disabled) {
+  background: var(--sapList_Hover_Background, #eaecee);
+}
+
+/* Child items: Figma uses pl-40px (no icon, indented 40px from left edge) */
+.fd-side-nav__item--child {
+  padding-left: 40px;
+  gap: 4px;
+  /* Child items use regular (not semibold-duplex) font weight */
+  font-weight: normal;
+}
+
+/* ── Selected state ──────────────────────────────────────── */
+
+.fd-side-nav__item--selected {
+  /* Figma: --sapList_SelectionBackgroundColor background (no left border on element itself) */
+  background: var(--sapList_SelectionBackgroundColor, #ebf8ff);
+  color: var(--sapList_TextColor, #131e29);
+}
+
+.fd-side-nav__item--selected:hover {
+  background: var(--sapList_SelectionBackgroundColor, #ebf8ff);
+}
+
+/* The accent bar is rendered as an absolutely-positioned child span */
+.fd-side-nav__selection-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  /* Figma: --sapList_HighlightColor (not --sapBrandColor) for the accent bar */
+  background: var(--sapList_HighlightColor, #0064d9);
+  border-radius: var(--sapButton_BorderCornerRadius, 8px) 0 0 var(--sapButton_BorderCornerRadius, 8px);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+/* ── Disabled state ──────────────────────────────────────── */
+
+.fd-side-nav__item--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Icon & Text ─────────────────────────────────────────── */
+
+/* Collapsed: icon lives inside a square touch-area container (44×44) */
+.fd-side-nav__icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Figma: px-14px py-8px making 44px × 44px touch area */
+  width: 44px;
+  height: 100%;
+  flex-shrink: 0;
+  /* Negative margins compensate for the item's own padding so the container
+     fills edge-to-edge inside the 64px collapsed panel */
+  margin-left: -14px;
+  margin-right: -14px;
+}
+
+.fd-side-nav__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.fd-side-nav__text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* Figma items use semibold-duplex weight for top-level nav items */
+  font-weight: var(--sapFontSemiBoldDuplexFamily, 600);
+}
+
+/* Child items use regular weight */
+.fd-side-nav__item--child .fd-side-nav__text {
+  font-weight: normal;
+}
+
+/* ── Expand/Collapse chevron (expanded mode) ─────────────── */
+
+.fd-side-nav__expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Figma Navigation Indicator Container: px-12px py-8px inside a 36px wide area */
+  width: 36px;
+  height: 100%;
+  flex-shrink: 0;
+  margin-right: -6px; /* align to pr-6px item edge */
+  color: var(--sapContent_LabelColor, #556b82);
+}
+
+/* Small arrow shown in collapsed mode when item has children */
+.fd-side-nav__collapsed-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  color: var(--sapContent_LabelColor, #556b82);
+  margin-right: -3px;
+}
+
+.fd-side-nav__chevron-icon {
+  fill: currentColor;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ── Group Header ────────────────────────────────────────── */
+
+.fd-side-nav__group-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* Figma: pt-10px pl-16px pr-6px, 44px min-height for text container */
+  padding: 10px 6px 0 16px;
+  gap: 4px;
+  box-sizing: border-box;
+  font-family: var(--sapFontFamily, '72', Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  /* Group header label: --sapContent_LabelColor, regular weight */
+  color: var(--sapContent_LabelColor, #556b82);
+  font-weight: normal;
+  cursor: default;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.fd-side-nav__group-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* Figma Text Container: 44px min-height, vertically centred */
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.fd-side-nav--compact .fd-side-nav__group-text {
+  min-height: 32px;
+}
+
+.fd-side-nav__group-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Figma Navigation Indicator Container: 36px wide */
+  width: 36px;
+  height: 44px;
+  flex-shrink: 0;
+  margin-right: -6px;
+  color: var(--sapContent_LabelColor, #556b82);
+}
+
+.fd-side-nav--compact .fd-side-nav__group-chevron {
+  height: 32px;
+}
+
+/* ── Collapsed mode ──────────────────────────────────────── */
+
+.fd-side-nav--collapsed .fd-side-nav__text,
+.fd-side-nav--collapsed .fd-side-nav__expand-btn,
+.fd-side-nav--collapsed .fd-side-nav__group-header {
+  display: none;
+}
+
+.fd-side-nav--collapsed .fd-side-nav__item {
+  justify-content: center;
+  /* In collapsed mode the icon-container handles its own padding */
+  padding-left: 0;
+  padding-right: 0;
+  gap: 0;
+}
+
+/* In collapsed mode hide children list entirely */
+.fd-side-nav--collapsed .fd-side-nav__children {
+  display: none;
+}
+
+/* ── Footer section ──────────────────────────────────────── */
+
+.fd-side-nav__footer {
+  border-top: none; /* separator line is rendered by fd-side-nav__footer-separator */
+  flex-shrink: 0;
+  padding-bottom: 8px;
+  background: var(--sapList_Background, #ffffff);
+}
+
+.fd-side-nav__footer-separator {
+  height: 1px;
+  background: var(--sapGroup_ContentBorderColor, #d9d9d9);
+  margin: 0 8px 4px;
+}
+
+/* ── Collapse toggle button ──────────────────────────────── */
+
+.fd-side-nav__collapse-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--sapGroup_ContentBorderColor, #d9d9d9);
+  cursor: pointer;
+  color: var(--sapContent_LabelColor, #556b82);
+  flex-shrink: 0;
+  transition: background 80ms;
+  outline: none;
+  margin-top: 4px;
+}
+
+.fd-side-nav__collapse-toggle:hover {
+  background: var(--sapList_Hover_Background, #eaecee);
+}
+
+.fd-side-nav__collapse-toggle:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0064d9);
+  outline-offset: -2px;
+}

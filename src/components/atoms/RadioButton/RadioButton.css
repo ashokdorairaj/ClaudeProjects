@@ -1,0 +1,96 @@
+/* ── SAP Fiori Radio Button – canonical tokens ─────────────── */
+
+.fd-radio-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  cursor: pointer;
+}
+
+.fd-radio-wrapper--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  pointer-events: none;
+}
+
+/* ── Touch target (44px cozy) ─────────────────────────────── */
+
+.fd-radio__touch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  margin: -13px; /* (44 - 18) / 2 = 13 */
+}
+
+.fd-radio__box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.fd-radio__input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.fd-radio__circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--sapField_BorderColor, #8696a9);
+  background: var(--sapField_Background, #fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 80ms, background 80ms;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.fd-radio__circle::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sapSelectedColor, #0064d9);
+  opacity: 0;
+  transition: opacity 80ms;
+}
+
+.fd-radio__input:checked + .fd-radio__circle {
+  border-color: var(--sapSelectedColor, #0064d9);
+  background: var(--sapField_Background, #fff);
+}
+
+.fd-radio__input:checked + .fd-radio__circle::after {
+  opacity: 1;
+}
+
+.fd-radio__input:hover + .fd-radio__circle {
+  border-color: var(--sapField_Hover_BorderColor, #0064d9);
+}
+
+.fd-radio__input:focus-visible + .fd-radio__circle {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 2px;
+}
+
+.fd-radio__label {
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTextColor, #131e29);
+  cursor: pointer;
+  user-select: none;
+}

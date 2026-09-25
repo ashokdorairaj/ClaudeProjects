@@ -1,0 +1,43 @@
+/* ── SAP Fiori Toast ───────────────────────────────────────── */
+
+.fd-toast {
+  position: fixed;
+  z-index: 9999;
+  padding: 12px 20px;
+  background: rgba(var(--sap-toast-bg-rgb, 29, 45, 62), 0.85);
+  color: var(--sap-content-contrast-text, #ffffff);
+  border-radius: 8px;
+  font-family: var(--sap-font-family);
+  font-size: var(--sap-font-size-sm, 0.875rem);
+  min-width: 160px;
+  max-width: 480px;
+  box-shadow: var(--sap-shadow-xl, 0 8px 32px rgba(0,0,0,0.16));
+  animation: fd-toast-in 200ms ease;
+  pointer-events: none;
+  line-height: 1.5;
+}
+
+/* Placement */
+.fd-toast--bottom-center { bottom: 24px; left: 50%; transform: translateX(-50%); }
+.fd-toast--bottom-start  { bottom: 24px; left: 24px; }
+.fd-toast--bottom-end    { bottom: 24px; right: 24px; }
+.fd-toast--top-center    { top: 24px; left: 50%; transform: translateX(-50%); }
+.fd-toast--top-start     { top: 24px; left: 24px; }
+.fd-toast--top-end       { top: 24px; right: 24px; }
+
+@keyframes fd-toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.fd-toast--bottom-start,
+.fd-toast--bottom-end,
+.fd-toast--top-start,
+.fd-toast--top-end {
+  animation-name: fd-toast-in-no-shift;
+}
+
+@keyframes fd-toast-in-no-shift {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

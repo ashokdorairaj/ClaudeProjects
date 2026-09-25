@@ -1,0 +1,152 @@
+/* ── SAP Fiori Shell Bar – canonical tokens ─────────────────── */
+
+.fd-shellbar {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 16px;
+  /* SAP official brand: Blue 11 (#00144A) is the canonical SAP dark navy shell color */
+  background: var(--sap-shell-brand-bg, var(--sap-brand-blue-11, #00144A));
+  color: var(--sap-shell-brand-text, #fff);
+  gap: 8px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 100;
+  flex-shrink: 0;
+  /* 3px Blue 7 bottom border — SAP brand accent line under shell */
+  border-bottom: 3px solid var(--sap-brand-blue-7, #0070F2);
+}
+
+.fd-shellbar--compact {
+  height: 52px;
+  padding: 0 16px;
+}
+
+.fd-shellbar__start {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.fd-shellbar__center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.fd-shellbar__end {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.fd-shellbar__logo {
+  display: flex;
+  align-items: center;
+  height: 28px;
+}
+
+.fd-shellbar__logo img {
+  height: 100%;
+  width: auto;
+}
+
+.fd-shellbar__product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+}
+
+.fd-shellbar__product-name {
+  font-family: var(--sap-font-72-medium, "72 Brand Medium", "72", Arial, sans-serif);
+  /* SAP brand: product name — 14px medium weight */
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 500;
+  color: var(--sap-shell-brand-text, #fff);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.fd-shellbar__secondary-title {
+  font-family: var(--sap-font-72-book, "72 Brand Book", "72", Arial, sans-serif);
+  font-size: var(--sapFontSmallSize, 0.75rem);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.fd-shellbar__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Fiori Horizon spec: shell icon buttons are 32×32 px */
+  width: 32px;
+  height: 32px;
+  background: var(--sapShell_InteractiveBackground, transparent);
+  border: none;
+  border-radius: 8px;
+  color: var(--sapShell_TextColor, #fff);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 80ms;
+}
+
+.fd-shellbar__btn:hover {
+  background: var(--sapShell_Hover_Background, rgba(255,255,255,0.1));
+}
+
+.fd-shellbar__btn:active {
+  background: var(--sapShell_Active_Background, rgba(255,255,255,0.15));
+}
+
+.fd-shellbar__btn:focus-visible {
+  outline: 2px solid var(--sapShell_InteractiveBorderColor, rgba(255, 255, 255, 0.7));
+  outline-offset: 2px;
+}
+
+.fd-shellbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fd-shellbar__profile {
+  margin-left: 8px;
+}
+
+/* ── Notification count badge ─────────────────────────────────
+   Usage: wrap a .fd-shellbar__btn in .fd-shellbar__btn-wrapper
+   and include a .fd-shellbar__badge sibling span.
+   ----------------------------------------------------------- */
+.fd-shellbar__btn-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fd-shellbar__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: var(--sapNegativeColor, #e90b0b);
+  color: #ffffff;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: 0.625rem; /* 10px */
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 8px;
+  box-sizing: border-box;
+  pointer-events: none;
+  white-space: nowrap;
+}

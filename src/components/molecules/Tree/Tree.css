@@ -1,0 +1,157 @@
+/* ── SAP Fiori Tree – canonical tokens ───────────────────────── */
+
+.fd-tree {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTextColor, #131e29);
+}
+
+.fd-tree--compact .fd-tree__item {
+  height: 32px;
+  font-size: var(--sapFontSmallSize, 0.8125rem);
+}
+
+/* ── Children list ───────────────────────────────────────── */
+
+.fd-tree__children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Tree Item row ───────────────────────────────────────── */
+
+.fd-tree__item {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  gap: 6px;
+  padding-right: 12px;
+  background: transparent;
+  border-left: 3px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background 80ms, border-color 80ms;
+  outline: none;
+}
+
+.fd-tree__item:hover:not(.fd-tree__item--disabled) {
+  background: var(--sapList_Hover_Background, #eaecee);
+}
+
+.fd-tree__item:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0070f2);
+  outline-offset: -2px;
+}
+
+.fd-tree__item--selected {
+  border-left-color: var(--sapBrandColor, #0070f2);
+  background: var(--sapList_SelectionBackgroundColor, #e3f0ff);
+  color: var(--sapList_Active_TextColor, #0064d9);
+  font-weight: var(--sapFontHeaderWeight, 600);
+}
+
+.fd-tree__item--selected:hover {
+  background: var(--sapList_SelectionHoverBackground, #e3f0ff);
+}
+
+.fd-tree__item--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.fd-tree__item--compact {
+  height: 32px;
+}
+
+/* ── Expand button ───────────────────────────────────────── */
+
+.fd-tree__expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--sapContent_LabelColor, #556b82);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  padding: 0;
+  transition: color 80ms, transform 200ms;
+}
+
+/* Rotate chevron 90° when the node is expanded */
+.fd-tree__expand-btn--open {
+  transform: rotate(90deg);
+}
+
+.fd-tree__expand-btn:hover {
+  color: var(--sapTextColor, #131e29);
+}
+
+.fd-tree__expand-placeholder {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* ── Icon ────────────────────────────────────────────────── */
+
+.fd-tree__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  font-size: 1rem;
+  color: var(--sapContent_LabelColor, #556b82);
+}
+
+/* ── Label ───────────────────────────────────────────────── */
+
+.fd-tree__label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Multi-selection checkbox ────────────────────────────── */
+
+.fd-tree__checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--sapField_BorderColor, #bcc3ca);
+  border-radius: 2px;
+  background: var(--sapField_Background, #ffffff);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: background 80ms, border-color 80ms;
+}
+
+.fd-tree__checkbox--checked {
+  background: var(--sapSelectedColor, #0070f2);
+  border-color: var(--sapSelectedColor, #0070f2);
+}
+
+/* Checkmark drawn with a pseudo-element */
+.fd-tree__checkbox--checked::after {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 7px;
+  border-right: 1.5px solid var(--sapContent_ContrastTextColor, #ffffff);
+  border-bottom: 1.5px solid var(--sapContent_ContrastTextColor, #ffffff);
+  transform: rotate(45deg) translate(-1px, -1px);
+}

@@ -1,0 +1,85 @@
+/* ── SAP Fiori Message Strip ───────────────────────────────── */
+
+.fd-message-strip {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 0;
+  border-width: 0;
+  border-left: 4px solid;
+  font-family: var(--sapFontFamily, var(--sap-font-family));
+  font-size: var(--sapFontSize, var(--sap-font-size-sm, 0.875rem));
+  line-height: var(--sap-line-height-md, 1.5);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* ── Compact density ────────────────────────────────────────── */
+.fd-message-strip--compact {
+  padding: 4px 16px;
+  font-size: var(--sapFontSmallSize, var(--sap-font-size-xs, 0.75rem));
+}
+
+/* ── Design types ───────────────────────────────────────────── */
+.fd-message-strip--information {
+  background: var(--sapInformationBackground, var(--sap-status-informative-bg, #f5faff));
+  border-color: var(--sapInformationBorderColor, var(--sap-status-informative-color, #0064d9));
+  color: var(--sapInformativeColor, var(--sap-status-informative-color, #0064d9));
+}
+
+.fd-message-strip--positive {
+  background: var(--sapSuccessBackground, var(--sap-status-positive-bg, #f5faea));
+  border-color: var(--sapSuccessBorderColor, var(--sap-status-positive-color, #1d6332));
+  color: var(--sapPositiveTextColor, var(--sap-status-positive-color, #1d6332));
+}
+
+.fd-message-strip--negative {
+  background: var(--sapErrorBackground, var(--sap-status-negative-bg, #fff1f1));
+  border-color: var(--sapErrorBorderColor, var(--sap-status-negative-color, #aa0808));
+  color: var(--sapNegativeTextColor, var(--sap-status-negative-color, #aa0808));
+}
+
+.fd-message-strip--critical {
+  background: var(--sapWarningBackground, var(--sap-status-critical-bg, #fff8f5));
+  border-color: var(--sapWarningBorderColor, var(--sap-status-critical-color, #b44f00));
+  color: var(--sapCriticalTextColor, var(--sap-status-critical-color, #b44f00));
+}
+
+/* ── Icon ───────────────────────────────────────────────────── */
+.fd-message-strip__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+/* ── Text ───────────────────────────────────────────────────── */
+.fd-message-strip__text {
+  flex: 1;
+  min-width: 0;
+  color: var(--sapTextColor, var(--sap-text-color, #131e29));
+}
+
+/* ── Close button ───────────────────────────────────────────── */
+.fd-message-strip__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  margin-left: 4px;
+  line-height: 1;
+  color: inherit;
+  opacity: 0.7;
+  flex-shrink: 0;
+  transition: opacity 80ms;
+  border-radius: 2px;
+}
+.fd-message-strip__close:hover { opacity: 1; }
+.fd-message-strip__close:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, var(--sap-brand-color, #0070f2));
+  outline-offset: var(--sapContent_FocusOffset, 2px);
+}

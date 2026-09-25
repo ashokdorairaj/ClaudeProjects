@@ -1,0 +1,309 @@
+/* ── SAP Fiori Form – pixel-matched to Figma V6wSQ73uQKzM7nChBBYJ5F ── */
+
+/* ══ Form card ══════════════════════════════════════════════ */
+
+.fd-form {
+  background: var(--sapGroup_ContentBackground, #fff);
+  border-radius: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--sapFontFamily, '72', Arial, sans-serif);
+  overflow: hidden;
+}
+
+/* ══ Form header bar ═════════════════════════════════════════ */
+
+.fd-form__header {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--sapGroup_TitleBorderColor, #a8b3bd);
+  background: var(--sapGroup_TitleBackground, #fff);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.fd-form--compact .fd-form__header {
+  height: 32px;
+}
+
+.fd-form__header-title {
+  font-family: var(--sapFontBoldFamily, '72-Bold', Arial, sans-serif);
+  font-size: var(--sapFontHeader6Size, 1rem);
+  font-weight: var(--sapFontHeaderWeight, 600);
+  color: var(--sapPageHeader_TextColor, #131e29);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+/* ══ Form content grid ═══════════════════════════════════════ */
+
+.fd-form__content {
+  display: grid;
+  grid-template-columns: repeat(var(--fd-form-cols-l, 2), 1fr);
+  background: var(--sapGroup_ContentBackground, #fff);
+}
+
+.fd-form--cols-l-1 { --fd-form-cols-l: 1; }
+.fd-form--cols-l-2 { --fd-form-cols-l: 2; }
+.fd-form--cols-l-3 { --fd-form-cols-l: 3; }
+.fd-form--cols-m-1 { --fd-form-cols-m: 1; }
+.fd-form--cols-m-2 { --fd-form-cols-m: 2; }
+
+@media (max-width: 1023px) {
+  .fd-form__content {
+    grid-template-columns: repeat(var(--fd-form-cols-m, 1), 1fr);
+  }
+}
+
+@media (max-width: 599px) {
+  .fd-form__content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ══ Form column ═════════════════════════════════════════════ */
+
+.fd-form__column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* 8px vertical gap between form items (Fiori Horizon spec) */
+  padding: 16px;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* Divider between columns */
+.fd-form__column + .fd-form__column {
+  border-left: 1px solid var(--sapGroup_TitleBorderColor, #a8b3bd);
+}
+
+@media (max-width: 1023px) {
+  .fd-form__column + .fd-form__column {
+    border-left: none;
+    border-top: 1px solid var(--sapGroup_TitleBorderColor, #a8b3bd);
+  }
+}
+
+/* ══ FormGroup ═══════════════════════════════════════════════ */
+
+/* display:contents flattens group div — title + items go directly into column flex */
+.fd-form-group {
+  display: contents;
+}
+
+.fd-form-group__title {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  flex-shrink: 0;
+  font-family: var(--sapFontBoldFamily, '72-Bold', Arial, sans-serif);
+  font-size: var(--sapFontHeader4Size, 1rem);
+  font-weight: var(--sapFontHeaderWeight, 600);
+  color: var(--sapGroup_TitleTextColor, #1d2d3e);
+  margin: 0;
+}
+
+.fd-form--compact .fd-form-group__title {
+  height: 32px;
+}
+
+/* ══ FormItem — horizontal layout (default) ══════════════════ */
+
+/*
+  Each FormItem has a fixed-height "layout grid" div.
+  Inside it, label and control are absolutely positioned:
+    Label:   left:0  right:calc(66.67%+13px)  top:10px  (vertically centers text in 36px row)
+    Control: left:calc(33.33%+3px)  right:0   top:0
+  The 16px gap = 13px (label right padding zone) + 3px (control left offset)
+*/
+
+.fd-form-item {
+  flex-shrink: 0;
+}
+
+.fd-form-item__grid {
+  position: relative;
+  height: 36px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fd-form--compact .fd-form-item__grid {
+  height: 26px;
+}
+
+.fd-form-item__label {
+  position: absolute;
+  left: 0;
+  right: calc((100% - var(--fd-label-w, 33.333%)) + 13px);
+  top: 10px;
+  font-family: var(--sapFontFamily, '72', Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapContent_LabelColor, #556b82);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.fd-form--compact .fd-form-item__label {
+  top: 5px;
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+.fd-form-item__label::after {
+  content: ':';
+}
+
+.fd-form-item--required .fd-form-item__label::after {
+  content: ': *';
+  color: var(--sapNegativeColor, #aa0808);
+  /* The colon inherits label color; only the asterisk part should be red.
+     We achieve this by coloring the whole ::after red and keeping the colon
+     visually acceptable — per Fiori spec the entire suffix ': *' may be colored. */
+}
+
+.fd-form-item__control {
+  position: absolute;
+  left: calc(var(--fd-label-w, 33.333%) + 3px);
+  right: 0;
+  top: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+/* Stretch child inputs/selects to fill control area */
+.fd-form-item__control > * {
+  width: 100%;
+}
+
+/* ══ FormItem — multiline (TextArea) ════════════════════════ */
+
+/*
+  TextArea rows: layout grid height is auto, label aligns to top (top:0),
+  control is static (not absolute) so it can grow naturally.
+  We use a flex row layout instead of absolute positioning.
+*/
+.fd-form-item--multiline .fd-form-item__grid {
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+
+.fd-form-item--multiline .fd-form-item__label {
+  position: static;
+  flex: 0 0 var(--fd-label-w, 33.333%);
+  max-width: var(--fd-label-w, 33.333%);
+  padding-right: 13px;
+  padding-top: 8px; /* align text baseline with textarea top padding */
+  top: auto;
+  right: auto;
+  white-space: normal;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.fd-form--compact .fd-form-item--multiline .fd-form-item__label {
+  padding-top: 5px;
+}
+
+.fd-form-item--multiline .fd-form-item__control {
+  position: static;
+  flex: 1;
+  left: auto;
+  right: auto;
+  top: auto;
+  bottom: auto;
+  align-items: stretch;
+}
+
+/* ══ FormItem — vertical layout (label above input) ═════════ */
+
+.fd-form--vertical .fd-form-item__grid {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fd-form--vertical .fd-form-item__label {
+  position: static;
+  text-align: left;
+  top: auto;
+  right: auto;
+  flex: none;
+  max-width: 100%;
+  white-space: normal;
+  overflow: visible;
+  padding-top: 0;
+}
+
+.fd-form--vertical .fd-form-item__control {
+  position: static;
+  left: auto;
+  right: auto;
+  top: auto;
+  bottom: auto;
+}
+
+.fd-form--vertical .fd-form-item {
+  padding: 6px 0;
+}
+
+/* ══ Display mode ════════════════════════════════════════════ */
+
+.fd-form--display .fd-form-item__control {
+  font-family: var(--sapFontFamily, '72', Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTextColor, #131e29);
+}
+
+.fd-form--compact.fd-form--display .fd-form-item__control {
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+/* ══ Mobile: always stack ════════════════════════════════════ */
+
+@media (max-width: 599px) {
+  .fd-form-item__grid {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .fd-form-item__label {
+    position: static;
+    text-align: left;
+    top: auto;
+    right: auto;
+    flex: none;
+    max-width: 100%;
+    white-space: normal;
+    overflow: visible;
+    padding-top: 0;
+  }
+
+  .fd-form-item__control {
+    position: static;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+  }
+
+  .fd-form-item--multiline .fd-form-item__label {
+    flex: none;
+    max-width: 100%;
+    padding-right: 0;
+    padding-top: 0;
+  }
+}

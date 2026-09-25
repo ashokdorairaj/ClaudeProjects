@@ -1,0 +1,509 @@
+/* ── SAP Fiori Tag ─────────────────────────────────────────── */
+/* Horizon spec: h=24px, border-radius=4px, font=12px/Bold
+   Large: h=28px, font=14px/SemiBold
+   Dismissible: X button slot (see fd-tag__dismiss) */
+
+.fd-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  font-family: var(--sapFontFamily, inherit);
+  font-size: var(--sapFontSmallSize, 0.75rem);  /* 12px */
+  font-weight: 700;
+  line-height: 16px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  overflow: hidden;
+  transition: background-color 80ms, border-color 80ms, color 80ms, box-shadow 80ms;
+}
+
+/* ── Large design (28px) ────────────────────────────────────── */
+/* Figma: Large Design=Yes → h=28, pt=pb=2, pl=pr=4, fontSize=14px (sapFontSize) */
+.fd-tag--large {
+  height: 28px;
+  font-size: var(--sapFontSize, 0.875rem);  /* 14px */
+  font-weight: 600;
+  line-height: 20px;
+  padding: 2px 4px;
+}
+
+/* ── Icon-only square pill ──────────────────────────────────── */
+/* Regular: 24×24, padding 4px all sides; Large: 28×28, padding 4px all sides */
+.fd-tag--icon-only {
+  width: 24px;
+  padding: 4px;
+  justify-content: center;
+}
+
+/* Figma: Icon Only=True, large → 28×28, padding 4px all sides */
+.fd-tag--icon-only.fd-tag--large {
+  width: 28px;
+  padding: 4px;
+}
+
+/* ── Interactive ────────────────────────────────────────────── */
+/* Fiori: Hover → sapButton_Neutral_Hover_*; Down → sapButton_Neutral_Active_* */
+.fd-tag--interactive {
+  cursor: pointer;
+  user-select: none;
+}
+
+.fd-tag--interactive:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0070f2);
+  outline-offset: var(--sapContent_FocusOffset, 2px);
+}
+
+/* ── Dismiss (×) button ─────────────────────────────────────── */
+/* Spec: dismissible tag shows a small × button at the right edge */
+.fd-tag__dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 2px;
+  cursor: pointer;
+  color: inherit;
+  font-size: 0.875rem;
+  line-height: 1;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 80ms;
+}
+
+.fd-tag__dismiss:hover {
+  opacity: 1;
+}
+
+.fd-tag__dismiss:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 1px;
+}
+
+/* Icon slot */
+.fd-tag__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  width: 12px;
+  height: 16px;
+}
+
+.fd-tag--large .fd-tag__icon {
+  width: 16px;
+  height: 20px;
+  font-size: 0.875rem;
+}
+
+/* ─── Value State: None (neutral grey) ─────────────────────── */
+/* Figma: sapNeutralBackground=#eff1f2, sapNeutralBorderColor=#788fa6, sapTextColor */
+.fd-tag--none {
+  background: var(--sapNeutralBackground, #eff1f2);
+  border-color: var(--sapNeutralBorderColor, #788fa6);
+  color: var(--sapTextColor, #131e29);
+}
+
+.fd-tag--interactive.fd-tag--none:hover {
+  background: var(--sapButton_Neutral_Hover_Background, #d3e8ff);
+  border-color: var(--sapButton_Neutral_Hover_BorderColor, #b5d7ff);
+  color: var(--sapButton_Neutral_Hover_TextColor, #0064d9);
+}
+
+.fd-tag--interactive.fd-tag--none:active {
+  background: var(--sapButton_Neutral_Active_Background, #ffffff);
+  border-color: var(--sapButton_Neutral_Active_BorderColor, #0064d9);
+  color: var(--sapButton_Neutral_Active_TextColor, #0064d9);
+}
+
+/* ─── Value State: Information ──────────────────────────────── */
+/* Figma: sapButton_Information_* → tinted blue (light bg, dark text) */
+.fd-tag--information {
+  background: var(--sapButton_Information_Background, #e8f3ff);
+  border-color: var(--sapButton_Information_BorderColor, #b5d7ff);
+  color: var(--sapButton_Information_TextColor, #0064d9);
+}
+
+.fd-tag--interactive.fd-tag--information:hover {
+  background: var(--sapButton_Information_Hover_Background, #d3e8ff);
+  border-color: var(--sapButton_Information_BorderColor, #b5d7ff);
+  color: var(--sapButton_Information_TextColor, #0064d9);
+}
+
+.fd-tag--interactive.fd-tag--information:active {
+  background: var(--sapButton_Information_Active_Background, #ffffff);
+  border-color: var(--sapButton_Information_Active_BorderColor, #0064d9);
+  color: var(--sapButton_Information_Active_TextColor, #0064d9);
+}
+
+/* ─── Value State: Success / Positive ───────────────────────── */
+/* Figma: sapButton_Success_* → filled green (dark bg, white text) */
+.fd-tag--success {
+  background: var(--sapButton_Success_Background, #30914c);
+  border-color: var(--sapButton_Success_BorderColor, #30914c);
+  color: var(--sapButton_Success_TextColor, #ffffff);
+}
+
+.fd-tag--interactive.fd-tag--success:hover {
+  background: var(--sapButton_Success_Hover_Background, #2d864c);
+  border-color: var(--sapButton_Success_BorderColor, #30914c);
+  color: var(--sapButton_Success_TextColor, #ffffff);
+}
+
+.fd-tag--interactive.fd-tag--success:active {
+  background: var(--sapButton_Success_Active_Background, #ffffff);
+  border-color: var(--sapButton_Success_Active_BorderColor, #30914c);
+  color: var(--sapButton_Success_Active_TextColor, #256f3a);
+}
+
+/* ─── Value State: Warning / Critical ───────────────────────── */
+/* Figma: sapButton_Critical_* → filled orange (dark bg, white text) */
+.fd-tag--warning {
+  background: var(--sapButton_Critical_Background, #e76500);
+  border-color: var(--sapButton_Critical_BorderColor, #e76500);
+  color: var(--sapButton_Critical_TextColor, #ffffff);
+}
+
+.fd-tag--interactive.fd-tag--warning:hover {
+  background: var(--sapButton_Critical_Background, #e76500);
+  border-color: var(--sapButton_Critical_BorderColor, #e76500);
+  color: var(--sapButton_Critical_TextColor, #ffffff);
+  filter: brightness(0.92);
+}
+
+.fd-tag--interactive.fd-tag--warning:active {
+  background: var(--sapButton_Critical_Active_Background, #ffffff);
+  border-color: var(--sapButton_Critical_Active_BorderColor, #e76500);
+  color: var(--sapButton_Critical_Active_TextColor, #b44f00);
+}
+
+/* ─── Value State: Error / Negative ─────────────────────────── */
+/* Figma: sapButton_Negative_* → filled red (dark bg, white text) */
+.fd-tag--error {
+  background: var(--sapButton_Negative_Background, #f53232);
+  border-color: var(--sapButton_Negative_BorderColor, #f53232);
+  color: var(--sapButton_Negative_TextColor, #ffffff);
+}
+
+.fd-tag--interactive.fd-tag--error:hover {
+  background: var(--sapButton_Negative_Hover_Background, #e90b0b);
+  border-color: var(--sapButton_Negative_BorderColor, #f53232);
+  color: var(--sapButton_Negative_TextColor, #ffffff);
+}
+
+.fd-tag--interactive.fd-tag--error:active {
+  background: var(--sapButton_Negative_Active_Background, #ffffff);
+  border-color: var(--sapButton_Negative_Active_BorderColor, #f53232);
+  color: var(--sapButton_Negative_Active_TextColor, #aa0808);
+}
+
+/* ─── Indication Color Set 1–10 (filled, dark bg, white text) ─ */
+.fd-tag--set1 {
+  background: var(--sapIndicationColor_1_Background, #840606);
+  border-color: var(--sapIndicationColor_1_BorderColor, #840606);
+  color: var(--sapIndicationColor_1_TextColor, #ffffff);
+}
+.fd-tag--interactive.fd-tag--set1:hover {
+  background: var(--sapIndicationColor_1_Hover_Background, #6c0505);
+  border-color: var(--sapIndicationColor_1_BorderColor, #840606);
+}
+.fd-tag--interactive.fd-tag--set1:active {
+  background: var(--sapIndicationColor_1_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_1_Active_BorderColor, #fb9d9d);
+  color: var(--sapIndicationColor_1_Active_TextColor, #840606);
+}
+
+.fd-tag--set2 {
+  background: var(--sapIndicationColor_2_Background, #aa0808);
+  border-color: var(--sapIndicationColor_2_BorderColor, #aa0808);
+  color: var(--sapIndicationColor_2_TextColor, #ffffff);
+}
+.fd-tag--interactive.fd-tag--set2:hover {
+  background: var(--sapIndicationColor_2_Hover_Background, #920707);
+  border-color: var(--sapIndicationColor_2_BorderColor, #aa0808);
+}
+.fd-tag--interactive.fd-tag--set2:active {
+  background: var(--sapIndicationColor_2_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_2_Active_BorderColor, #fb9d9d);
+  color: var(--sapIndicationColor_2_Active_TextColor, #aa0808);
+}
+
+.fd-tag--set3 {
+  background: var(--sapIndicationColor_3_Background, #b95100);
+  border-color: var(--sapIndicationColor_3_BorderColor, #b95100);
+  color: var(--sapIndicationColor_3_TextColor, #ffffff);
+}
+.fd-tag--interactive.fd-tag--set3:hover {
+  background: var(--sapIndicationColor_3_Hover_Background, #d85e00);
+  border-color: var(--sapIndicationColor_3_BorderColor, #b95100);
+}
+.fd-tag--interactive.fd-tag--set3:active {
+  background: var(--sapIndicationColor_3_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_3_Active_BorderColor, #ffcfaa);
+  color: var(--sapIndicationColor_3_Active_TextColor, #b95100);
+}
+
+.fd-tag--set4 {
+  background: var(--sapIndicationColor_4_Background, #256f3a);
+  border-color: var(--sapIndicationColor_4_BorderColor, #256f3a);
+  color: var(--sapIndicationColor_4_TextColor, #ffffff);
+}
+.fd-tag--interactive.fd-tag--set4:hover {
+  background: var(--sapIndicationColor_4_Hover_Background, #1f5c30);
+  border-color: var(--sapIndicationColor_4_BorderColor, #256f3a);
+}
+.fd-tag--interactive.fd-tag--set4:active {
+  background: var(--sapIndicationColor_4_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_4_Active_BorderColor, #b3dfa8);
+  color: var(--sapIndicationColor_4_Active_TextColor, #256f3a);
+}
+
+.fd-tag--set5 {
+  background: var(--sapIndicationColor_5_Background, #0070f2);
+  border-color: var(--sapIndicationColor_5_BorderColor, #0070f2);
+  color: var(--sapIndicationColor_5_TextColor, #ffffff);
+}
+.fd-tag--interactive.fd-tag--set5:hover {
+  background: var(--sapIndicationColor_5_Hover_Background, #0064d8);
+  border-color: var(--sapIndicationColor_5_BorderColor, #0070f2);
+}
+.fd-tag--interactive.fd-tag--set5:active {
+  background: var(--sapIndicationColor_5_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_5_Active_BorderColor, #d3effd);
+  color: var(--sapIndicationColor_5_Active_TextColor, #0070f2);
+}
+
+.fd-tag--set6 {
+  background: var(--sapIndicationColor_6_Background, #046c7a);
+  border-color: var(--sapIndicationColor_6_BorderColor, #046c7a);
+  color: var(--sapIndicationColor_6_TextColor, #ffffff);
+}
+.fd-tag--interactive.fd-tag--set6:hover {
+  background: var(--sapIndicationColor_6_Hover_Background, #035661);
+  border-color: var(--sapIndicationColor_6_BorderColor, #046c7a);
+}
+.fd-tag--interactive.fd-tag--set6:active {
+  background: var(--sapIndicationColor_6_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_6_Active_BorderColor, #a0e8e4);
+  color: var(--sapIndicationColor_6_Active_TextColor, #046c7a);
+}
+
+.fd-tag--set7 {
+  background: var(--sapIndicationColor_7_Background, #5d36ff);
+  border-color: var(--sapIndicationColor_7_BorderColor, #5d36ff);
+  color: var(--sapIndicationColor_7_TextColor, #ffffff);
+}
+.fd-tag--interactive.fd-tag--set7:hover {
+  background: var(--sapIndicationColor_7_Hover_Background, #481cff);
+  border-color: var(--sapIndicationColor_7_BorderColor, #5d36ff);
+}
+.fd-tag--interactive.fd-tag--set7:active {
+  background: var(--sapIndicationColor_7_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_7_Active_BorderColor, #ccc3f0);
+  color: var(--sapIndicationColor_7_Active_TextColor, #5d36ff);
+}
+
+.fd-tag--set8 {
+  background: var(--sapIndicationColor_8_Background, #a100c2);
+  border-color: var(--sapIndicationColor_8_BorderColor, #a100c2);
+  color: var(--sapIndicationColor_8_TextColor, #ffffff);
+}
+.fd-tag--interactive.fd-tag--set8:hover {
+  background: var(--sapIndicationColor_8_Hover_Background, #8c00a9);
+  border-color: var(--sapIndicationColor_8_BorderColor, #a100c2);
+}
+.fd-tag--interactive.fd-tag--set8:active {
+  background: var(--sapIndicationColor_8_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_8_Active_BorderColor, #ffb8f0);
+  color: var(--sapIndicationColor_8_Active_TextColor, #a100c2);
+}
+
+.fd-tag--set9 {
+  background: var(--sapIndicationColor_9_Background, #1d2d3e);
+  border-color: var(--sapIndicationColor_9_BorderColor, #1d2d3e);
+  color: var(--sapIndicationColor_9_TextColor, #ffffff);
+}
+.fd-tag--interactive.fd-tag--set9:hover {
+  background: var(--sapIndicationColor_9_Hover_Background, #15202d);
+  border-color: var(--sapIndicationColor_9_BorderColor, #1d2d3e);
+}
+.fd-tag--interactive.fd-tag--set9:active {
+  background: var(--sapIndicationColor_9_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_9_Active_BorderColor, #c8cdd3);
+  color: var(--sapIndicationColor_9_Active_TextColor, #1d2d3e);
+}
+
+.fd-tag--set10 {
+  background: var(--sapIndicationColor_10_Background, #45484a);
+  border-color: var(--sapIndicationColor_10_BorderColor, #45484a);
+  color: var(--sapIndicationColor_10_TextColor, #ffffff);
+}
+.fd-tag--interactive.fd-tag--set10:hover {
+  background: var(--sapIndicationColor_10_Hover_Background, #767b7f);
+  border-color: var(--sapIndicationColor_10_BorderColor, #45484a);
+}
+.fd-tag--interactive.fd-tag--set10:active {
+  background: var(--sapIndicationColor_10_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_10_Active_BorderColor, #c8cdd3);
+  color: var(--sapIndicationColor_10_Active_TextColor, #45484a);
+}
+
+/* ─── Indication Color Set 1b–10b (tinted, light bg, dark text) */
+.fd-tag--set1b {
+  background: var(--sapIndicationColor_1b_Background, #ffd6e9);
+  border-color: var(--sapIndicationColor_1b_BorderColor, #ffa8d0);
+  color: var(--sapIndicationColor_1b_TextColor, #840606);
+}
+.fd-tag--interactive.fd-tag--set1b:hover {
+  background: var(--sapIndicationColor_1b_Hover_Background, #fa8585);
+  border-color: var(--sapIndicationColor_1b_BorderColor, #ffa8d0);
+}
+.fd-tag--interactive.fd-tag--set1b:active {
+  background: var(--sapIndicationColor_1b_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_1b_Active_BorderColor, #fb9d9d);
+  color: var(--sapIndicationColor_1b_Active_TextColor, #840606);
+}
+
+.fd-tag--set2b {
+  background: var(--sapIndicationColor_2b_Background, #ffd0d0);
+  border-color: var(--sapIndicationColor_2b_BorderColor, #ffb3b3);
+  color: var(--sapIndicationColor_2b_TextColor, #aa0808);
+}
+.fd-tag--interactive.fd-tag--set2b:hover {
+  background: var(--sapIndicationColor_2b_Hover_Background, #fbacac);
+  border-color: var(--sapIndicationColor_2b_BorderColor, #ffb3b3);
+}
+.fd-tag--interactive.fd-tag--set2b:active {
+  background: var(--sapIndicationColor_2b_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_2b_Active_BorderColor, #fb9d9d);
+  color: var(--sapIndicationColor_2b_Active_TextColor, #aa0808);
+}
+
+.fd-tag--set3b {
+  background: var(--sapIndicationColor_3b_Background, #ffe8d0);
+  border-color: var(--sapIndicationColor_3b_BorderColor, #ffcfaa);
+  color: var(--sapIndicationColor_3b_TextColor, #b95100);
+}
+.fd-tag--interactive.fd-tag--set3b:hover {
+  background: var(--sapIndicationColor_3b_Hover_Background, #ffd1a9);
+  border-color: var(--sapIndicationColor_3b_BorderColor, #ffcfaa);
+}
+.fd-tag--interactive.fd-tag--set3b:active {
+  background: var(--sapIndicationColor_3b_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_3b_Active_BorderColor, #ffcfaa);
+  color: var(--sapIndicationColor_3b_Active_TextColor, #b95100);
+}
+
+.fd-tag--set4b {
+  background: var(--sapIndicationColor_4b_Background, #d9f0d4);
+  border-color: var(--sapIndicationColor_4b_BorderColor, #b3dfa8);
+  color: var(--sapIndicationColor_4b_TextColor, #256f3a);
+}
+.fd-tag--interactive.fd-tag--set4b:hover {
+  background: var(--sapIndicationColor_4b_Hover_Background, #a7e2a9);
+  border-color: var(--sapIndicationColor_4b_BorderColor, #b3dfa8);
+}
+.fd-tag--interactive.fd-tag--set4b:active {
+  background: var(--sapIndicationColor_4b_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_4b_Active_BorderColor, #b3dfa8);
+  color: var(--sapIndicationColor_4b_Active_TextColor, #256f3a);
+}
+
+.fd-tag--set5b {
+  background: var(--sapIndicationColor_5b_Background, #d1e8ff);
+  border-color: var(--sapIndicationColor_5b_BorderColor, #a8d3ff);
+  color: var(--sapIndicationColor_5b_TextColor, #0064d9);
+}
+.fd-tag--interactive.fd-tag--set5b:hover {
+  background: var(--sapIndicationColor_5b_Hover_Background, #bbe6fc);
+  border-color: var(--sapIndicationColor_5b_BorderColor, #a8d3ff);
+}
+.fd-tag--interactive.fd-tag--set5b:active {
+  background: var(--sapIndicationColor_5b_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_5b_Active_BorderColor, #d3effd);
+  color: var(--sapIndicationColor_5b_Active_TextColor, #0064d9);
+}
+
+.fd-tag--set6b {
+  background: var(--sapIndicationColor_6b_Background, #cff4f2);
+  border-color: var(--sapIndicationColor_6b_BorderColor, #a0e8e4);
+  color: var(--sapIndicationColor_6b_TextColor, #046c7a);
+}
+.fd-tag--interactive.fd-tag--set6b:hover {
+  background: var(--sapIndicationColor_6b_Hover_Background, #b8f1e4);
+  border-color: var(--sapIndicationColor_6b_BorderColor, #a0e8e4);
+}
+.fd-tag--interactive.fd-tag--set6b:active {
+  background: var(--sapIndicationColor_6b_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_6b_Active_BorderColor, #a0e8e4);
+  color: var(--sapIndicationColor_6b_Active_TextColor, #046c7a);
+}
+
+.fd-tag--set7b {
+  background: var(--sapIndicationColor_7b_Background, #e8e3f8);
+  border-color: var(--sapIndicationColor_7b_BorderColor, #ccc3f0);
+  color: var(--sapIndicationColor_7b_TextColor, #5d36ff);
+}
+.fd-tag--interactive.fd-tag--set7b:hover {
+  background: var(--sapIndicationColor_7b_Hover_Background, #cdc1ff);
+  border-color: var(--sapIndicationColor_7b_BorderColor, #ccc3f0);
+}
+.fd-tag--interactive.fd-tag--set7b:active {
+  background: var(--sapIndicationColor_7b_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_7b_Active_BorderColor, #ccc3f0);
+  color: var(--sapIndicationColor_7b_Active_TextColor, #5d36ff);
+}
+
+.fd-tag--set8b {
+  background: var(--sapIndicationColor_8b_Background, #ffe0f8);
+  border-color: var(--sapIndicationColor_8b_BorderColor, #ffb8f0);
+  color: var(--sapIndicationColor_8b_TextColor, #a100c2);
+}
+.fd-tag--interactive.fd-tag--set8b:hover {
+  background: var(--sapIndicationColor_8b_Hover_Background, #f4bcff);
+  border-color: var(--sapIndicationColor_8b_BorderColor, #ffb8f0);
+}
+.fd-tag--interactive.fd-tag--set8b:active {
+  background: var(--sapIndicationColor_8b_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_8b_Active_BorderColor, #ffb8f0);
+  color: var(--sapIndicationColor_8b_Active_TextColor, #a100c2);
+}
+
+.fd-tag--set9b {
+  background: var(--sapIndicationColor_9b_Background, #e8eaed);
+  border-color: var(--sapIndicationColor_9b_BorderColor, #c8cdd3);
+  color: var(--sapIndicationColor_9b_TextColor, #1d2d3e);
+}
+.fd-tag--interactive.fd-tag--set9b:hover {
+  background: var(--sapIndicationColor_9b_Hover_Background, #f2f2f2);
+  border-color: var(--sapIndicationColor_9b_BorderColor, #c8cdd3);
+}
+.fd-tag--interactive.fd-tag--set9b:active {
+  background: var(--sapIndicationColor_9b_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_9b_Active_BorderColor, #c8cdd3);
+  color: var(--sapIndicationColor_9b_Active_TextColor, #1d2d3e);
+}
+
+.fd-tag--set10b {
+  background: var(--sapIndicationColor_10b_Background, #eaecee);
+  border-color: var(--sapIndicationColor_10b_BorderColor, #c8cdd3);
+  color: var(--sapIndicationColor_10b_TextColor, #45484a);
+}
+.fd-tag--interactive.fd-tag--set10b:hover {
+  background: var(--sapIndicationColor_10b_Hover_Background, #dcdfe3);
+  border-color: var(--sapIndicationColor_10b_BorderColor, #c8cdd3);
+}
+.fd-tag--interactive.fd-tag--set10b:active {
+  background: var(--sapIndicationColor_10b_Active_Background, #ffffff);
+  border-color: var(--sapIndicationColor_10b_Active_BorderColor, #c8cdd3);
+  color: var(--sapIndicationColor_10b_Active_TextColor, #45484a);
+}

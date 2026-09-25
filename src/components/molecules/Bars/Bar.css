@@ -1,0 +1,222 @@
+/* ── SAP Fiori Page Header (Bar) ────────────────────────────────── */
+/* Matches Figma: sapPageHeader_Background = white, H5/Bold title,  */
+/* header shadow = drop 0 2px 2px rgba(34,53,72,.05) +             */
+/*                 inset 0 -1px 0 #d9d9d9                           */
+
+.fd-page-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;             /* Cozy — Figma: 44px */
+  padding: 4px 16px;            /* Cozy title — Figma: py-[4px] px-[16px] */
+  box-sizing: border-box;
+  background: var(--sapPageHeader_Background, #ffffff);
+  gap: 10px;                    /* Cozy title — Figma: gap-[10px] */
+  flex-shrink: 0;
+  /* Drop shadow (outer) */
+  box-shadow:
+    0px 2px 2px 0px rgba(34, 53, 72, 0.05),    /* drop */
+    inset 0px -1px 0px 0px #d9d9d9;             /* inner bottom border */
+}
+
+.fd-page-header--compact {
+  min-height: 40px;
+  padding: 7px 16px;            /* Compact title — Figma: py-[7px] px-[16px] */
+  gap: 9px;                     /* Compact title — Figma: gap-[9px] */
+}
+
+/* Semantic variants have gap 8px regardless of form factor */
+.fd-page-header--error,
+.fd-page-header--warning,
+.fd-page-header--success,
+.fd-page-header--information,
+.fd-page-header--confirmation {
+  gap: 8px;
+}
+
+/* ── Semantic state bottom borders ── */
+.fd-page-header--error {
+  border-bottom: 1px solid var(--sapErrorBorderColor, #ffb3b3);
+  box-shadow:
+    0px 2px 2px 0px rgba(34, 53, 72, 0.05),
+    inset 0px -1px 0px 0px var(--sapErrorBorderColor, #ffb3b3);
+}
+.fd-page-header--warning {
+  border-bottom: 1px solid var(--sapWarningBorderColor, #ffcfaa);
+  box-shadow:
+    0px 2px 2px 0px rgba(34, 53, 72, 0.05),
+    inset 0px -1px 0px 0px var(--sapWarningBorderColor, #ffcfaa);
+}
+.fd-page-header--success {
+  border-bottom: 1px solid var(--sapSuccessBorderColor, #a8d9b0);
+  box-shadow:
+    0px 2px 2px 0px rgba(34, 53, 72, 0.05),
+    inset 0px -1px 0px 0px var(--sapSuccessBorderColor, #a8d9b0);
+}
+.fd-page-header--information {
+  border-bottom: 1px solid var(--sapInformationBorderColor, #b5d7ff);
+  box-shadow:
+    0px 2px 2px 0px rgba(34, 53, 72, 0.05),
+    inset 0px -1px 0px 0px var(--sapInformationBorderColor, #b5d7ff);
+}
+.fd-page-header--confirmation {
+  box-shadow:
+    0px 2px 2px 0px rgba(34, 53, 72, 0.05),
+    inset 0px -1px 0px 0px #d9d9d9;
+}
+
+/* Shadow overlay (matches Figma's inner shadow pseudo-layer) */
+.fd-page-header__shadow {
+  display: none; /* handled via box-shadow on the host */
+}
+
+/* ── Back button ── */
+.fd-page-header__back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: var(--sapButton_Lite_Background, transparent);
+  border: 1px solid transparent;
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  cursor: pointer;
+  color: var(--sapPageHeader_TextColor, #131e29);
+  padding: 0;
+  transition: background 80ms;
+}
+.fd-page-header--compact .fd-page-header__back-btn {
+  width: 26px;
+  height: 26px;
+}
+.fd-page-header__back-btn:hover {
+  background: var(--sapButton_Lite_Hover_Background, rgba(0, 0, 0, 0.04));
+}
+.fd-page-header__back-btn:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, #0070f2);
+  outline-offset: 2px;
+}
+
+/* ── Nav slot ── */
+.fd-page-header__nav {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Title area ── */
+.fd-page-header__title-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.fd-page-header__title {
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: var(--sapFontHeader5Size, 1rem);   /* 16px H5/Bold */
+  font-weight: 700;
+  color: var(--sapPageHeader_TextColor, #131e29);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.125;
+  margin: 0;
+}
+
+/* Semantic state title: inline with icon, normal flow */
+.fd-page-header__title--semantic {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.fd-page-header__status-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.fd-page-header__subheader {
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: 0.875rem;           /* 14px */
+  color: var(--sapPageHeader_TextColor, #131e29);
+  opacity: 0.72;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* ── Actions (right side) ── */
+.fd-page-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/* SAP Fiori Page Footer (Bar)                                  */
+/* Figma: sapPageFooter_Background = white, border-top #d9d9d9  */
+/* Floating: rounded-12px + sapContent_Shadow1 box-shadow       */
+/* ════════════════════════════════════════════════════════════ */
+
+.fd-page-footer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 44px;            /* cozy */
+  padding: 4px 16px;
+  background: var(--sapPageFooter_Background, #f5f6f7);
+  border-top: 1px solid var(--sapPageFooter_BorderColor, #d9d9d9);
+  gap: 8px;
+  flex-shrink: 0;
+  justify-content: flex-end;  /* actions right-aligned by default (Figma) */
+}
+
+.fd-page-footer--compact {
+  min-height: 40px;
+  padding: 7px 16px;
+}
+
+/* Floating footer: pill shape + shadow1, no border-top */
+.fd-page-footer--floating {
+  border-top: none;
+  border-radius: 12px;
+  /* sapContent_Shadow1: 1px border + 8px blur */
+  box-shadow:
+    0px 0px 0px 1px rgba(34, 53, 72, 0.48),
+    0px 2px 8px 0px rgba(34, 53, 72, 0.30);
+}
+
+.fd-page-footer__begin {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-right: auto;          /* push end actions to the right */
+}
+
+.fd-page-footer__end {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.fd-page-footer__center {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1 1 0;
+  justify-content: center;
+}

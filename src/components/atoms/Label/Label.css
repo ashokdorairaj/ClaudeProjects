@@ -1,0 +1,22 @@
+/* ── SAP Fiori Label ────────────────────────────────────────── */
+
+.fd-label {
+  display: inline-block;
+  font-family: var(--sap-font-family, '72', sans-serif);
+  font-size: var(--sap-font-size-sm, 0.875rem);
+  font-weight: var(--sap-font-weight-normal, 400);
+  color: var(--sap-content-label-color, #556b82);
+  line-height: 1.4;
+  cursor: default;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fd-label--required::after {
+  content: ' *';
+  color: var(--sap-status-negative-color, #bb0000);
+  font-weight: var(--sap-font-weight-semibold, 600);
+  margin-left: 2px;
+}

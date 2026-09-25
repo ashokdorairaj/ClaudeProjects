@@ -1,0 +1,217 @@
+/* ── SAP Fiori FileUploader ───────────────────────────────── */
+
+.fd-file-uploader {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--sap-font-family);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Label */
+.fd-file-uploader__label {
+  font-size: var(--sap-font-size-sm, 0.875rem);
+  font-weight: var(--sap-font-weight-normal, 400);
+  color: var(--sap-content-label-color, #556b82);
+  line-height: 1.4;
+}
+
+.fd-file-uploader__label-required {
+  color: var(--sap-status-negative-color, #aa0808);
+  margin-left: 2px;
+}
+
+/* ── Input field ── */
+.fd-file-uploader__field {
+  display: flex;
+  align-items: center;
+  min-height: var(--sap-element-height, 36px);
+  border: 1px solid var(--sap-input-border, #8696a9);
+  border-radius: var(--sap-element-border-radius, 12px);
+  background: var(--sap-input-bg, #fff);
+  cursor: pointer;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: border-color 100ms;
+}
+
+.fd-file-uploader__field:hover {
+  border-color: var(--sap-input-hover-border, #5b738b);
+}
+
+.fd-file-uploader__field:focus-visible {
+  outline: var(--sap-focus-outline, 2px solid var(--sap-brand-color));
+  outline-offset: var(--sap-focus-outline-offset, 2px);
+}
+
+.fd-file-uploader--drag-over .fd-file-uploader__field {
+  border-color: var(--sap-input-focus-border, #0064d9);
+  background: var(--sap-content-selected-hover-bg, #e3f0ff);
+}
+
+/* Compact: matches Input compact border-radius token */
+.fd-file-uploader--compact .fd-file-uploader__field {
+  min-height: var(--sap-element-compact-height, 26px);
+  border-radius: var(--sap-popover-border-radius, 8px);
+}
+
+.fd-file-uploader--disabled .fd-file-uploader__field {
+  opacity: var(--sap-disabled-opacity, 0.4);
+  pointer-events: none;
+  background: var(--sap-input-disabled-bg, rgba(255,255,255,0.4));
+  border-color: var(--sap-input-disabled-border, rgba(140,160,177,0.4));
+  cursor: not-allowed;
+}
+
+/* ── Value States ────────────────────────────────────────── */
+.fd-file-uploader--error .fd-file-uploader__field {
+  border-color: var(--sap-input-error-border, #e90b0b);
+  background: var(--sap-input-error-bg, #fff1f1);
+}
+
+.fd-file-uploader--warning .fd-file-uploader__field {
+  border-color: var(--sap-input-warning-border, #e76500);
+  background: var(--sap-input-warning-bg, #fff8f5);
+}
+
+.fd-file-uploader--success .fd-file-uploader__field {
+  border-color: var(--sap-input-success-border, #30914c);
+  background: var(--sap-input-success-bg, #f6fff0);
+}
+
+.fd-file-uploader--information .fd-file-uploader__field {
+  border-color: var(--sap-input-info-border, #0064d9);
+  background: var(--sap-input-info-bg, #f5faff);
+}
+
+/* ── Value state message ─────────────────────────────────── */
+.fd-file-uploader__message {
+  font-size: var(--sap-font-size-xs, 0.75rem);
+  margin: 2px 0 0;
+}
+
+.fd-file-uploader__message--negative    { color: var(--sap-status-negative-color,     #aa0808); }
+.fd-file-uploader__message--critical    { color: var(--sap-status-critical-color,     #b44f00); }
+.fd-file-uploader__message--positive    { color: var(--sap-status-positive-color,     #1d6332); }
+.fd-file-uploader__message--information { color: var(--sap-status-informative-color,  #0064d9); }
+
+/* ── Content area ── */
+.fd-file-uploader__content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px 10px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.fd-file-uploader--compact .fd-file-uploader__content {
+  padding: 2px 8px;
+}
+
+/* ── Placeholder (italic, muted) ── */
+.fd-file-uploader__placeholder {
+  font-size: var(--sap-font-size-sm, 0.875rem);
+  font-style: italic;
+  color: var(--sap-input-placeholder, #8696a9);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+}
+
+.fd-file-uploader--compact .fd-file-uploader__placeholder {
+  font-size: var(--sap-font-size-xs, 0.75rem);
+}
+
+/* ── File token chip ── */
+.fd-file-uploader__token {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  padding: 2px 4px 2px 8px;
+  border-radius: 4px;
+  background: var(--sap-group-content-bg, #fff);
+  border: 1px solid var(--sap-group-content-border, #d9d9d9);
+  font-size: var(--sap-font-size-sm, 0.875rem);
+  color: var(--sap-text-color, #131e29);
+  cursor: default;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.fd-file-uploader--compact .fd-file-uploader__token {
+  font-size: var(--sap-font-size-xs, 0.75rem);
+  padding: 1px 4px 1px 6px;
+}
+
+.fd-file-uploader__token-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+
+/* ── Token × remove button ── */
+.fd-file-uploader__token-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--sap-content-label-color, #556b82);
+  cursor: pointer;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-size: 10px;
+  line-height: 1;
+  transition: background 100ms, color 100ms;
+}
+
+.fd-file-uploader__token-remove:hover {
+  background: var(--sap-hover-color, #eaecee);
+  color: var(--sap-text-color, #131e29);
+}
+
+.fd-file-uploader__token-remove:focus-visible {
+  outline: var(--sap-focus-outline, 2px solid var(--sap-brand-color));
+  outline-offset: 1px;
+}
+
+/* ── Browse icon button (right edge, after divider) ── */
+.fd-file-uploader__browse-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-left: 1px solid var(--sap-group-content-border, #d9d9d9);
+  background: transparent;
+  color: var(--sap-content-label-color, #556b82);
+  cursor: pointer;
+  transition: background 100ms, color 100ms;
+}
+
+.fd-file-uploader__browse-btn:hover:not(:disabled) {
+  background: var(--sap-hover-color, #eaecee);
+  color: var(--sap-text-color, #131e29);
+}
+
+.fd-file-uploader--compact .fd-file-uploader__browse-btn {
+  width: 26px;
+  height: 26px;
+}
+
+/* ── Hidden native input ── */
+.fd-file-uploader__hidden-input {
+  display: none;
+}

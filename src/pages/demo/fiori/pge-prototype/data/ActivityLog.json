@@ -1,0 +1,826 @@
+[
+  {
+    "ID": "act-001",
+    "project_ID": "pge-001",
+    "timestamp": "2024-10-07T08:00:00Z",
+    "description": "Interconnection application received for 40 MW solar project at Elkhorn Farm Phase II. Application fee paid. Assigned to Study Engineering queue.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-002",
+    "project_ID": "pge-001",
+    "timestamp": "2024-10-18T09:30:00Z",
+    "description": "1st Deficiency Notice issued — missing protection relay settings for FDR-2201 POI. Applicant notified. 10-day response window opened.",
+    "performedBy": "evasquez",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-003",
+    "project_ID": "pge-001",
+    "timestamp": "2024-10-28T14:00:00Z",
+    "description": "Deficiency response received. Protection relay settings submitted. Smart Inverter Confirmation documentation accepted.",
+    "performedBy": "system",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-004",
+    "project_ID": "pge-001",
+    "timestamp": "2024-11-08T10:00:00Z",
+    "description": "Application Deemed Complete. Queue position confirmed. Task 2001 (Application Review) closed — APPROVED in 32 days.",
+    "performedBy": "evasquez",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-005",
+    "project_ID": "pge-001",
+    "timestamp": "2024-11-18T08:00:00Z",
+    "description": "Initial Review (IR) started. Assigned to Elena Vasquez. FDR-2201 identified as point of interconnection. EGI Pre-IR Review (Task 2004) initiated.",
+    "performedBy": "evasquez",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-006",
+    "project_ID": "pge-001",
+    "timestamp": "2024-11-28T11:00:00Z",
+    "description": "Task 2004 (EGI Pre-IR Review) completed. Scope confirmed: 40 MW solar, FDR-2201. Task 2005 (Conduct: IR) defaulted to sequential queue — not yet started.",
+    "performedBy": "evasquez",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-007",
+    "project_ID": "pge-001",
+    "timestamp": "2024-12-21T09:15:00Z",
+    "description": "AI agent flagged: Task 2005 has been in queue 23 days with no start. 312 comparable projects show parallel start is safe — 0 re-study events. Estimated 8 BD saving. HITL card surfaced to coordinator.",
+    "performedBy": "system",
+    "activityType": "ESCALATION"
+  },
+  {
+    "ID": "act-010",
+    "project_ID": "pge-001",
+    "timestamp": "2024-12-21T09:15:00Z",
+    "description": "HITL card generated: Approve Parallel Execution of Task 2005. Card pending coordinator decision.",
+    "performedBy": "system",
+    "activityType": "ESCALATION"
+  },
+  {
+    "ID": "act-011",
+    "project_ID": "pge-002",
+    "timestamp": "2025-02-10T08:00:00Z",
+    "description": "Application received for 38.5 MW combined solar+storage project. Fresno Agricultural Solar Cluster. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-012",
+    "project_ID": "pge-002",
+    "timestamp": "2025-02-15T09:00:00Z",
+    "description": "Feasibility study assigned to Aisha Patel. Central Valley Substation CV-07 identified as point of interconnection.",
+    "performedBy": "apatel",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-013",
+    "project_ID": "pge-002",
+    "timestamp": "2025-04-01T09:00:00Z",
+    "description": "Feasibility completed — APPROVED at 35 MW. Substation CV-07 initial screening acceptable. Escalated to SIS for full capacity study.",
+    "performedBy": "apatel",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-014",
+    "project_ID": "pge-002",
+    "timestamp": "2025-07-14T11:00:00Z",
+    "description": "SIS completed — CONDITIONAL. T-CV07-B transformer upgrade ($2.1M) required. Cost estimate letter sent to applicant. Proceeding to Detailed Study.",
+    "performedBy": "apatel",
+    "activityType": "COST_ESTIMATE_SENT"
+  },
+  {
+    "ID": "act-015",
+    "project_ID": "pge-002",
+    "timestamp": "2025-07-22T08:00:00Z",
+    "description": "Detailed Study assigned to Marcus Reid. SCADA communication design initiated.",
+    "performedBy": "mreid",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-016",
+    "project_ID": "pge-002",
+    "timestamp": "2025-09-08T10:00:00Z",
+    "description": "Detailed Study completed — APPROVED. Agreement Review queue assignment requested. Central Valley Agreement Review queue has 5 projects ahead.",
+    "performedBy": "mreid",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-017",
+    "project_ID": "pge-002",
+    "timestamp": "2025-08-12T14:00:00Z",
+    "description": "Applicant submitted written dispute of $2.1M cost estimate. Disputed items: transformer upgrade scope allocation, 15.3 miles of distribution line upgrade. Dispute logged in Agreement Review.",
+    "performedBy": "alopez",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-018",
+    "project_ID": "pge-002",
+    "timestamp": "2025-10-28T09:15:00Z",
+    "description": "Escalation issued. Cost estimate dispute unresolved at day 178. ITC eligibility window flagged as critical. Agreement Review Manager notified.",
+    "performedBy": "jsmith",
+    "activityType": "ESCALATION"
+  },
+  {
+    "ID": "act-019",
+    "project_ID": "pge-003",
+    "timestamp": "2025-03-05T08:00:00Z",
+    "description": "Application received for 4.8 MW wind project, Marin County. Assigned to Study Engineering. Fast Track screening initiated.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-020",
+    "project_ID": "pge-003",
+    "timestamp": "2025-03-10T08:00:00Z",
+    "description": "Feasibility assigned to Elena Vasquez. FDR-3407 identified as point of interconnection.",
+    "performedBy": "evasquez",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-021",
+    "project_ID": "pge-003",
+    "timestamp": "2025-04-18T10:00:00Z",
+    "description": "Feasibility completed — APPROVED. FDR-3407 at 58% capacity — acceptable. Escalated to SIS due to wind generation profile requirements.",
+    "performedBy": "evasquez",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-022",
+    "project_ID": "pge-003",
+    "timestamp": "2025-04-25T08:00:00Z",
+    "description": "SIS assigned to Elena Vasquez. Voltage regulation analysis at injection point commenced.",
+    "performedBy": "evasquez",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-023",
+    "project_ID": "pge-003",
+    "timestamp": "2025-11-10T11:00:00Z",
+    "description": "Clarification requested from applicant: wind turbine reactive capability datasheet required for voltage regulation model. 10-day response window issued.",
+    "performedBy": "evasquez",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-024",
+    "project_ID": "pge-003",
+    "timestamp": "2025-11-20T09:00:00Z",
+    "description": "Clarification received. Wind turbine reactive capability datasheet received and entered into power flow model. Analysis resuming.",
+    "performedBy": "evasquez",
+    "activityType": "CLARIFICATION_RECEIVED"
+  },
+  {
+    "ID": "act-025",
+    "project_ID": "pge-003",
+    "timestamp": "2025-12-01T11:30:00Z",
+    "description": "SLA breach notice issued. SIS at day 89 — 1 day from 90-day limit. AI analysis completed. Emergency engineer co-assignment under review.",
+    "performedBy": "jsmith",
+    "activityType": "ESCALATION"
+  },
+  {
+    "ID": "act-026",
+    "project_ID": "pge-004",
+    "timestamp": "2025-02-20T08:00:00Z",
+    "description": "Application received for 25 MW battery storage project, Tracy. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-027",
+    "project_ID": "pge-004",
+    "timestamp": "2025-02-25T09:00:00Z",
+    "description": "Feasibility assigned to James Thornton. FDR-5501 identified as point of interconnection.",
+    "performedBy": "jthornton",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-028",
+    "project_ID": "pge-004",
+    "timestamp": "2025-04-10T09:00:00Z",
+    "description": "Feasibility completed — APPROVED. FDR-5501 capacity adequate for storage configuration. Proceeding to SIS.",
+    "performedBy": "jthornton",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-029",
+    "project_ID": "pge-004",
+    "timestamp": "2025-04-18T08:00:00Z",
+    "description": "SIS assigned to James Thornton. Arc flash and protection coordination analysis commenced.",
+    "performedBy": "jthornton",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-030",
+    "project_ID": "pge-004",
+    "timestamp": "2025-07-02T14:00:00Z",
+    "description": "SIS completed — CONDITIONAL. Arc flash hazard identified at tie-switch. Dedicated relay required ($340K). Proceeding to Detailed Study.",
+    "performedBy": "jthornton",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-031",
+    "project_ID": "pge-004",
+    "timestamp": "2025-07-15T08:00:00Z",
+    "description": "Detailed Study opened. James Thornton initially assigned but reassigned to critical project in April. Aisha Patel assigned July 2025 after 3-month gap.",
+    "performedBy": "apatel",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-032",
+    "project_ID": "pge-004",
+    "timestamp": "2025-09-15T10:00:00Z",
+    "description": "Document request issued to applicant: as-built protection coordination diagram required for arc flash analysis. 15-day response window.",
+    "performedBy": "apatel",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-033",
+    "project_ID": "pge-004",
+    "timestamp": "2025-10-15T16:45:00Z",
+    "description": "SLA breach notification. Detailed Study at day 156 with no document response. Study Engineering Manager notified. Project escalated.",
+    "performedBy": "jsmith",
+    "activityType": "ESCALATION"
+  },
+  {
+    "ID": "act-034",
+    "project_ID": "pge-005",
+    "timestamp": "2025-03-12T08:00:00Z",
+    "description": "Application received for 18.2 MW EV charging hub, Port of Stockton. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-035",
+    "project_ID": "pge-005",
+    "timestamp": "2025-03-18T09:00:00Z",
+    "description": "Feasibility assigned to Elena Vasquez. FDR-6601 (port area) identified.",
+    "performedBy": "evasquez",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-036",
+    "project_ID": "pge-005",
+    "timestamp": "2025-05-02T09:00:00Z",
+    "description": "Feasibility completed — APPROVED. FDR-6601 capacity adequate for EV charging load profile.",
+    "performedBy": "evasquez",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-037",
+    "project_ID": "pge-005",
+    "timestamp": "2025-08-20T11:00:00Z",
+    "description": "SIS completed — CONDITIONAL. T-SS06-A transformer upgrade ($870K) required. Cost estimate issued to applicant.",
+    "performedBy": "mreid",
+    "activityType": "COST_ESTIMATE_SENT"
+  },
+  {
+    "ID": "act-038",
+    "project_ID": "pge-005",
+    "timestamp": "2025-09-18T14:00:00Z",
+    "description": "Applicant filed written dispute of $870K transformer cost. Claims upgrade serves broader grid and should not be solely applicant's responsibility.",
+    "performedBy": "alopez",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-039",
+    "project_ID": "pge-005",
+    "timestamp": "2025-11-01T09:00:00Z",
+    "description": "EVSE technical specification document request issued. UL 2202/UL 2594 certifications required for protection coordination review.",
+    "performedBy": "alopez",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-040",
+    "project_ID": "pge-005",
+    "timestamp": "2025-11-18T10:00:00Z",
+    "description": "Formal dispute notice filed by applicant's legal team. Agreement Review paused pending dispute resolution. AI escalation recommendation generated.",
+    "performedBy": "jsmith",
+    "activityType": "ESCALATION"
+  },
+  {
+    "ID": "act-041",
+    "project_ID": "pge-006",
+    "timestamp": "2025-04-08T08:00:00Z",
+    "description": "Application received for 12.5 MW solar campus, San Jose South. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-042",
+    "project_ID": "pge-006",
+    "timestamp": "2025-04-12T09:00:00Z",
+    "description": "Feasibility assigned to James Thornton. FDR-1102 identified as point of interconnection. Fast Track screening initiated.",
+    "performedBy": "jthornton",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-043",
+    "project_ID": "pge-006",
+    "timestamp": "2025-05-28T10:00:00Z",
+    "description": "Feasibility completed — APPROVED. Fast Track screening failed MW threshold (>10 MW). Routed to SIS path. Assigned to Elena Vasquez.",
+    "performedBy": "jthornton",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-044",
+    "project_ID": "pge-006",
+    "timestamp": "2025-06-05T08:00:00Z",
+    "description": "SIS assigned to Elena Vasquez. Voltage regulation analysis on FDR-1102 commenced. Note: engineer currently also assigned to pge-001 SIS.",
+    "performedBy": "evasquez",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-045",
+    "project_ID": "pge-006",
+    "timestamp": "2025-11-25T13:20:00Z",
+    "description": "Internal bandwidth alert generated. Elena Vasquez now primary on 3 active SIS projects (pge-001, pge-003, pge-006). Load rebalancing under review.",
+    "performedBy": "jsmith",
+    "activityType": "ESCALATION"
+  },
+  {
+    "ID": "act-046",
+    "project_ID": "pge-007",
+    "timestamp": "2025-06-15T08:00:00Z",
+    "description": "Application received for 3.2 MW fuel cell plant, Napa Valley. Assigned to Study Engineering. Fast Track path initiated.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-047",
+    "project_ID": "pge-007",
+    "timestamp": "2025-06-20T09:00:00Z",
+    "description": "Feasibility assigned to James Thornton. Fast Track screening underway. Fuel cell manufacturer datasheet requested.",
+    "performedBy": "jthornton",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-048",
+    "project_ID": "pge-007",
+    "timestamp": "2025-11-30T10:00:00Z",
+    "description": "Clarification requested: fuel cell manufacturer datasheet not received after 5-month project duration. Formal 10-day notice issued.",
+    "performedBy": "jthornton",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-049",
+    "project_ID": "pge-007",
+    "timestamp": "2025-12-05T09:00:00Z",
+    "description": "SLA AT_RISK status assigned. Feasibility study at day 44 of 60-day Fast Track limit. Applicant follow-up sent.",
+    "performedBy": "jsmith",
+    "activityType": "ESCALATION"
+  },
+  {
+    "ID": "act-050",
+    "project_ID": "pge-008",
+    "timestamp": "2025-05-20T08:00:00Z",
+    "description": "Application received for 7.8 MW community solar, Antioch. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-051",
+    "project_ID": "pge-008",
+    "timestamp": "2025-05-25T09:00:00Z",
+    "description": "Feasibility assigned to Aisha Patel. Group study flag triggered: 4 adjacent applications on FDR-0801 feeder cluster.",
+    "performedBy": "apatel",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-052",
+    "project_ID": "pge-008",
+    "timestamp": "2025-07-15T10:00:00Z",
+    "description": "Feasibility completed — APPROVED. Group study formally triggered. Coordination with pge-012 and pge-014 initiated. Applicants notified of group study process.",
+    "performedBy": "apatel",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-053",
+    "project_ID": "pge-008",
+    "timestamp": "2025-07-22T08:00:00Z",
+    "description": "Group Study SIS opened. Aisha Patel coordinating simultaneous power flow analysis for all group study participants.",
+    "performedBy": "apatel",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-054",
+    "project_ID": "pge-008",
+    "timestamp": "2025-12-08T14:00:00Z",
+    "description": "Group study SIS active at day 55. Group study timeline review issued — 60-90 additional days expected. Applicants to be formally re-notified of revised timeline.",
+    "performedBy": "jsmith",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-055",
+    "project_ID": "pge-009",
+    "timestamp": "2025-04-25T08:00:00Z",
+    "description": "Application received for 22 MW data center solar, Sacramento. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-056",
+    "project_ID": "pge-009",
+    "timestamp": "2025-06-14T09:00:00Z",
+    "description": "Feasibility completed — APPROVED. Behind-the-meter configuration reduces grid impact.",
+    "performedBy": "mreid",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-057",
+    "project_ID": "pge-009",
+    "timestamp": "2025-09-05T14:00:00Z",
+    "description": "SIS completed — APPROVED. No major grid impacts. Detailed Study opened.",
+    "performedBy": "mreid",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-058",
+    "project_ID": "pge-009",
+    "timestamp": "2025-11-01T10:00:00Z",
+    "description": "Detailed Study completed — APPROVED. CPUC backup generation clause requires compliance review. Referred to Agreement Review.",
+    "performedBy": "jthornton",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-059",
+    "project_ID": "pge-009",
+    "timestamp": "2025-11-15T09:00:00Z",
+    "description": "Clarification requested from Compliance team: CPUC backup generation compliance review scope defined. 15-day internal review target set.",
+    "performedBy": "alopez",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-060",
+    "project_ID": "pge-009",
+    "timestamp": "2025-11-30T11:15:00Z",
+    "description": "Agreement execution blocked pending Compliance review. Escalation issued to Agreement Review Manager. Target resolution: Dec 15.",
+    "performedBy": "jsmith",
+    "activityType": "ESCALATION"
+  },
+  {
+    "ID": "act-061",
+    "project_ID": "pge-010",
+    "timestamp": "2025-03-01T08:00:00Z",
+    "description": "Application received for 15.5 MW wind+storage hybrid, Monterey Peninsula. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-062",
+    "project_ID": "pge-010",
+    "timestamp": "2025-07-20T14:00:00Z",
+    "description": "SIS completed — CONDITIONAL. Hybrid storage dispatch modeled. 6 mitigation items accepted by applicant.",
+    "performedBy": "apatel",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-063",
+    "project_ID": "pge-010",
+    "timestamp": "2025-10-28T16:00:00Z",
+    "description": "Detailed Study completed — APPROVED. All mitigation items resolved. Cost estimate issued. NTP preparation initiated.",
+    "performedBy": "evasquez",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-064",
+    "project_ID": "pge-010",
+    "timestamp": "2025-11-05T09:00:00Z",
+    "description": "Interconnection Agreement executed by both parties. NTP issued. Construction phase commenced.",
+    "performedBy": "alopez",
+    "activityType": "AGREEMENT_EXECUTED"
+  },
+  {
+    "ID": "act-065",
+    "project_ID": "pge-010",
+    "timestamp": "2025-11-08T08:00:00Z",
+    "description": "Construction started. Utility-side equipment procurement confirmed. Field engineer assigned.",
+    "performedBy": "mreid",
+    "activityType": "CONSTRUCTION_STARTED"
+  },
+  {
+    "ID": "act-066",
+    "project_ID": "pge-010",
+    "timestamp": "2025-12-10T10:30:00Z",
+    "description": "Two RFIs opened by field engineer on protection relay settings. Study Engineering review requested. Construction otherwise on schedule. AI analysis available.",
+    "performedBy": "mreid",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-067",
+    "project_ID": "pge-011",
+    "timestamp": "2025-05-05T08:00:00Z",
+    "description": "Application received for 2.1 MW biogas generator, Fresno. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-068",
+    "project_ID": "pge-011",
+    "timestamp": "2025-07-05T08:00:00Z",
+    "description": "Detailed Study opened. Marcus Reid assigned. CAISO biogas screening in parallel.",
+    "performedBy": "mreid",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-069",
+    "project_ID": "pge-011",
+    "timestamp": "2025-09-10T10:00:00Z",
+    "description": "Document request issued to applicant: protection coordination supplement and CAISO screening results required. 15-day response window.",
+    "performedBy": "mreid",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-070",
+    "project_ID": "pge-011",
+    "timestamp": "2025-10-20T09:00:00Z",
+    "description": "Second document request issued. No response received. 10-day final notice.",
+    "performedBy": "mreid",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-071",
+    "project_ID": "pge-011",
+    "timestamp": "2025-11-20T16:00:00Z",
+    "description": "Study formally stalled. Final suspension notice issued to applicant. Project placed on hold pending document receipt.",
+    "performedBy": "jsmith",
+    "activityType": "ESCALATION"
+  },
+  {
+    "ID": "act-072",
+    "project_ID": "pge-012",
+    "timestamp": "2025-06-01T08:00:00Z",
+    "description": "Application received for 9 MW industrial rooftop solar, Richmond. Fast Track path. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-073",
+    "project_ID": "pge-012",
+    "timestamp": "2025-06-05T09:00:00Z",
+    "description": "Fast Track feasibility assigned to James Thornton. FDR-0904 at 44% capacity — favorable.",
+    "performedBy": "jthornton",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-074",
+    "project_ID": "pge-012",
+    "timestamp": "2025-10-15T10:00:00Z",
+    "description": "Clarification received from group study coordination: pge-012 may be included in feeder cluster group study. Engineer notified. Timeline under review.",
+    "performedBy": "jthornton",
+    "activityType": "CLARIFICATION_RECEIVED"
+  },
+  {
+    "ID": "act-075",
+    "project_ID": "pge-012",
+    "timestamp": "2025-12-09T09:45:00Z",
+    "description": "Fast Track feasibility ongoing, day 41. No issues identified. Group study scope may extend to include pge-012 — monitoring.",
+    "performedBy": "jthornton",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-076",
+    "project_ID": "pge-013",
+    "timestamp": "2025-07-10T08:00:00Z",
+    "description": "Application received for 50 MW utility-scale solar, Bakersfield. Largest project in current queue. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-077",
+    "project_ID": "pge-013",
+    "timestamp": "2025-07-14T09:00:00Z",
+    "description": "Feasibility assigned to Aisha Patel. Central Valley feeder cluster analysis initiated. Grid capacity concern flagged immediately.",
+    "performedBy": "apatel",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-078",
+    "project_ID": "pge-013",
+    "timestamp": "2025-11-20T11:00:00Z",
+    "description": "Internal grid capacity alert: pge-013 combined with pge-002 (38.5 MW) and pge-004 (25 MW) represents 113.5 MW on infrastructure rated ~90 MW. Transmission planning team notified.",
+    "performedBy": "jsmith",
+    "activityType": "ESCALATION"
+  },
+  {
+    "ID": "act-079",
+    "project_ID": "pge-013",
+    "timestamp": "2025-12-12T08:00:00Z",
+    "description": "Feasibility at day 22. CAISO pre-screening recommended by AI analysis. Transmission planning meeting scheduled for Dec 20.",
+    "performedBy": "jsmith",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-080",
+    "project_ID": "pge-014",
+    "timestamp": "2025-09-15T08:00:00Z",
+    "description": "Application received for 1.2 MW rooftop solar portfolio, San Francisco. Fast Track. 14 sites, distributed load.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-081",
+    "project_ID": "pge-014",
+    "timestamp": "2025-09-18T09:00:00Z",
+    "description": "Feasibility assigned to James Thornton. Distributed site analysis initiated. Group study coordination check completed — not included in Antioch cluster.",
+    "performedBy": "jthornton",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-082",
+    "project_ID": "pge-014",
+    "timestamp": "2025-12-14T11:00:00Z",
+    "description": "Feasibility ongoing, day 15. No issues. Engineer has capacity. On track for Fast Track approval.",
+    "performedBy": "jthornton",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-083",
+    "project_ID": "pge-015",
+    "timestamp": "2025-10-01T08:00:00Z",
+    "description": "Application received for 3.5 MW public EV charging hub, Concord. Fast Track. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-084",
+    "project_ID": "pge-015",
+    "timestamp": "2025-10-04T09:00:00Z",
+    "description": "Feasibility assigned to Elena Vasquez. Concord substation recently upgraded — good capacity.",
+    "performedBy": "evasquez",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-085",
+    "project_ID": "pge-015",
+    "timestamp": "2025-12-16T14:30:00Z",
+    "description": "Feasibility ongoing, day 10. Substation available capacity confirmed. On track for completion within 30 days.",
+    "performedBy": "evasquez",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-086",
+    "project_ID": "pge-016",
+    "timestamp": "2025-09-20T08:00:00Z",
+    "description": "Application received for 5.5 MW community solar, Elk Grove. Fast Track path. New substation capacity available.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-087",
+    "project_ID": "pge-016",
+    "timestamp": "2025-09-25T09:00:00Z",
+    "description": "Feasibility assigned to Marcus Reid. Elk Grove substation Q3 2025 upgrade confirmed with 25 MW available capacity.",
+    "performedBy": "mreid",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-088",
+    "project_ID": "pge-016",
+    "timestamp": "2025-12-13T10:00:00Z",
+    "description": "Feasibility ongoing, day 18. No issues. Elk Grove capacity easily accommodates 5.5 MW. On track for Fast Track approval.",
+    "performedBy": "mreid",
+    "activityType": "STUDY_ASSIGNED"
+  },
+  {
+    "ID": "act-089",
+    "project_ID": "pge-017",
+    "timestamp": "2025-04-15T08:00:00Z",
+    "description": "Application received for 8 MW onshore collection substation, Half Moon Bay. Peninsula region.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-090",
+    "project_ID": "pge-017",
+    "timestamp": "2025-09-18T14:00:00Z",
+    "description": "SIS completed — APPROVED. Peninsula transmission access confirmed. Cost estimate issued.",
+    "performedBy": "apatel",
+    "activityType": "COST_ESTIMATE_SENT"
+  },
+  {
+    "ID": "act-091",
+    "project_ID": "pge-017",
+    "timestamp": "2025-10-05T09:00:00Z",
+    "description": "Interconnection Agreement finalized by PG&E legal team. Sent to applicant for execution.",
+    "performedBy": "alopez",
+    "activityType": "AGREEMENT_EXECUTED"
+  },
+  {
+    "ID": "act-092",
+    "project_ID": "pge-017",
+    "timestamp": "2025-11-22T09:00:00Z",
+    "description": "Agreement paused — applicant legal team has not returned signed agreement after 18 days. Formal reminder issued. AI recommendation to follow up generated.",
+    "performedBy": "jsmith",
+    "activityType": "ESCALATION"
+  },
+  {
+    "ID": "act-093",
+    "project_ID": "pge-018",
+    "timestamp": "2025-05-10T08:00:00Z",
+    "description": "Application received for 6 MW BESS, Roseville. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-094",
+    "project_ID": "pge-018",
+    "timestamp": "2025-10-05T14:00:00Z",
+    "description": "SIS completed — APPROVED with minor protection relay note. Conditional approval met. Agreement executed.",
+    "performedBy": "jthornton",
+    "activityType": "AGREEMENT_EXECUTED"
+  },
+  {
+    "ID": "act-095",
+    "project_ID": "pge-018",
+    "timestamp": "2025-10-15T08:00:00Z",
+    "description": "NTP issued. Construction started. All permits secured. Utility equipment installation began.",
+    "performedBy": "mreid",
+    "activityType": "CONSTRUCTION_STARTED"
+  },
+  {
+    "ID": "act-096",
+    "project_ID": "pge-018",
+    "timestamp": "2025-12-04T15:00:00Z",
+    "description": "Construction complete. Utility equipment installed. Protection settings verification pending before witness test scheduling.",
+    "performedBy": "mreid",
+    "activityType": "CLARIFICATION_REQUESTED"
+  },
+  {
+    "ID": "act-097",
+    "project_ID": "pge-019",
+    "timestamp": "2025-08-05T08:00:00Z",
+    "description": "Application received for 4.2 MW solar+storage, San Mateo. Assigned to Study Engineering.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-098",
+    "project_ID": "pge-019",
+    "timestamp": "2025-11-28T14:00:00Z",
+    "description": "SIS completed — APPROVED. No mitigation required. Agreement executed immediately. NTP issued. Construction started.",
+    "performedBy": "evasquez",
+    "activityType": "CONSTRUCTION_STARTED"
+  },
+  {
+    "ID": "act-099",
+    "project_ID": "pge-019",
+    "timestamp": "2025-12-10T10:00:00Z",
+    "description": "Witness test completed successfully. All protection relay tests passed. CPUC notification filing submitted.",
+    "performedBy": "alopez",
+    "activityType": "CLARIFICATION_RECEIVED"
+  },
+  {
+    "ID": "act-100",
+    "project_ID": "pge-019",
+    "timestamp": "2025-12-17T13:00:00Z",
+    "description": "Energization scheduled for December 22. Final confirmation issued to applicant and field operations team.",
+    "performedBy": "alopez",
+    "activityType": "ENERGIZED"
+  },
+  {
+    "ID": "act-101",
+    "project_ID": "pge-020",
+    "timestamp": "2025-08-20T08:00:00Z",
+    "description": "Application received for 0.8 MW biogas cogeneration, Modesto. Fast Track. Smallest project in queue.",
+    "performedBy": "system",
+    "activityType": "SUBMISSION"
+  },
+  {
+    "ID": "act-102",
+    "project_ID": "pge-020",
+    "timestamp": "2025-10-08T09:00:00Z",
+    "description": "Feasibility completed — APPROVED. Fast Track cleared. Low grid impact. Proceeding to SIS.",
+    "performedBy": "mreid",
+    "activityType": "STUDY_COMPLETED"
+  },
+  {
+    "ID": "act-103",
+    "project_ID": "pge-020",
+    "timestamp": "2025-11-18T14:00:00Z",
+    "description": "SIS completed ahead of schedule. No mitigation required. Agreement executed. Construction started.",
+    "performedBy": "mreid",
+    "activityType": "CONSTRUCTION_STARTED"
+  },
+  {
+    "ID": "act-104",
+    "project_ID": "pge-020",
+    "timestamp": "2025-12-05T11:00:00Z",
+    "description": "Construction complete. As-built drawings submitted. Compliance review complete.",
+    "performedBy": "jsmith",
+    "activityType": "CLARIFICATION_RECEIVED"
+  },
+  {
+    "ID": "act-105",
+    "project_ID": "pge-020",
+    "timestamp": "2025-12-11T10:00:00Z",
+    "description": "Witness test scheduled for December 19. Field inspector assigned. Applicant attendance confirmed.",
+    "performedBy": "jsmith",
+    "activityType": "STUDY_COMPLETED"
+  }
+]

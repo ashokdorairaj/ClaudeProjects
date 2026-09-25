@@ -1,0 +1,423 @@
+/* ── SAP Fiori User Menu ──────────────────────────────────────────── */
+
+.fd-user-menu {
+  position: fixed;
+  z-index: 600;
+  width: 320px;
+  background: var(--sapGroup_ContentBackground, var(--sap-group-content-bg, #ffffff));
+  border-radius: var(--sapPopover_BorderCornerRadius, 8px);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.12),
+    0 1px 4px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.fd-user-menu--compact {
+  width: 300px;
+}
+
+/* ── Content container ──────────────────────────────────────────── */
+
+.fd-user-menu__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 40px 8px 8px;
+}
+
+/* ── User info section ──────────────────────────────────────────── */
+
+.fd-user-menu__user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  padding: 0 8px 8px;
+}
+
+.fd-user-menu__avatar {
+  margin-bottom: 4px;
+}
+
+.fd-user-menu__user-name {
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: var(--sapFontLargeSize, 1rem);
+  font-weight: 700;
+  color: var(--sapTextColor, var(--sap-text-color, #131e29));
+  line-height: 1.2;
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fd-user-menu__subline {
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Manage Accounts button ─────────────────────────────────────── */
+
+.fd-user-menu__manage-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 6px 14px;
+  background: transparent;
+  border: var(--sapButton_BorderWidth, 1px) solid var(--sapButton_BorderColor, var(--sap-btn-border, #bcc3ca));
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  color: var(--sapButton_TextColor, var(--sap-btn-text, #0064d9));
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 80ms;
+}
+
+.fd-user-menu__manage-btn:hover {
+  background: var(--sapButton_Hover_Background, var(--sap-btn-hover-bg, #eaecee));
+}
+
+.fd-user-menu__manage-btn:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: 2px;
+}
+
+.fd-user-menu__manage-btn-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--sapButton_TextColor, var(--sap-btn-text, #0064d9));
+}
+
+/* ── Other Accounts panel ───────────────────────────────────────── */
+
+.fd-user-menu__panel {
+  background: var(--sapGroup_ContentBackground, var(--sap-group-content-bg, #ffffff));
+  border-radius: var(--sapElement_BorderCornerRadius, var(--sap-group-border-radius, 12px));
+  overflow: hidden;
+}
+
+.fd-user-menu__panel-header {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-right: 8px;
+  border-bottom: 1px solid var(--sapGroup_TitleBorderColor, var(--sap-group-title-border, #a8b3bd));
+  gap: 4px;
+}
+
+.fd-user-menu__panel-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  min-height: 36px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  cursor: pointer;
+  color: var(--sapTextColor, var(--sap-text-color, #1d2d3e));
+  flex-shrink: 0;
+}
+
+.fd-user-menu__panel-toggle:hover {
+  background: var(--sapList_Hover_Background, var(--sap-list-hover-bg, #eaecee));
+}
+
+.fd-user-menu__panel-toggle:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: -2px;
+}
+
+.fd-user-menu__panel-arrow {
+  display: flex;
+  align-items: center;
+  transition: transform 160ms ease;
+}
+
+.fd-user-menu__panel-arrow--open {
+  transform: rotate(90deg);
+}
+
+.fd-user-menu__panel-title {
+  flex: 1;
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: var(--sapFontLargeSize, 1rem);
+  font-weight: 700;
+  color: var(--sapGroup_TitleTextColor, var(--sap-group-title-text, #1d2d3e));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fd-user-menu__panel-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  min-height: 36px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  cursor: pointer;
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+  flex-shrink: 0;
+}
+
+.fd-user-menu__panel-action:hover {
+  background: var(--sapList_Hover_Background, var(--sap-list-hover-bg, #eaecee));
+}
+
+.fd-user-menu__panel-action:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: -2px;
+}
+
+/* ── Account list ───────────────────────────────────────────────── */
+
+.fd-user-menu__accounts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fd-user-menu__account-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 72px;
+  padding: 8px 16px;
+  background: var(--sapList_Background, var(--sap-list-bg, #ffffff));
+  box-sizing: border-box;
+  cursor: default;
+}
+
+.fd-user-menu__account-item[role="button"] {
+  cursor: pointer;
+}
+
+.fd-user-menu__account-item[role="button"]:hover {
+  background: var(--sapList_Hover_Background, var(--sap-list-hover-bg, #eaecee));
+}
+
+.fd-user-menu__account-item:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: -2px;
+}
+
+/* bottom separator line */
+.fd-user-menu__account-sep {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--sapList_BorderColor, var(--sap-list-border, #e5e5e5));
+}
+
+/* ── Account avatar ─────────────────────────────────────────────── */
+
+.fd-user-menu__account-avatar {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--sapContent_ImagePlaceholderBackground, var(--sap-avatar-10-bg, #eaecee));
+  border: 1px solid var(--sapContent_ImagePlaceholderBackground, var(--sap-avatar-10-border, #eaecee));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fd-user-menu__account-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+.fd-user-menu__account-avatar-initials {
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: 1.125rem;      /* 18px */
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+  text-align: center;
+  line-height: 1;
+}
+
+/* ── Account text ───────────────────────────────────────────────── */
+
+.fd-user-menu__account-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+}
+
+.fd-user-menu__account-name {
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 700;
+  color: var(--sapList_TextColor, var(--sap-list-text-color, #131e29));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fd-user-menu__account-subline {
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fd-user-menu__account-check {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Flat menu items ────────────────────────────────────────────── */
+
+.fd-user-menu__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fd-user-menu__separator {
+  height: 1px;
+  background: var(--sapList_BorderColor, var(--sap-list-border, #e8e8e8));
+  margin: 4px 0;
+}
+
+.fd-user-menu__item {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 10px 0 0;
+  cursor: pointer;
+  background: var(--sapList_Background, var(--sap-list-bg, #ffffff));
+  outline: none;
+  transition: background 80ms;
+}
+
+.fd-user-menu__item:hover:not(.fd-user-menu__item--disabled) {
+  background: var(--sapList_Hover_Background, var(--sap-list-hover-bg, #eaecee));
+}
+
+.fd-user-menu__item:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: -2px;
+}
+
+.fd-user-menu__item--disabled {
+  opacity: var(--sapContent_DisabledOpacity, var(--sap-disabled-opacity, 0.4));
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* leading icon area: 36px wide, matches Figma's "Leading Container" */
+.fd-user-menu__item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  min-height: 44px;
+  flex-shrink: 0;
+  font-size: 1rem;
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+}
+
+.fd-user-menu__item-label {
+  flex: 1;
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapList_TextColor, var(--sap-list-text-color, #1d2d3e));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.fd-user-menu__item-nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  min-height: 44px;
+  flex-shrink: 0;
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+}
+
+/* ── Footer ─────────────────────────────────────────────────────── */
+
+.fd-user-menu__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 4px 16px;
+  border-top: 1px solid var(--sapPageFooter_BorderColor, var(--sap-page-footer-border, #d9d9d9));
+  background: var(--sapPageFooter_Background, var(--sap-page-footer-bg, #ffffff));
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+
+/* Sign Out button — Lite style */
+.fd-user-menu__sign-out {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 10px;
+  background: var(--sapButton_Lite_Background, transparent);
+  border: var(--sapButton_BorderWidth, 1px) solid transparent;
+  border-radius: var(--sapButton_BorderCornerRadius, 8px);
+  color: var(--sapButton_TextColor, var(--sap-btn-text, #0064d9));
+  font-family: var(--sapFontFamily, var(--sap-font-family, inherit));
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 80ms;
+}
+
+.fd-user-menu__sign-out:hover {
+  background: var(--sapButton_Lite_Hover_Background, #ebf5fe);
+}
+
+.fd-user-menu__sign-out:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: 2px;
+}
+
+.fd-user-menu__sign-out-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}

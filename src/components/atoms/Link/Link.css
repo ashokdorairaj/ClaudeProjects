@@ -1,0 +1,72 @@
+/* ── SAP Fiori Link ────────────────────────────────────────── */
+
+.fd-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--sapFontFamily, "72", Arial, Helvetica, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: var(--sapFontWeight, 400);
+  color: var(--sapLinkColor, #0064d9);
+  /* Horizon spec: no underline at rest — underline appears only on hover */
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  transition: color 80ms;
+}
+
+.fd-link:hover {
+  color: var(--sapLinkColor_Hover, #0054b5);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.fd-link:active {
+  color: var(--sapLinkColor_Active, #0854a0);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.fd-link:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Emphasized: semibold weight (600), same link color */
+.fd-link--emphasized {
+  font-weight: 600;
+}
+
+/* Subtle: label color for text; underline appears on hover via parent rule */
+.fd-link--subtle {
+  color: var(--sapContent_LabelColor, #556b82);
+}
+.fd-link--subtle:hover {
+  color: var(--sapLinkColor, #0064d9);
+}
+
+/* Inverted: for use on dark/colored backgrounds */
+.fd-link--inverted {
+  color: var(--sapContent_ContrastTextColor, #ffffff);
+}
+.fd-link--inverted:hover {
+  color: var(--sapContent_ContrastTextColor, #ffffff);
+  opacity: 0.8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Disabled */
+.fd-link--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.fd-link__icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--sapFontSize, 0.875rem);
+}

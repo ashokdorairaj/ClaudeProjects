@@ -1,0 +1,115 @@
+/* ── SAP Fiori RatingIndicator ───────────────────────────── */
+/* Matches Figma file V6wSQ73uQKzM7nChBBYJ5F, page "❖ Rating Indicator" */
+
+.fd-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Disabled: 40 % opacity, no interaction */
+.fd-rating--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  pointer-events: none;
+}
+
+/* ── Label ───────────────────────────────────────────────── */
+
+.fd-rating__label {
+  font-family: var(--sap-font-family, "72", Arial, sans-serif);
+  font-size: var(--sap-font-size-sm, 0.875rem);
+  color: var(--sapContent_LabelColor, var(--sap-content-label-color, #556b82));
+  flex-shrink: 0;
+}
+
+/* ── Stars container ─────────────────────────────────────── */
+
+.fd-rating__stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;   /* Figma: gap 3px between stars */
+  line-height: 1;
+}
+
+/* ── Individual star (cozy = 24 px, matches Figma cozy) ─── */
+
+.fd-rating__star {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--sapRatingIndicator_Unselected_Color, #8696a9);
+  transition: color 100ms, transform 100ms;
+  /* remove button defaults */
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Compact: 16 px container, 14 px icon — matches Figma compact variant */
+.fd-rating--compact .fd-rating__star {
+  width: 16px;
+  height: 16px;
+  font-size: 14px;
+}
+
+/* Read-only stars are slightly smaller (18 px in Figma read-only variant) */
+.fd-rating--display-only .fd-rating__star {
+  width: 18px;
+  height: 18px;
+  font-size: 16px;
+  cursor: default;
+  pointer-events: none;
+}
+
+.fd-rating__star:focus-visible {
+  outline: 2px solid var(--sapContent_FocusColor, var(--sap-brand-color, #0070f2));
+  outline-offset: 1px;
+  border-radius: 2px;
+}
+
+/* ── Filled / empty states ───────────────────────────────── */
+
+.fd-rating__star--filled {
+  /* Figma: --sapRatingIndicator_Selected_Color golden #f0ab00 */
+  color: var(--sapRatingIndicator_Selected_Color, #f0ab00);
+}
+
+.fd-rating__star--empty {
+  color: var(--sapRatingIndicator_Unselected_Color, #8696a9);
+}
+
+/* ── Half star: overlay technique ───────────────────────── */
+
+.fd-rating__star--half {
+  color: var(--sapRatingIndicator_Unselected_Color, #8696a9);
+}
+
+/* The inner filled-half span */
+.fd-rating__star-half-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  overflow: hidden;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  color: var(--sapRatingIndicator_Selected_Color, #f0ab00);
+  font-size: inherit;
+  pointer-events: none;
+}
+
+/* ── Hover state (interactive only) ─────────────────────── */
+
+.fd-rating:not(.fd-rating--display-only):not(.fd-rating--disabled) .fd-rating__star:hover,
+.fd-rating:not(.fd-rating--display-only):not(.fd-rating--disabled) .fd-rating__star--hover {
+  color: var(--sapRatingIndicator_Selected_Color, #f0ab00);
+  transform: scale(1.15);
+}

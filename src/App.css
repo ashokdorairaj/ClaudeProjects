@@ -1,0 +1,322 @@
+/* ── SAP Fiori Web – Showcase App ──────────────────────────── */
+
+/* ── SAP Official Brand Tokens (brand.sap.com) ──────────────
+   Primary blues, greys, and typography for the tool shell.
+   Applied globally — override per-component where needed.
+   ─────────────────────────────────────────────────────────── */
+:root {
+  /* SAP Primary Blue Palette */
+  --sap-brand-blue-2:  #D1EFFF;
+  --sap-brand-blue-4:  #89D1FF;
+  --sap-brand-blue-6:  #1B90FF;
+  --sap-brand-blue-7:  #0070F2;   /* Primary brand blue */
+  --sap-brand-blue-10: #002A86;   /* Headlines on white */
+  --sap-brand-blue-11: #00144A;   /* Shell / dark navy */
+
+  /* SAP Grey Palette */
+  --sap-brand-grey-2:  #EAECEE;   /* Light bg */
+  --sap-brand-grey-4:  #A9B4BE;
+  --sap-brand-grey-6:  #5B738B;   /* Body / label text */
+  --sap-brand-grey-7:  #475E75;
+  --sap-brand-grey-10: #1A2733;   /* Dark bg */
+  --sap-brand-grey-11: #12171C;
+
+  /* SAP Typography — 72 Brand family names */
+  --sap-font-72-medium: "72 Brand Medium", "72", Arial, sans-serif;
+  --sap-font-72-book:   "72 Brand Book",   "72", Arial, sans-serif;
+  --sap-font-72-bold:   "72 Brand",        "72", Arial, sans-serif;
+  --sap-font-72-regular:"72 Brand",        "72", Arial, sans-serif;
+
+  /* Shell brand override — Blue 11 as canonical SAP shell color */
+  --sap-shell-brand-bg:   var(--sap-brand-blue-11);
+  --sap-shell-brand-text: #ffffff;
+}
+
+@keyframes _pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.75); }
+}
+
+/* ObjectStatus icon gap — UI5 hardcodes padding-inline-end: 0.25rem (4px) on the icon container.
+   Override globally to meet the 8px minimum spec. Uses the stable data-component-name attribute. */
+[data-component-name="ObjectStatusIconContainer"] {
+  padding-inline-end: 0.5rem !important;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--sap-font-family, "72", Arial, sans-serif);
+  background: var(--sap-hover-color, #eaecee);
+  color: var(--sap-text-color, #131e29);
+  min-height: 100vh;
+  transition: background 200ms, color 200ms;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main content */
+.showcase-main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  width: 100%;
+}
+
+.showcase-header {
+  margin-bottom: 48px;
+}
+
+.showcase-title {
+  font-size: var(--sap-font-size-3xl, 2rem);
+  font-weight: var(--sap-font-weight-bold, 700);
+  color: var(--sap-title-color, #131e29);
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.showcase-subtitle {
+  font-size: var(--sap-font-size-md, 1rem);
+  color: var(--sap-content-label-color, #556b82);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Section */
+.showcase-section {
+  margin-bottom: 48px;
+}
+
+.showcase-section__title {
+  font-size: var(--sap-font-size-xl, 1.25rem);
+  font-weight: var(--sap-font-weight-semibold, 600);
+  color: var(--sap-title-color, #131e29);
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--sap-brand-color, #0070f2);
+  display: inline-block;
+}
+
+.showcase-section__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* Demo Box */
+.demo-box {
+  background: var(--sap-base-color, #fff);
+  border: 1px solid var(--sap-card-border, #d9d9d9);
+  border-radius: var(--sap-element-border-radius, 12px);
+  padding: 16px;
+  min-width: 160px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.demo-box--wide {
+  min-width: 300px;
+  max-width: 480px;
+}
+
+.demo-box__label {
+  font-family: var(--sap-font-family);
+  font-size: var(--sap-font-size-xs, 0.75rem);
+  font-weight: var(--sap-font-weight-semibold, 600);
+  color: var(--sap-content-label-color, #556b82);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.demo-box__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .showcase-main { padding: 24px 16px 60px; }
+  .demo-box { min-width: 100%; max-width: 100%; }
+  .demo-box--wide { min-width: 100%; max-width: 100%; }
+}
+
+/* ── Page Tabs (Showcase / Docs) ─────────────────────────── */
+
+.fd-page-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--sapGroup_TitleBorderColor, #a8b3bd);
+  margin-bottom: 24px;
+  background: var(--sapGroup_TitleBackground, #f5f6f7);
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.fd-page-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 20px;
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 600;
+  color: var(--sapTextColor, #131e29);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 80ms, border-color 80ms, color 80ms;
+}
+
+.fd-page-tab:hover:not(.fd-page-tab--active) {
+  background: var(--sapList_Hover_Background, #eaecee);
+  color: var(--sapTextColor, #131e29);
+}
+
+.fd-page-tab--active {
+  color: var(--sapBrandColor, #0070f2);
+  border-bottom-color: var(--sapBrandColor, #0070f2);
+  background: var(--sapGroup_ContentBackground, #fff);
+}
+
+/* ── Doc Viewer ──────────────────────────────────────────── */
+
+.fd-doc-viewer {
+  font-family: var(--sapFontFamily, "72", Arial, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTextColor, #131e29);
+  line-height: 1.6;
+  max-width: 860px;
+}
+
+.fd-doc-viewer h1 {
+  font-size: var(--sapFontHeader2Size, 1.5rem);
+  font-weight: 700;
+  color: var(--sapGroup_TitleTextColor, #1d2d3e);
+  border-bottom: 2px solid var(--sapBrandColor, #0070f2);
+  padding-bottom: 8px;
+  margin: 0 0 20px;
+}
+
+.fd-doc-viewer h2 {
+  font-size: var(--sapFontHeader4Size, 1.125rem);
+  font-weight: 600;
+  color: var(--sapGroup_TitleTextColor, #1d2d3e);
+  margin: 32px 0 12px;
+  border-bottom: 1px solid var(--sapGroup_ContentBorderColor, #e8e8e8);
+  padding-bottom: 4px;
+}
+
+.fd-doc-viewer h3 {
+  font-size: var(--sapFontSize, 0.875rem);
+  font-weight: 600;
+  color: var(--sapTextColor, #131e29);
+  margin: 20px 0 8px;
+}
+
+.fd-doc-viewer h4 {
+  font-size: var(--sapFontSmallSize, 0.8125rem);
+  font-weight: 600;
+  color: var(--sapContent_LabelColor, #556b82);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 16px 0 6px;
+}
+
+.fd-doc-viewer p {
+  margin: 0 0 12px;
+}
+
+.fd-doc-viewer ul, .fd-doc-viewer ol {
+  margin: 0 0 12px;
+  padding-left: 24px;
+}
+
+.fd-doc-viewer li {
+  margin-bottom: 4px;
+}
+
+.fd-doc-viewer code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.8125rem;
+  background: var(--sapList_HeaderBackground, #f5f6f7);
+  border: 1px solid var(--sapGroup_ContentBorderColor, #e8e8e8);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--sapBrandColor, #0064d9);
+}
+
+.fd-doc-viewer pre {
+  background: var(--sapList_HeaderBackground, #f5f6f7);
+  border: 1px solid var(--sapGroup_ContentBorderColor, #e8e8e8);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 0 0 16px;
+}
+
+.fd-doc-viewer pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--sapTextColor, #131e29);
+  font-size: 0.8125rem;
+}
+
+.fd-doc-viewer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  font-size: var(--sapFontSize, 0.875rem);
+}
+
+.fd-doc-viewer th {
+  background: var(--sapList_HeaderBackground, #f5f6f7);
+  border: 1px solid var(--sapList_BorderColor, #e8e8e8);
+  padding: 8px 12px;
+  font-weight: 600;
+  text-align: left;
+  color: var(--sapList_TextColor, #131e29);
+}
+
+.fd-doc-viewer td {
+  border: 1px solid var(--sapList_BorderColor, #e8e8e8);
+  padding: 7px 12px;
+  vertical-align: top;
+}
+
+.fd-doc-viewer tr:nth-child(even) td {
+  background: var(--sapList_HeaderBackground, #f5f6f7);
+}
+
+.fd-doc-viewer a {
+  color: var(--sapLinkColor, #0064d9);
+  text-decoration: none;
+}
+
+.fd-doc-viewer a:hover {
+  text-decoration: underline;
+}
+
+.fd-doc-viewer hr {
+  border: none;
+  border-top: 1px solid var(--sapGroup_ContentBorderColor, #e8e8e8);
+  margin: 24px 0;
+}
+
+.fd-doc-viewer strong {
+  font-weight: 600;
+  color: var(--sapTextColor, #131e29);
+}

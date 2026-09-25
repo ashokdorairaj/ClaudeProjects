@@ -1,0 +1,152 @@
+/* ── SAP Fiori Tokenizer ─────────────────────────────────────
+   Figma spec: V6wSQ73uQKzM7nChBBYJ5F / node 202050-705
+   ─────────────────────────────────────────────────────────── */
+
+/* ── Base container ──────────────────────────────────── */
+
+.fd-tokenizer {
+  display: inline-flex;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ── Inner flex row of tokens ────────────────────────── */
+
+.fd-tokenizer__inner {
+  display: flex;
+  flex-wrap: nowrap;     /* single-line by default */
+  align-items: center;
+  gap: 4px;              /* compact gap; overridden for cozy below */
+}
+
+/* ── Single-line vs multiline ────────────────────────── */
+
+.fd-tokenizer--singleline .fd-tokenizer__inner {
+  overflow: hidden;
+  flex-wrap: nowrap;
+}
+
+.fd-tokenizer--multiline .fd-tokenizer__inner {
+  flex-wrap: wrap;
+}
+
+/* ── Cozy ────────────────────────────────────────────── */
+
+.fd-tokenizer:not(.fd-tokenizer--compact) .fd-tokenizer__inner {
+  gap: 5px;
+  min-height: 36px;
+  align-items: center;
+}
+
+/* ── Compact ─────────────────────────────────────────── */
+
+.fd-tokenizer--compact .fd-tokenizer__inner {
+  gap: 4px;
+  min-height: 26px;
+  align-items: center;
+}
+
+/* ── With-input variant ──────────────────────────────── */
+
+.fd-tokenizer--with-input {
+  width: 100%;
+}
+
+.fd-tokenizer--with-input .fd-tokenizer__inner {
+  width: 100%;
+  min-height: 36px;
+  padding: 0 8px;
+  border: 1px solid var(--sapField_BorderColor, #8696a9);
+  border-radius: var(--sapField_BorderCornerRadius, 4px);
+  background: var(--sapField_Background, #fff);
+  cursor: text;
+  box-shadow: inset 0 0 0 1px rgba(85, 107, 129, 0.25);
+  transition: border-color 80ms, box-shadow 80ms;
+}
+
+.fd-tokenizer--with-input.fd-tokenizer--compact .fd-tokenizer__inner {
+  min-height: 26px;
+  padding: 0 6px;
+}
+
+.fd-tokenizer--with-input .fd-tokenizer__inner:focus-within {
+  border-color: var(--sapField_Active_BorderColor, #0064d9);
+  box-shadow: inset 0 0 0 1px var(--sapField_Active_BorderColor, #0064d9);
+}
+
+/* ── Embedded input ──────────────────────────────────── */
+
+.fd-tokenizer__input {
+  flex: 1;
+  min-width: 60px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--sapFontFamily, '72', sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapTextColor, #131e29);
+  caret-color: var(--sapBrandColor, #0064d9);
+  padding: 0;
+  height: 100%;
+  align-self: stretch;
+}
+
+.fd-tokenizer--compact .fd-tokenizer__input {
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+.fd-tokenizer__input::placeholder {
+  color: var(--sapField_PlaceholderTextColor, #aab4bd);
+}
+
+.fd-tokenizer__input:read-only {
+  cursor: default;
+}
+
+/* ── Overflow link ───────────────────────────────────── */
+/*  Figma shows plain link text (sapLinkColor), no border/pill */
+
+.fd-tokenizer__overflow {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sapFontFamily, '72', sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapLinkColor, #0064d9);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 80ms;
+}
+
+.fd-tokenizer--compact .fd-tokenizer__overflow {
+  font-size: var(--sapFontSmallSize, 0.75rem);
+}
+
+.fd-tokenizer__overflow:hover {
+  color: var(--sapLinkColor_Hover, #0054b5);
+  text-decoration: underline;
+}
+
+.fd-tokenizer__overflow:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid) var(--sapContent_FocusColor, #0064d9);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Disabled ────────────────────────────────────────── */
+
+.fd-tokenizer--disabled {
+  opacity: var(--sapContent_DisabledOpacity, 0.4);
+  pointer-events: none;
+}
+
+/* ── Read-only ───────────────────────────────────────── */
+
+.fd-tokenizer--readonly .fd-tokenizer__inner {
+  background: var(--sapField_ReadOnly_Background, #f5f6f7);
+  border-color: var(--sapField_ReadOnly_BorderColor, transparent);
+}

@@ -1,0 +1,152 @@
+/* ── SAP Fiori Breadcrumb ──────────────────────────────────────── */
+
+.fd-breadcrumb-nav {
+  display: inline-block;
+}
+
+.fd-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  font-family: var(--sapFontFamily, "72", Arial, Helvetica, sans-serif);
+  font-size: var(--sapFontSize, 0.875rem);
+  line-height: 1.4;
+  min-height: 26px;
+}
+
+.fd-breadcrumb__item {
+  display: flex;
+  align-items: center;
+}
+
+.fd-breadcrumb__separator {
+  padding: 0 6px;
+  color: var(--sapTextColor, #131e29);
+  user-select: none;
+  font-size: var(--sapFontSize, 0.875rem);
+}
+
+/* Navigable link items */
+.fd-breadcrumb__link {
+  color: var(--sapLinkColor, #0064d9);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.fd-breadcrumb__link:hover {
+  color: var(--sapLinkColor_Hover, #0054b5);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.fd-breadcrumb__link:focus-visible {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid)
+    var(--sapContent_FocusColor, #0032a5);
+  outline-offset: 1px;
+  border-radius: 2px;
+}
+
+/* Current page — plain text, not a link */
+.fd-breadcrumb__current {
+  color: var(--sapTextColor, #131e29);
+  font-size: var(--sapFontSize, 0.875rem);
+  cursor: default;
+  line-height: inherit;
+}
+
+/* ── Overflow ─────────────────────────────────────────────────── */
+
+.fd-breadcrumb__item--overflow {
+  position: relative;
+}
+
+.fd-breadcrumb__overflow-wrap {
+  position: relative;
+}
+
+/* Overflow button: ••• ˅ */
+.fd-breadcrumb__overflow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  padding: 2px 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapLinkColor, #0064d9);
+  line-height: inherit;
+  border-radius: 2px;
+}
+
+.fd-breadcrumb__overflow-btn:hover {
+  background-color: var(--sapList_Hover_Background, #f5f6f7);
+}
+
+.fd-breadcrumb__overflow-btn:focus-visible,
+.fd-breadcrumb__overflow-btn--open {
+  outline: var(--sapContent_FocusWidth, 2px) var(--sapContent_FocusStyle, solid)
+    var(--sapContent_FocusColor, #0032a5);
+  outline-offset: 1px;
+}
+
+.fd-breadcrumb__overflow-dots {
+  letter-spacing: 1px;
+  font-size: 0.75rem;
+  color: var(--sapLinkColor, #0064d9);
+}
+
+.fd-breadcrumb__overflow-arrow {
+  font-size: 0.75rem;
+  color: var(--sapLinkColor, #0064d9);
+  line-height: 1;
+}
+
+/* ── Popover dropdown ─────────────────────────────────────────── */
+
+.fd-breadcrumb__popover {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 100;
+  background: var(--sapList_Background, #ffffff);
+  border: 1px solid var(--sapList_BorderColor, #e4e5e6);
+  border-radius: var(--sapElement_BorderCornerRadius, 4px);
+  box-shadow: var(--sapContent_Shadow1, 0 4px 16px 0 rgba(0,0,0,.1));
+  min-width: 120px;
+  padding: 4px 0;
+  white-space: nowrap;
+}
+
+.fd-breadcrumb__popover-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: var(--sapFontSize, 0.875rem);
+  color: var(--sapList_TextColor, #131e29);
+  line-height: 1.4;
+}
+
+.fd-breadcrumb__popover-item:hover {
+  background: var(--sapList_Hover_Background, #f5f6f7);
+}
+
+.fd-breadcrumb__popover-item--selected {
+  background: var(--sapList_SelectionBackgroundColor, #e8f0fe);
+  color: var(--sapList_Active_TextColor, #0064d9);
+  font-weight: var(--sapFontBoldWeight, bold);
+}
+
+.fd-breadcrumb__popover-item--selected:hover {
+  background: var(--sapList_Hover_SelectionBackground, #d4e4fc);
+}

@@ -1,0 +1,502 @@
+[
+  {
+    "ID": "com-001",
+    "project_ID": "pge-001",
+    "direction_code": "O",
+    "subject": "System Impact Study Initiated — PGE-2025-001 Elkhorn Solar Farm Phase II",
+    "body": "Dear Ms. Chen, We are writing to confirm that the System Impact Study for your interconnection application PGE-2025-001 has been initiated as of March 10, 2025. The estimated completion timeframe is 60–90 days per Rule 21 Section 4.2. Your assigned Study Engineer is Elena Vasquez. Please ensure all requested technical documentation remains current. We will notify you upon study completion. PG&E Interconnection Services",
+    "sentAt": "2025-03-10T09:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E confirmed SIS initiation for PGE-2025-001, estimated 60–90 days."
+  },
+  {
+    "ID": "com-002",
+    "project_ID": "pge-001",
+    "direction_code": "O",
+    "subject": "Detailed Study Cost Estimate — Mitigation Required",
+    "body": "Dear Ms. Chen, The System Impact Study for PGE-2025-001 has been completed. The study identified required mitigation: reconductoring of 1.2 miles of Feeder FDR-2201 (estimated $1,400,000) and voltage regulation equipment at injection point PCC-A44. A Detailed Study is required before a cost estimate can be finalized. Please confirm your intent to proceed within 30 days. A non-refundable deposit of $50,000 is required to initiate the Detailed Study.",
+    "sentAt": "2025-06-02T15:00:00Z",
+    "sentiment": "neutral",
+    "summary": "SIS complete with conditional approval. $1.4M mitigation identified. Detailed Study required — $50K deposit requested."
+  },
+  {
+    "ID": "com-003",
+    "project_ID": "pge-001",
+    "direction_code": "I",
+    "subject": "RE: Detailed Study Deposit — Capacity Increase Request",
+    "body": "Thank you for the SIS completion notice. We will proceed with the Detailed Study and submit the deposit this week. We also wish to notify PG&E of our intent to increase our requested capacity from 40 MW to 45 MW. We understand this may require a supplemental study and are prepared to fund it. Please confirm the process. Regards, Maria Chen, Elkhorn Renewables LLC",
+    "sentAt": "2025-09-15T10:30:00Z",
+    "sentiment": "positive",
+    "summary": "Applicant confirms Detailed Study deposit and notifies PG&E of capacity increase request (40→45 MW)."
+  },
+  {
+    "ID": "com-004",
+    "project_ID": "pge-001",
+    "direction_code": "O",
+    "subject": "Supplemental SIS Required — Capacity Increase to 45 MW",
+    "body": "Dear Ms. Chen, Thank you for your notification of the capacity increase request. Per Rule 21, a supplemental System Impact Study is required to evaluate the grid impact of the increased capacity. The supplemental SIS carries a 90-day target completion timeline. A supplemental study deposit of $25,000 is required. Elena Vasquez will remain your assigned engineer. We will be in touch with study progress updates. PG&E Interconnection Services",
+    "sentAt": "2025-09-25T11:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E confirms supplemental SIS required for 45 MW capacity increase. $25K deposit and 90-day timeline communicated."
+  },
+  {
+    "ID": "com-005",
+    "project_ID": "pge-001",
+    "direction_code": "I",
+    "subject": "Urgent: Supplemental SIS Status — Day 120",
+    "body": "We are writing to express significant concern regarding the timeline of the supplemental SIS for PGE-2025-001. We submitted our capacity increase request in September and are now at day 120 with no study completion in sight. We have a power purchase agreement that requires interconnection by Q2 2026. If PG&E cannot complete this study within the next 30 days we will need to consider our legal options under the CPUC Tariff. Maria Chen, Elkhorn Renewables LLC",
+    "sentAt": "2025-11-01T09:00:00Z",
+    "sentiment": "negative",
+    "summary": "Applicant demands supplemental SIS completion within 30 days, citing PPA deadline and potential CPUC tariff action."
+  },
+  {
+    "ID": "com-006",
+    "project_ID": "pge-002",
+    "direction_code": "O",
+    "subject": "Cost Estimate — Interconnection Mitigation Required",
+    "body": "Dear Mr. Valdez, The System Impact Study for PGE-2025-002 has been completed with a conditional approval. Required mitigation includes upgrade of substation transformer T-CV07-B (estimated $1,850,000) and distribution line upgrades (estimated $250,000). Total estimated cost: $2,100,000. Please review the attached cost estimate breakdown. You have 30 days to accept or dispute this cost estimate per Rule 21. PG&E Interconnection Services",
+    "sentAt": "2025-07-14T12:00:00Z",
+    "sentiment": "neutral",
+    "summary": "SIS complete. $2.1M cost estimate issued to applicant (transformer upgrade + distribution line)."
+  },
+  {
+    "ID": "com-007",
+    "project_ID": "pge-002",
+    "direction_code": "I",
+    "subject": "Formal Dispute — Cost Estimate PGE-2025-002",
+    "body": "PG&E Interconnection Services — We are formally disputing the $2,100,000 cost estimate for our project PGE-2025-002. Specifically, we dispute the transformer T-CV07-B upgrade scope. This transformer serves multiple customers and the full upgrade cost should not be borne solely by our project. We request a revised cost allocation study and a meeting with PG&E Grid Planning to discuss shared infrastructure cost methodology. Robert Valdez, Fresno Agricultural Solar Cluster LLC",
+    "sentAt": "2025-08-12T14:00:00Z",
+    "sentiment": "negative",
+    "summary": "Applicant formally disputes $2.1M cost estimate, challenging transformer upgrade cost allocation methodology."
+  },
+  {
+    "ID": "com-008",
+    "project_ID": "pge-002",
+    "direction_code": "O",
+    "subject": "Acknowledgment of Cost Estimate Dispute — PGE-2025-002",
+    "body": "Dear Mr. Valdez, We acknowledge receipt of your formal dispute filed August 12, 2025. Your dispute has been assigned dispute tracking number DISP-2025-0047. Per Rule 21 Section 7.4, the dispute resolution process may take 60–90 days. A meeting with Grid Planning will be scheduled within 30 days. PG&E reserves the right to place the project on hold during the dispute resolution period. PG&E Agreement Review",
+    "sentAt": "2025-08-15T09:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E acknowledges dispute, assigns tracking number, warns of potential project hold during resolution."
+  },
+  {
+    "ID": "com-009",
+    "project_ID": "pge-002",
+    "direction_code": "I",
+    "subject": "ITC Deadline — Urgent Escalation Needed",
+    "body": "PG&E Agreement Review Team — We are now at day 165 of the dispute resolution process with no resolution. Our federal Investment Tax Credit eligibility requires commercial operation by December 31, 2025. This deadline is now impossible to meet, and we estimate the financial impact to our investors at approximately $4.2 million. We are formally requesting escalation to PG&E's Senior Director of Interconnection Services. If we do not receive a response within 5 business days, we will file a complaint with the CPUC. Robert Valdez",
+    "sentAt": "2025-10-25T11:00:00Z",
+    "sentiment": "negative",
+    "summary": "Applicant escalates to Senior Director level, cites $4.2M ITC loss, threatens CPUC complaint within 5 business days."
+  },
+  {
+    "ID": "com-010",
+    "project_ID": "pge-003",
+    "direction_code": "O",
+    "subject": "Clarification Request — Wind Turbine Reactive Capability Data",
+    "body": "Dear Mr. Park, In order to complete the voltage regulation analysis required for the System Impact Study for PGE-2025-003, we require the following from your turbine manufacturer: (1) Reactive power capability curve (Q-V curve), (2) Power factor operating range, (3) Low-voltage ride-through compliance documentation. Please provide these documents within 10 business days. Failure to respond may result in study suspension. Elena Vasquez, Study Engineering",
+    "sentAt": "2025-11-10T09:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E requests wind turbine reactive capability documentation with 10-day deadline."
+  },
+  {
+    "ID": "com-011",
+    "project_ID": "pge-003",
+    "direction_code": "I",
+    "subject": "RE: Wind Turbine Documentation — Submitted",
+    "body": "Dear Ms. Vasquez, Please find attached the reactive capability curve, power factor operating range specifications, and LVRT compliance certificate for our Vestas V150-4.5 turbines. These have been provided by Vestas Technical Support. Please let us know if anything further is required. David Park, Marin Clean Wind LLC",
+    "sentAt": "2025-11-20T09:30:00Z",
+    "sentiment": "positive",
+    "summary": "Applicant submits all requested wind turbine reactive capability documentation."
+  },
+  {
+    "ID": "com-012",
+    "project_ID": "pge-003",
+    "direction_code": "I",
+    "subject": "SIS Status Request — Day 85",
+    "body": "We are checking on the status of our System Impact Study for PGE-2025-003. We understand the 90-day SLA is approaching. We have a signed land lease agreement with renewal contingent on achieving interconnection milestones by year-end 2025. Could you please provide a status update? David Park",
+    "sentAt": "2025-11-28T10:00:00Z",
+    "sentiment": "negative",
+    "summary": "Applicant requests status update citing 90-day SLA approach and land lease milestone dependency."
+  },
+  {
+    "ID": "com-013",
+    "project_ID": "pge-004",
+    "direction_code": "O",
+    "subject": "Document Request — Protection Coordination Supplement Required",
+    "body": "Dear Ms. Williams, The Detailed Study for PGE-2025-004 requires an as-built protection coordination diagram for the tie-switch location at your proposed point of interconnection. This document is required to complete the arc flash hazard analysis identified in the SIS. Please provide this document within 15 business days. Marcus Reid, Study Engineering",
+    "sentAt": "2025-09-15T10:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E requests arc flash/protection coordination diagram with 15-day deadline."
+  },
+  {
+    "ID": "com-014",
+    "project_ID": "pge-004",
+    "direction_code": "O",
+    "subject": "Final Notice — Documentation Required Within 10 Days",
+    "body": "Dear Ms. Williams, This is a final notice regarding the protection coordination supplement requested on September 15, 2025. We have not received the requested document. If the document is not received within 10 business days of this notice, PG&E will place your project on administrative hold per Rule 21 Section 3.8. Aisha Patel, Study Engineering",
+    "sentAt": "2025-10-15T09:00:00Z",
+    "sentiment": "negative",
+    "summary": "Final notice issued — protection coordination supplement overdue. Administrative hold threatened in 10 days."
+  },
+  {
+    "ID": "com-015",
+    "project_ID": "pge-004",
+    "direction_code": "I",
+    "subject": "RE: Documentation — Vendor Delay",
+    "body": "Dear Ms. Patel, We apologize for the delay. Our protection coordination engineer has been dealing with a vendor delay on the arc flash modeling software. We expect to have the document ready within 2 weeks. We request a 15-day extension. Sandra Williams, Tracy BESS LLC",
+    "sentAt": "2025-10-22T14:00:00Z",
+    "sentiment": "neutral",
+    "summary": "Applicant explains vendor delay for protection coordination diagram, requests 15-day extension."
+  },
+  {
+    "ID": "com-016",
+    "project_ID": "pge-005",
+    "direction_code": "O",
+    "subject": "Cost Estimate — Transformer Upgrade Required",
+    "body": "Dear Mr. Torres, The System Impact Study for PGE-2025-005 has been completed. Required mitigation: upgrade of substation transformer T-SS06-A under peak EV charging demand scenario (estimated $870,000). This upgrade is required to maintain system reliability. Please review and respond within 30 days. Marcus Reid, Study Engineering",
+    "sentAt": "2025-08-20T12:00:00Z",
+    "sentiment": "neutral",
+    "summary": "SIS complete. $870K transformer upgrade cost estimate issued for EV charging project."
+  },
+  {
+    "ID": "com-017",
+    "project_ID": "pge-005",
+    "direction_code": "I",
+    "subject": "Dispute — Cost Estimate PGE-2025-005",
+    "body": "PG&E Interconnection Services — We formally dispute the $870,000 transformer upgrade estimate for PGE-2025-005. The T-SS06-A transformer serves a major industrial port facility. The upgrade will benefit multiple grid customers, not only our project. We request a cost allocation review and an independent engineering assessment of whether the upgrade is solely attributable to our interconnection. Kevin Torres, Stockton Port EV Hub LLC",
+    "sentAt": "2025-09-18T14:00:00Z",
+    "sentiment": "negative",
+    "summary": "Applicant disputes $870K transformer upgrade cost, requests cost allocation review and independent assessment."
+  },
+  {
+    "ID": "com-018",
+    "project_ID": "pge-005",
+    "direction_code": "O",
+    "subject": "EVSE Technical Specification Required — Agreement Review Hold",
+    "body": "Dear Mr. Torres, In reviewing your file for agreement execution, we note that the required EVSE technical specification (UL 2202 and UL 2594 certifications) has not been submitted. This documentation is required before we can finalize the interconnection agreement. Please submit within 10 business days. PG&E Agreement Review",
+    "sentAt": "2025-11-01T10:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E requests missing EVSE technical certification documents with 10-day deadline."
+  },
+  {
+    "ID": "com-019",
+    "project_ID": "pge-005",
+    "direction_code": "I",
+    "subject": "Status Update Request — 8 Months Since Application",
+    "body": "We submitted our interconnection application in March 2025. We are now 8 months into the process with our project still in Agreement Review. Our project financing closes in January 2026 and requires an executed interconnection agreement as a condition. We request an escalation review and a committed timeline for agreement execution. Kevin Torres, Stockton Port EV Hub LLC",
+    "sentAt": "2025-11-18T09:00:00Z",
+    "sentiment": "negative",
+    "summary": "Applicant urgently requests escalation and committed timeline, citing January 2026 financing close dependency."
+  },
+  {
+    "ID": "com-020",
+    "project_ID": "pge-006",
+    "direction_code": "I",
+    "subject": "SIS Progress Inquiry",
+    "body": "Hello, I wanted to check in on the progress of the System Impact Study for PGE-2025-006. We are at approximately day 45 of the study process and wanted to confirm the project is on track. We have a building permit expiration date of March 2026 that requires completed interconnection study milestones. Linda Huang, SJ Solar Campus LLC",
+    "sentAt": "2025-11-10T10:00:00Z",
+    "sentiment": "neutral",
+    "summary": "Applicant checks SIS progress at day 45, notes March 2026 building permit deadline."
+  },
+  {
+    "ID": "com-021",
+    "project_ID": "pge-006",
+    "direction_code": "O",
+    "subject": "SIS Progress Update — PGE-2025-006",
+    "body": "Dear Ms. Huang, Thank you for your inquiry. The System Impact Study for PGE-2025-006 is currently ongoing. We are conducting the voltage regulation analysis for Feeder FDR-1102. We anticipate completing the study within the next 30–45 days. We will notify you immediately upon completion. Elena Vasquez, Study Engineering",
+    "sentAt": "2025-11-15T11:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E confirms SIS ongoing, estimates 30–45 days to completion."
+  },
+  {
+    "ID": "com-022",
+    "project_ID": "pge-008",
+    "direction_code": "O",
+    "subject": "Group Study Notification — PGE-2025-008",
+    "body": "Dear Ms. Nguyen, Your interconnection application PGE-2025-008 has been assigned to a Group Study process per Rule 21 Section 6.2. Three adjacent applications on Feeder FDR-0801 will be studied simultaneously. A Group Study adds 60–90 days to your study timeline. You will be notified of the group study schedule and any impacts to your project. PG&E Study Engineering",
+    "sentAt": "2025-07-22T09:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E notifies applicant of Group Study assignment. 60–90 day timeline extension communicated."
+  },
+  {
+    "ID": "com-023",
+    "project_ID": "pge-008",
+    "direction_code": "I",
+    "subject": "Group Study — Timeline Concern",
+    "body": "We received your group study notification. We are concerned about the 60–90 day extension. Our community solar project has a CPUC approval contingency that requires interconnection study completion by Q1 2026. Can you confirm when the group study will conclude? Patricia Nguyen, Antioch Community Solar Trust",
+    "sentAt": "2025-08-05T10:00:00Z",
+    "sentiment": "neutral",
+    "summary": "Applicant raises Q1 2026 CPUC approval contingency concern and requests group study completion date."
+  },
+  {
+    "ID": "com-024",
+    "project_ID": "pge-009",
+    "direction_code": "O",
+    "subject": "Agreement Execution — CPUC Compliance Review Required",
+    "body": "Dear Mr. Brown, The Detailed Study for PGE-2025-009 has been completed. Before we can finalize the interconnection agreement, we need to complete an internal CPUC compliance review related to parallel operation of your facility's existing backup generation. This review is expected to take approximately 15 business days. We will notify you once it is complete. PG&E Agreement Review",
+    "sentAt": "2025-11-05T10:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E notifies applicant of CPUC compliance review requirement before agreement execution, estimates 15 days."
+  },
+  {
+    "ID": "com-025",
+    "project_ID": "pge-009",
+    "direction_code": "I",
+    "subject": "Compliance Review Status — Financing Deadline",
+    "body": "We acknowledge the CPUC compliance review notice for PGE-2025-009. We want to flag that our project financing agreement requires an executed interconnection agreement by December 15, 2025. The compliance review is now at day 25. We respectfully request prioritization. Michael Brown, Sacramento Data Center Solar LLC",
+    "sentAt": "2025-11-28T09:00:00Z",
+    "sentiment": "neutral",
+    "summary": "Applicant flags December 15 financing deadline and requests compliance review prioritization."
+  },
+  {
+    "ID": "com-026",
+    "project_ID": "pge-010",
+    "direction_code": "O",
+    "subject": "Notice to Proceed — PGE-2025-010 Construction Phase",
+    "body": "Dear Ms. Lee, We are pleased to confirm that the Interconnection Agreement for PGE-2025-010 has been fully executed. A Notice to Proceed (NTP) for construction has been issued. Construction must be completed per the approved construction plan. PG&E's field engineer Marcus Reid will serve as your utility-side contact during construction. Estimated energization: Q1 2026. PG&E Interconnection Services",
+    "sentAt": "2025-11-05T10:00:00Z",
+    "sentiment": "positive",
+    "summary": "NTP issued. PG&E confirms construction phase start with assigned field engineer and Q1 2026 energization estimate."
+  },
+  {
+    "ID": "com-027",
+    "project_ID": "pge-010",
+    "direction_code": "I",
+    "subject": "RFI — Protection Relay Settings",
+    "body": "Dear Marcus Reid, Our field team has identified two questions regarding the protection relay settings specified in the Detailed Study: (1) The directional overcurrent relay pickup threshold — the study specifies 1.2A but our relay manual recommends 1.5A for this configuration. (2) The reclosing delay timing appears incompatible with our inverter ride-through settings. Could you please clarify? Catherine Lee / Field Engineering Team",
+    "sentAt": "2025-12-10T10:30:00Z",
+    "sentiment": "neutral",
+    "summary": "Applicant raises two protection relay setting discrepancies during construction — directional OC relay and recloser timing."
+  },
+  {
+    "ID": "com-028",
+    "project_ID": "pge-011",
+    "direction_code": "O",
+    "subject": "Document Request — Biogas Protection Coordination Supplement",
+    "body": "Dear Mr. Garcia, Your Detailed Study for PGE-2025-011 requires a protection coordination supplement specific to biogas generating facilities. Additionally, please provide the CAISO biogas interconnection screening results for your facility. These documents are required to proceed with the study. Please provide within 15 business days. Marcus Reid, Study Engineering",
+    "sentAt": "2025-09-10T10:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E requests biogas protection coordination supplement and CAISO screening results with 15-day deadline."
+  },
+  {
+    "ID": "com-029",
+    "project_ID": "pge-011",
+    "direction_code": "O",
+    "subject": "Final Notice — Study Suspension Warning",
+    "body": "Dear Mr. Garcia, This is a formal final notice. Despite two previous requests (September 10 and October 20), the required protection coordination supplement and CAISO screening results for PGE-2025-011 have not been received. You have 10 business days from this notice to provide the requested documents. Failure to respond will result in study suspension and project hold per Rule 21 Section 3.8. PG&E Interconnection Services",
+    "sentAt": "2025-11-10T09:00:00Z",
+    "sentiment": "negative",
+    "summary": "PG&E issues final notice for missing biogas documents — 10-day deadline before project suspension."
+  },
+  {
+    "ID": "com-030",
+    "project_ID": "pge-011",
+    "direction_code": "I",
+    "subject": "RE: Document Request — Delays in CAISO Screening",
+    "body": "Dear Marcus Reid, I apologize for the delayed response. Our CAISO screening application was submitted in June but we have not yet received results — CAISO has indicated delays in their biogas interconnection queue. We are also working with our protection engineer to finalize the supplement. We expect both documents within 3 weeks. Thomas Garcia, Fresno Biogas Power LLC",
+    "sentAt": "2025-11-20T14:00:00Z",
+    "sentiment": "neutral",
+    "summary": "Applicant explains CAISO queue delay and protection engineering backlog. Expects documents within 3 weeks."
+  },
+  {
+    "ID": "com-031",
+    "project_ID": "pge-012",
+    "direction_code": "O",
+    "subject": "Fast Track Feasibility Initiated — PGE-2025-012",
+    "body": "Dear Ms. Martinez, We have initiated the Fast Track Feasibility Study for PGE-2025-012. Feeder FDR-0904 has been identified as your point of interconnection. Based on preliminary screening, available capacity appears favorable. We will notify you upon study completion, estimated within 30–45 days. James Thornton, Study Engineering",
+    "sentAt": "2025-06-05T10:00:00Z",
+    "sentiment": "positive",
+    "summary": "PG&E confirms Fast Track feasibility initiated on FDR-0904. Favorable initial screening, 30–45 day estimate."
+  },
+  {
+    "ID": "com-032",
+    "project_ID": "pge-013",
+    "direction_code": "O",
+    "subject": "Interconnection Application Received — PGE-2025-013 Bakersfield Solar Ranch",
+    "body": "Dear Mr. Hassan, We have received your interconnection application for the 50 MW Bakersfield Solar Ranch. Due to the project scale, this application will require a Detailed Study path and will be subject to full transmission-level analysis. Given current grid conditions in the Central Valley, we anticipate that a pre-screening with CAISO may be required. A Study Engineering intake call is scheduled for July 20. PG&E Interconnection Services",
+    "sentAt": "2025-07-14T11:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E confirms receipt of 50 MW application, flags transmission-level study requirement and CAISO pre-screening need."
+  },
+  {
+    "ID": "com-033",
+    "project_ID": "pge-013",
+    "direction_code": "I",
+    "subject": "Application Acknowledgment — PGE-2025-013",
+    "body": "Thank you for confirming receipt of our application. We are available for the July 20 intake call. We are aware of the grid complexity in the Central Valley zone and have engaged an external transmission consultant to support our engineering submissions. We look forward to a collaborative process. Omar Hassan, Bakersfield Solar Partners LP",
+    "sentAt": "2025-07-16T09:00:00Z",
+    "sentiment": "positive",
+    "summary": "Applicant acknowledges, confirms intake call availability, mentions external transmission consultant engaged."
+  },
+  {
+    "ID": "com-034",
+    "project_ID": "pge-015",
+    "direction_code": "O",
+    "subject": "Fast Track Feasibility Initiated — PGE-2025-015 Concord EV Charging",
+    "body": "Dear Mr. Patel, We are pleased to confirm initiation of the Fast Track Feasibility Study for PGE-2025-015. The Concord area substation was recently upgraded in Q2 2025 and has significant available capacity. Initial screening is favorable. Estimated study completion: 30–35 days. Elena Vasquez, Study Engineering",
+    "sentAt": "2025-10-04T10:00:00Z",
+    "sentiment": "positive",
+    "summary": "Fast Track initiated for Concord EV charging. Substation recently upgraded — favorable capacity outlook."
+  },
+  {
+    "ID": "com-035",
+    "project_ID": "pge-016",
+    "direction_code": "O",
+    "subject": "Fast Track Initiated — PGE-2025-016 Elk Grove Community Solar",
+    "body": "Dear Ms. Walsh, The Fast Track Feasibility Study for PGE-2025-016 has been initiated. The Elk Grove area benefited from a Q3 2025 substation upgrade, providing approximately 25 MW of new available capacity. Your 5.5 MW project fits well within this headroom. We expect a favorable outcome within 30–45 days. Marcus Reid, Study Engineering",
+    "sentAt": "2025-09-25T10:00:00Z",
+    "sentiment": "positive",
+    "summary": "Fast Track initiated. Elk Grove substation upgrade creates favorable capacity for 5.5 MW community solar project."
+  },
+  {
+    "ID": "com-036",
+    "project_ID": "pge-017",
+    "direction_code": "O",
+    "subject": "Interconnection Agreement Issued for Execution — PGE-2025-017",
+    "body": "Dear Mr. Nakamura, We are pleased to confirm that the System Impact Study for PGE-2025-017 has been completed with approval. Enclosed is the Interconnection Agreement for your review and execution. Please return the executed agreement within 10 business days. Upon receipt, we will issue a Notice to Proceed. PG&E Agreement Review",
+    "sentAt": "2025-10-05T10:00:00Z",
+    "sentiment": "positive",
+    "summary": "SIS approved. Interconnection Agreement issued to applicant for execution. 10-day return deadline."
+  },
+  {
+    "ID": "com-037",
+    "project_ID": "pge-017",
+    "direction_code": "I",
+    "subject": "Agreement Execution — Legal Review in Progress",
+    "body": "Dear PG&E Agreement Review, Thank you for issuing the Interconnection Agreement for PGE-2025-017. Our legal team is reviewing the document. We anticipate returning the executed agreement within 10–14 business days. Steven Nakamura, Half Moon Bay Offshore Wind LLC",
+    "sentAt": "2025-10-10T14:00:00Z",
+    "sentiment": "positive",
+    "summary": "Applicant confirms legal review in progress, expects execution within 10–14 business days."
+  },
+  {
+    "ID": "com-038",
+    "project_ID": "pge-017",
+    "direction_code": "O",
+    "subject": "Reminder — Interconnection Agreement Execution Overdue",
+    "body": "Dear Mr. Nakamura, Our records show that the Interconnection Agreement for PGE-2025-017 was issued on October 5 and has not yet been returned after 18 business days. The standard turnaround expectation is 10 business days. Please confirm your execution timeline. Continued delay may affect your project's position in the interconnection queue. PG&E Agreement Review",
+    "sentAt": "2025-11-22T09:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E issues reminder — agreement execution overdue at 18 days vs. 10-day standard."
+  },
+  {
+    "ID": "com-039",
+    "project_ID": "pge-018",
+    "direction_code": "O",
+    "subject": "Notice to Proceed — PGE-2025-018 Roseville Battery Storage",
+    "body": "Dear Ms. Lin, The Interconnection Agreement for PGE-2025-018 has been executed. A Notice to Proceed for construction has been issued. Please coordinate with PG&E field engineer for utility-side equipment installation scheduling. Estimated project completion: Q4 2025. PG&E Interconnection Services",
+    "sentAt": "2025-10-15T10:00:00Z",
+    "sentiment": "positive",
+    "summary": "NTP issued for Roseville BESS. Construction authorized. Q4 2025 completion estimate."
+  },
+  {
+    "ID": "com-040",
+    "project_ID": "pge-018",
+    "direction_code": "I",
+    "subject": "Protection Settings Verification Request",
+    "body": "Dear PG&E, Our construction is essentially complete at the Roseville BESS site. We are ready to schedule the witness test. Could you please advise on the timeline for the protection settings verification review? Our construction team will be demobilizing December 20 and we want to complete the witness test before that date. Mei Lin, Roseville Energy Storage LLC",
+    "sentAt": "2025-12-04T15:00:00Z",
+    "sentiment": "neutral",
+    "summary": "Applicant requests protection settings verification timeline to schedule witness test before Dec 20 demobilization."
+  },
+  {
+    "ID": "com-041",
+    "project_ID": "pge-019",
+    "direction_code": "O",
+    "subject": "Witness Test Passed — Energization Scheduled",
+    "body": "Dear Ms. Cruz, We are pleased to confirm that the witness test for PGE-2025-019 was completed successfully on December 10, 2025. All protection relay tests passed. The CPUC notification filing has been submitted. Your project's energization is scheduled for December 22, 2025. A field representative will contact you to confirm the final energization window. Congratulations — this is a smooth and well-executed project. PG&E Interconnection Services",
+    "sentAt": "2025-12-17T09:00:00Z",
+    "sentiment": "positive",
+    "summary": "Witness test passed. Energization scheduled Dec 22. PG&E commends applicant on smooth project execution."
+  },
+  {
+    "ID": "com-042",
+    "project_ID": "pge-019",
+    "direction_code": "I",
+    "subject": "Thank You — Energization Confirmation",
+    "body": "Thank you very much for the quick processing and energization schedule. The San Mateo Solar + Storage project has been a true team effort and we appreciate PG&E's responsiveness throughout. We look forward to the December 22 energization. Diana Cruz, San Mateo Clean Energy LLC",
+    "sentAt": "2025-12-17T14:00:00Z",
+    "sentiment": "positive",
+    "summary": "Applicant thanks PG&E for responsive process and confirms readiness for December 22 energization."
+  },
+  {
+    "ID": "com-043",
+    "project_ID": "pge-020",
+    "direction_code": "O",
+    "subject": "Witness Test Confirmation — PGE-2025-020",
+    "body": "Dear Mr. Espinoza, Your witness test for PGE-2025-020 is confirmed for December 19, 2025. PG&E field inspector will arrive at 9:00 AM. Please ensure the site is accessible and a qualified electrical engineer is on site. All as-built drawings have been reviewed and accepted. Compliance sign-off is complete. PG&E Metering",
+    "sentAt": "2025-12-11T10:00:00Z",
+    "sentiment": "positive",
+    "summary": "Witness test confirmed for December 19 at 9 AM. All pre-test items complete."
+  },
+  {
+    "ID": "com-044",
+    "project_ID": "pge-001",
+    "direction_code": "I",
+    "subject": "Status Demand — Day 135 Supplemental SIS",
+    "body": "This is our third written inquiry regarding the status of the supplemental SIS for PGE-2025-001. We are now at day 135 with no completion in sight. We have a contracted power off-taker who has a step-down right at Q1 2026 if we cannot show interconnection progress. This is a $27M project. We are engaging legal counsel regarding PG&E's obligation under CPUC Rule 21 Section 4.2 timelines. Maria Chen, Elkhorn Renewables LLC",
+    "sentAt": "2025-11-01T09:30:00Z",
+    "sentiment": "negative",
+    "summary": "Applicant issues legal warning citing PPA step-down right at Q1 2026 and Rule 21 timeline obligations."
+  },
+  {
+    "ID": "com-045",
+    "project_ID": "pge-002",
+    "direction_code": "O",
+    "subject": "Cost Estimate Dispute Meeting Scheduled",
+    "body": "Dear Mr. Valdez, We have reviewed your dispute request and agree that a cost allocation meeting is warranted. A meeting has been scheduled for November 15, 2025 at 10:00 AM PST (virtual). Attendees will include PG&E Grid Planning, Agreement Review, and our cost engineering team. Please bring your supporting cost allocation analysis. Note: project processing remains on hold during the dispute resolution period per Rule 21. PG&E Agreement Review",
+    "sentAt": "2025-11-01T14:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E schedules dispute resolution meeting for November 15. Reiterates project hold during resolution."
+  },
+  {
+    "ID": "com-046",
+    "project_ID": "pge-003",
+    "direction_code": "O",
+    "subject": "SLA Extension Granted — SIS for PGE-2025-003",
+    "body": "Dear Mr. Park, We are writing to advise you that the System Impact Study for PGE-2025-003 has reached day 90 of the 90-day SLA. We are granting a 30-day SLA extension to complete the voltage regulation analysis. A co-engineer has been assigned to your study. We apologize for the delay and commit to providing a study completion date within 5 business days. PG&E Study Engineering Manager",
+    "sentAt": "2025-12-02T09:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E grants 30-day SLA extension for SIS, acknowledges breach, assigns co-engineer, commits to 5-day completion date."
+  },
+  {
+    "ID": "com-047",
+    "project_ID": "pge-004",
+    "direction_code": "O",
+    "subject": "Study Resumed — Aisha Patel Assigned",
+    "body": "Dear Ms. Williams, We are writing to confirm that Aisha Patel has been assigned as your primary Study Engineer for PGE-2025-004, replacing James Thornton who was reassigned in April. Ms. Patel is reviewing all prior study materials and will issue a revised study schedule within 10 business days. We acknowledge the project has experienced delays that are within PG&E's control and are committed to resolving this promptly. PG&E Study Engineering",
+    "sentAt": "2025-07-15T11:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E confirms new engineer assignment (Aisha Patel), acknowledges delay responsibility, promises revised schedule."
+  },
+  {
+    "ID": "com-048",
+    "project_ID": "pge-005",
+    "direction_code": "O",
+    "subject": "Dispute Resolution Timeline — PGE-2025-005",
+    "body": "Dear Mr. Torres, Following receipt of your formal dispute, we are initiating an independent cost allocation review for the T-SS06-A transformer upgrade. This review will take approximately 45 days. A dispute resolution meeting has been scheduled for December 10, 2025. Your project agreement review will remain paused during this period. We understand the urgency given your financing timeline. PG&E Agreement Review",
+    "sentAt": "2025-09-25T10:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E initiates 45-day independent cost allocation review, schedules December 10 dispute meeting."
+  },
+  {
+    "ID": "com-049",
+    "project_ID": "pge-009",
+    "direction_code": "O",
+    "subject": "CPUC Compliance Review Complete — Agreement Execution Imminent",
+    "body": "Dear Mr. Brown, We are pleased to advise that the CPUC compliance review for backup generation parallel operation conditions has been completed for PGE-2025-009. The review found no compliance issues — your existing backup generation configuration is compliant with applicable CPUC rules. The Interconnection Agreement will be issued for execution within 3 business days. PG&E Compliance",
+    "sentAt": "2025-12-12T10:00:00Z",
+    "sentiment": "positive",
+    "summary": "CPUC compliance review complete — no issues found. Agreement to be issued within 3 business days."
+  },
+  {
+    "ID": "com-050",
+    "project_ID": "pge-013",
+    "direction_code": "O",
+    "subject": "Grid Capacity Pre-Screening Required — PGE-2025-013",
+    "body": "Dear Mr. Hassan, Our initial feasibility analysis for PGE-2025-013 indicates that the 50 MW project, in combination with two other large applications currently in study in the Central Valley zone, will exceed current substation bank capacity. Before proceeding to a full feasibility study, we recommend a CAISO transmission pre-screening. We are coordinating with CAISO to schedule this review. This pre-screening will take approximately 30–45 days but is expected to significantly reduce total study time by scoping the transmission-level analysis upfront. PG&E Interconnection Services",
+    "sentAt": "2025-12-10T10:00:00Z",
+    "sentiment": "neutral",
+    "summary": "PG&E recommends CAISO transmission pre-screening due to Central Valley grid capacity concern. 30–45 day scoping phase proposed."
+  }
+]
