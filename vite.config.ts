@@ -4,7 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   base: process.env.NODE_ENV === 'production'
-    ? '/ashokdorairaj/ClaudeProjects/FioriDemos/'
+    ? '/ClaudeProjects/FioriDemos/'
     : '/',
   plugins: [react()],
   resolve: {
